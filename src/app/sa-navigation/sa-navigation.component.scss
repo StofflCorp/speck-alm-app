@@ -1,0 +1,17 @@
+ion-card {
+  border-radius: 25px;
+  margin: 40px 16px;
+}
+ion-item.active {
+  --background: var(--ion-color-sa-pink);
+  --color: white;
+}
+ion-item.dark {
+  --background: var(--ion-color-sa-dark);
+  --color: white;
+}
+ion-list.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

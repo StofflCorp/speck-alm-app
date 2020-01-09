@@ -1,0 +1,30 @@
+
+<ion-menu side="start" menuId="navigation" content-id="navigationContent">
+  <ion-content id="navigationContent">
+    <ion-card>
+      <div *ngIf="imageData.isOpen; else isClosed">
+        <ion-img [src]="imageData.srcOpen"></ion-img>
+      </div>
+      <ng-template #isClosed>
+        <ion-img [src]="imageData.srcClosed"></ion-img>
+      </ng-template>
+    </ion-card>
+
+    <ion-list>
+      <ion-item lines="full" class="active">News und Veranstaltungen</ion-item>
+      <ion-item lines="full">Wetter</ion-item>
+      <ion-item lines="full">Social Media</ion-item>
+      <ion-item lines="full">Witziges</ion-item>
+      <ion-item lines="none">Über uns</ion-item>
+    </ion-list>
+
+    <ion-list class="fixed-bottom" no-padding>
+      <ion-item lines="full">Online-Shop</ion-item>
+      <ion-item lines="full">Tischreservierung</ion-item>
+      <ion-item lines="full">Meine Statistiken</ion-item>
+      <ion-item lines="full" class="dark">Logout</ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
