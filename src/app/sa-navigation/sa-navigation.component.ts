@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-sa-navigation',
@@ -7,14 +7,25 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SaNavigationComponent implements OnInit {
 
+  @Input('selectedIndex') selectedIndex: number;
+  isActive: boolean[];
+
   imageData: any = {
     isOpen: true,
     srcOpen: "../../assets/img/OffenIsBanner.jpg",
     srcClosed: "../../assets/img/ZuaIsBanner.jpg"
   };
 
-  constructor() { }
+  constructor() {
+    //Initialize Array
+    this.isActive = new Array(8);
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    //Check which navigation link is active
+    for (let i = 0; i < 8; i++) {
+      this.isActive[i] = i === this.selectedIndex;
+    }
+  }
 
 }

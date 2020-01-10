@@ -11,17 +11,17 @@
     </ion-card>
 
     <ion-list>
-      <ion-item lines="full" class="active">News und Veranstaltungen</ion-item>
-      <ion-item lines="full">Wetter</ion-item>
-      <ion-item lines="full">Social Media</ion-item>
-      <ion-item lines="full">Witziges</ion-item>
-      <ion-item lines="none">Über uns</ion-item>
+      <ion-item lines="full" [ngClass]="{'active' : isActive[0]}">News und Veranstaltungen</ion-item>
+      <ion-item lines="full" [ngClass]="{'active' : isActive[1]}">Wetter</ion-item>
+      <ion-item lines="full" [ngClass]="{'active' : isActive[2]}">Social Media</ion-item>
+      <ion-item lines="full" [ngClass]="{'active' : isActive[3]}">Witziges</ion-item>
+      <ion-item lines="none" [ngClass]="{'active' : isActive[4]}">Über uns</ion-item>
     </ion-list>
 
-    <ion-list class="fixed-bottom" no-padding>
-      <ion-item lines="full">Online-Shop</ion-item>
-      <ion-item lines="full">Tischreservierung</ion-item>
-      <ion-item lines="full">Meine Statistiken</ion-item>
+    <ion-list class="ion-no-padding fixed-bottom">
+      <ion-item lines="full" [ngClass]="{'active' : isActive[5]}">Online-Shop</ion-item>
+      <ion-item lines="full" [ngClass]="{'active' : isActive[6]}">Tischreservierung</ion-item>
+      <ion-item lines="full" [ngClass]="{'active' : isActive[7]}">Meine Statistiken</ion-item>
       <ion-item lines="full" class="dark">Logout</ion-item>
     </ion-list>
   </ion-content>
