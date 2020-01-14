@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Veranstaltungen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card (click)="clicked()">
+    <ion-img src="../../../assets/img/Events/eventdefault.jpg"></ion-img>
+
+    <ion-card-header >
+      <ion-toolbar >
+
+        <ion-card-title>Event</ion-card-title>
+
+        <ion-buttons slot="end">
+          <ion-button color="white" (click)="favBtnClicked()">
+            <ion-icon [name]="getIcon()" color="dark"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-card-header>
+
+    <ion-datetime displayFormat="MM/DD/YYYY HH:mm:ss" value="1994-12-15T13:47:20.789" disabled="true"></ion-datetime>
+    <ion-card-content>
+      blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
