@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./sa-navigation.component.scss'],
 })
 export class SaNavigationComponent implements OnInit {
-  // tslint:disable-next-line:no-input-rename
+
   @Input('selectedIndex') selectedIndex: number;
   isActive: boolean[];
 
@@ -22,7 +22,7 @@ export class SaNavigationComponent implements OnInit {
 
   ngOnInit() {
     for (let i = 0; i < 8; i++) {
-      this.isActive[i] = i === this.selectedIndex;
+      this.isActive[i] = i === +this.selectedIndex;
     }
   }
 

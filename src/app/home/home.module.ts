@@ -18,13 +18,17 @@ import {SaNavigationComponent} from '../sa-navigation/sa-navigation.component';
         component: HomePage,
         children: [
           {
+            path: '',
+            redirectTo: 'news'
+          },
+          {
             path: 'news',
             loadChildren: () => import('../LandingPage/NewsPage/news/news.module').then(m => m.NewsPageModule)
           },
           {
             path: 'events',
             loadChildren: () => import('../LandingPage/EventPage/events/events.module').then(m => m.EventsPageModule)
-          },
+          }
         ]
       }
     ])
