@@ -1,8 +1,20 @@
 
 <ion-content>
+  <!-- Menu-Component -->
   <app-sa-navigation selectedIndex="0"></app-sa-navigation>
-  <p>Empty Page</p>
+
+  <!-- Tabs auf der Landing-Page-->
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" selectedTab="news">
+
+      <ion-tab-button tab="news">
+        <ion-icon name="list-box"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="events">
+        <ion-icon name="calendar"></ion-icon>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>
-
-
-
