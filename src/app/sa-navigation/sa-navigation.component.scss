@@ -16,7 +16,7 @@ ion-button {
     margin-right: auto;
   }
 }
-ion-button.active {
+ion-button.active, ion-item.active {
   --background: var(--ion-color-sa-pink);
   --color: white;
 }
