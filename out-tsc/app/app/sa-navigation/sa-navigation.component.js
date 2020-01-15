@@ -1,19 +1,16 @@
 import * as tslib_1 from "tslib";
 import { Component, Input } from '@angular/core';
+import { NavController } from "@ionic/angular";
 let SaNavigationComponent = class SaNavigationComponent {
-    constructor() {
+    constructor(navCtrl) {
+        this.navCtrl = navCtrl;
         this.imageData = {
             isOpen: true,
             srcOpen: '../../assets/img/OffenIsBanner.jpg',
             srcClosed: '../../assets/img/ZuaIsBanner.jpg'
         };
-        this.isActive = new Array(8);
     }
-    ngOnInit() {
-        for (let i = 0; i < 8; i++) {
-            this.isActive[i] = i === +this.selectedIndex;
-        }
-    }
+    ngOnInit() { }
 };
 tslib_1.__decorate([
     Input('selectedIndex'),
@@ -25,7 +22,7 @@ SaNavigationComponent = tslib_1.__decorate([
         templateUrl: './sa-navigation.component.html',
         styleUrls: ['./sa-navigation.component.scss'],
     }),
-    tslib_1.__metadata("design:paramtypes", [])
+    tslib_1.__metadata("design:paramtypes", [NavController])
 ], SaNavigationComponent);
 export { SaNavigationComponent };
 //# sourceMappingURL=sa-navigation.component.js.map
