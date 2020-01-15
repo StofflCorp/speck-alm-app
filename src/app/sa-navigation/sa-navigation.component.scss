@@ -1,12 +1,26 @@
+ion-menu {
+  --width: 100%;
+}
 ion-card {
   border-radius: 25px;
   margin: 40px 16px;
 }
-ion-item.active {
+ion-button {
+  font-size: 16px;
+  text-transform: none;
+  margin: 0;
+  --color: black;
+  --background-activated: var(--ion-color-sa-pink);
+  --color-activated: white;
+  span.ion-text-left {
+    margin-right: auto;
+  }
+}
+ion-button.active {
   --background: var(--ion-color-sa-pink);
   --color: white;
 }
-ion-item.dark {
+ion-button.dark {
   --background: var(--ion-color-sa-dark);
   --color: white;
 }
@@ -15,4 +29,34 @@ ion-list.fixed-bottom {
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+@media screen and (max-height: 600px) {
+  ion-button {
+    font-size: 14px;
+    --padding: 5px;
+  }
+}
+@media screen and (min-width: 600px) {
+  ion-card {
+    width: 40%;
+    margin: 10px auto;
+  }
+}
+@media screen and (min-height: 800px) {
+  ion-button {
+    font-size: 16px;
+    --padding: 20px;
+  }
+}
+@media screen and (min-height: 1000px) {
+  ion-button {
+    font-size: 24px;
+    --padding: 25px;
+  }
+}
+@media screen and (min-height: 1300px) {
+  ion-button {
+    font-size: 30px;
+    --padding: 30px;
+  }
 }

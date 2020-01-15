@@ -35,6 +35,9 @@ HomePageModule = tslib_1.__decorate([
                 }
             ])
         ],
+        exports: [
+            SaNavigationComponent
+        ],
         declarations: [HomePage, SaNavigationComponent]
     })
 ], HomePageModule);

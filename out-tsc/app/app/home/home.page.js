@@ -1,12 +1,7 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
 let HomePage = class HomePage {
-    constructor() {
-        this.slideOpts = {
-            initialSlide: 1,
-            speed: 400
-        };
-    }
+    constructor() { }
 };
 HomePage = tslib_1.__decorate([
     Component({
