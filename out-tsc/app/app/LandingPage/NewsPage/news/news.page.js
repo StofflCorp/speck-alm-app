@@ -13,6 +13,7 @@ let NewsPage = class NewsPage {
             const modal = yield this.mod.create({
                 component: ModalPage
             });
+            modal.cssClass = 'modal-fullscreen';
             modal.present();
         });
     }

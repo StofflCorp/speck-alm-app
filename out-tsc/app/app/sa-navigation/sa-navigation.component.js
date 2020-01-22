@@ -9,8 +9,13 @@ let SaNavigationComponent = class SaNavigationComponent {
             srcOpen: '../../assets/img/OffenIsBanner.jpg',
             srcClosed: '../../assets/img/ZuaIsBanner.jpg'
         };
+        this.activeLink = new Array(7);
     }
-    ngOnInit() { }
+    ngOnInit() {
+        for (let i = 0; i < this.activeLink.length; i++) {
+            this.activeLink[i] = (i === +this.selectedIndex);
+        }
+    }
 };
 tslib_1.__decorate([
     Input('selectedIndex'),
