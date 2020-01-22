@@ -9,7 +9,16 @@ export class SocialMediaPage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  click(str) {
+    if (str === 'facebook') {
+      window.open('https://www.facebook.com/SpeckAlm', '_blank');
+    } else if (str === 'website') {
+      window.open('https://www.speck-alm.at/', '_blank');
+    } else if (str === 'videos') {
+      window.open('https://www.speck-alm.at/videos/', '_blank');
+    }
   }
 
 }

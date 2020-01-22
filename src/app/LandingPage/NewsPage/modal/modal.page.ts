@@ -11,8 +11,7 @@ export class ModalPage implements OnInit {
 
   constructor(private mod: ModalController) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async closeModal() {
     await this.mod.dismiss();

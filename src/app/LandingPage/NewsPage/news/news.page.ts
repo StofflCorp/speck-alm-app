@@ -18,6 +18,8 @@ export class NewsPage implements OnInit {
     const modal = await this.mod.create({
       component: ModalPage
     });
+
+    modal.cssClass = 'modal-fullscreen';
     modal.present();
   }
 }

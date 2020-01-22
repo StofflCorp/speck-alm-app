@@ -1,13 +1,20 @@
+<app-sa-navigation selectedIndex="2"></app-sa-navigation>
+
 <ion-header>
   <ion-toolbar>
     <ion-title>Social Media</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<app-sa-navigation selectedIndex="2"></app-sa-navigation>
-
 <ion-content>
+  <ion-card-content>
+    <ion-label>Besucht uns auf unseren anderen Social-Media Accounts, wo wir ebenfalls regelmäßig Neues posten!</ion-label>
+  </ion-card-content>
 
-  <ion-card-content>Besucht uns auf unseren anderen Social-Media Accounts, wo wir ebenfalls regelmäßig Neues posten!</ion-card-content>
-
+  <ion-card-content>
+    <ion-icon name="logo-facebook" color="primary" size="large" (click)="click('facebook')"></ion-icon>
+    <ion-icon name="globe" color="dark" size="large"  (click)="click('website')"></ion-icon>
+    <ion-icon name="logo-youtube" color="favorite" size="large" (click)="click('videos')"></ion-icon>
+  </ion-card-content>
 </ion-content>
+
