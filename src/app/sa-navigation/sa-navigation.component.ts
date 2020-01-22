@@ -9,6 +9,7 @@ import {NavController} from "@ionic/angular";
 export class SaNavigationComponent implements OnInit {
 
   @Input('selectedIndex') selectedIndex: number;
+  activeLink: boolean[];
 
   imageData: any = {
     isOpen: true,
@@ -17,8 +18,14 @@ export class SaNavigationComponent implements OnInit {
   };
 
   constructor(public navCtrl: NavController) {
+    this.activeLink = new Array(7);
+
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    for (let i = 0; i < this.activeLink.length; i++) {
+      this.activeLink[i] = (i === +this.selectedIndex);
+    }
+  }
 
 }

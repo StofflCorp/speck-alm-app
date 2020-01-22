@@ -5,8 +5,7 @@ let ModalPage = class ModalPage {
     constructor(mod) {
         this.mod = mod;
     }
-    ngOnInit() {
-    }
+    ngOnInit() { }
     closeModal() {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             yield this.mod.dismiss();
