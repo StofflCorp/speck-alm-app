@@ -11,3 +11,16 @@
     height: 100px;
   }
 }
+
+ion-tab-bar {
+  --ion-color-primary: var(--ion-color-sa-pink);
+  --background: var(--ion-color-sa-dark);
+}
+
+.tab-btn-selected, .tab-btn:hover {
+  color: var(--ion-color-sa-pink);
+}
+
+ion-tab-button {
+  --color: #ffffff;
+}
