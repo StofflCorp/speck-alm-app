@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {NavController} from "@ionic/angular";
 
 @Component({
   selector: 'app-sa-navigation',
@@ -8,7 +9,6 @@ import {Component, Input, OnInit} from '@angular/core';
 export class SaNavigationComponent implements OnInit {
 
   @Input('selectedIndex') selectedIndex: number;
-  isActive: boolean[];
 
   imageData: any = {
     isOpen: true,
@@ -16,14 +16,9 @@ export class SaNavigationComponent implements OnInit {
     srcClosed: '../../assets/img/ZuaIsBanner.jpg'
   };
 
-  constructor() {
-    this.isActive = new Array(8);
+  constructor(public navCtrl: NavController) {
   }
 
-  ngOnInit() {
-    for (let i = 0; i < 8; i++) {
-      this.isActive[i] = i === +this.selectedIndex;
-    }
-  }
+  ngOnInit() {}
 
 }
