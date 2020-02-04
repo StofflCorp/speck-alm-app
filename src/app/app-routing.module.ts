@@ -5,8 +5,15 @@ const routes: Routes = [
   { path: '', redirectTo: 'home/news', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule) },
   { path: 'socialMedia', loadChildren: () => import('./social-media/social-media.module').then( m => m.SocialMediaPageModule) },
-  { path: 'info',  loadChildren: () => import('./info/info.module').then( m => m.InfoPageModule) }
-];
+  { path: 'info',  loadChildren: () => import('./info/info.module').then( m => m.InfoPageModule) },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  }];
 
 @NgModule({
   imports: [
