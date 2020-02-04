@@ -19,7 +19,8 @@ import {SaNavigationComponent} from '../sa-navigation/sa-navigation.component';
                 children: [
                     {
                         path: '',
-                        redirectTo: 'news'
+                        redirectTo: 'news',
+                        pathMatch: 'full'
                     },
                     {
                         path: 'news',

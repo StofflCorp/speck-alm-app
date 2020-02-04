@@ -21,7 +21,8 @@ HomePageModule = tslib_1.__decorate([
                     children: [
                         {
                             path: '',
-                            redirectTo: 'news'
+                            redirectTo: 'news',
+                            pathMatch: 'full'
                         },
                         {
                             path: 'news',

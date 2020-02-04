@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { InfoPageRoutingModule } from './info-routing.module';
 import { InfoPage } from './info.page';
+import { HomePageModule } from "../home/home.module";
 let InfoPageModule = class InfoPageModule {
 };
 InfoPageModule = tslib_1.__decorate([
@@ -13,7 +14,8 @@ InfoPageModule = tslib_1.__decorate([
             CommonModule,
             FormsModule,
             IonicModule,
-            InfoPageRoutingModule
+            InfoPageRoutingModule,
+            HomePageModule
         ],
         declarations: [InfoPage]
     })

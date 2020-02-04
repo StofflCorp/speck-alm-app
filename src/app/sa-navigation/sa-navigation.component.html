@@ -1,5 +1,5 @@
 
-<ion-menu side="start" menuId="navigation" content-id="navigationContent">
+<ion-menu side="start" type="overlay" content-id="navigationContent">
   <ion-content id="navigationContent">
     <ion-card>
       <div *ngIf="imageData.isOpen; else isClosed">
@@ -11,20 +11,19 @@
     </ion-card>
 
     <ion-list>
-      <ion-button [ngClass]="{'active': activeLink[0]}" expand="full" size="large" fill="clear" routerLink="../home/news" routerDirection="root"><span class="ion-text-left">News und Veranstaltungen</span></ion-button>
-      <ion-button [ngClass]="{'active': activeLink[1]}" expand="full" size="large" fill="clear" routerLink="../weather" routerDirection="root"><span class="ion-text-left">Wetter</span></ion-button>
-      <ion-button [ngClass]="{'active': activeLink[2]}" expand="full" size="large" fill="clear" routerLink="../socialMedia" routerDirection="root"><span class="ion-text-left">Social Media</span></ion-button>
-      <ion-button [ngClass]="{'active': activeLink[3]}" expand="full" size="large" fill="clear" routerLink="../jokes" routerDirection="root"><span class="ion-text-left">Witziges</span></ion-button>
-      <ion-button [ngClass]="{'active': activeLink[4]}" expand="full" size="large" fill="clear" routerLink="../info" routerDirection="root"><span class="ion-text-left">Über uns</span></ion-button>
+      <ion-button (click)="navigate('home')" [ngClass]="{'active':this.router.url.split('/')[1]=='home'}" expand="full" size="large" fill="clear"><span class="ion-text-left">News und Veranstaltungen</span></ion-button>
+      <ion-button (click)="navigate('weather')" [ngClass]="{'active':this.router.url.split('/')[1]=='weather'}" expand="full" size="large" fill="clear"><span class="ion-text-left">Wetter</span></ion-button>
+      <ion-button (click)="navigate('socialMedia')" [ngClass]="{'active':this.router.url.split('/')[1]=='socialMedia'}" expand="full" size="large" fill="clear"><span class="ion-text-left">Social Media</span></ion-button>
+      <ion-button (click)="navigate('jokes')" [ngClass]="{'active':this.router.url.split('/')[1]=='jokes'}" expand="full" size="large" fill="clear"><span class="ion-text-left">Witziges</span></ion-button>
+      <ion-button (click)="navigate('info')" [ngClass]="{'active':this.router.url.split('/')[1]=='info'}" expand="full" size="large" fill="clear"><span class="ion-text-left">Über uns</span></ion-button>
     </ion-list>
 
     <ion-list class="ion-no-padding fixed-bottom">
-      <ion-button [ngClass]="{'active': activeLink[5]}" expand="full" size="large" fill="clear" routerLink="../shop" routerDirection="root"><span class="ion-text-left">Online-Shop</span></ion-button>
-      <ion-button [ngClass]="{'active': activeLink[6]}" expand="full" size="large" fill="clear" routerLink="../reservation" routerDirection="root"><span class="ion-text-left">Tischreservierung</span></ion-button>
-      <ion-button [ngClass]="{'active': activeLink[7]}" expand="full" size="large" fill="clear" routerLink="../statistics" routerDirection="root"><span class="ion-text-left">Meine Statistiken</span></ion-button>
+      <ion-button (click)="navigate('onlineShop')" [ngClass]="{'active':this.router.url.split('/')[1]=='onlineShop'}" expand="full" size="large" fill="clear"><span class="ion-text-left">Online-Shop</span></ion-button>
+      <ion-button (click)="navigate('reservation')" [ngClass]="{'active':this.router.url.split('/')[1]=='reservation'}" expand="full" size="large" fill="clear"><span class="ion-text-left">Tischreservierung</span></ion-button>
+      <ion-button (click)="navigate('statistics')" [ngClass]="{'active':this.router.url.split('/')[1]=='statistics'}" expand="full" size="large" fill="clear"><span class="ion-text-left">Meine Statistiken</span></ion-button>
       <ion-button class="dark" expand="full" size="large" href=""><span class="ion-text-left">Logout</span></ion-button>
     </ion-list>
   </ion-content>
 
 </ion-menu>
-

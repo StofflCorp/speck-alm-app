@@ -1,33 +1,33 @@
 import * as tslib_1 from "tslib";
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from "@ionic/angular";
+import { MenuController } from "@ionic/angular";
+import { Router } from "@angular/router";
 let SaNavigationComponent = class SaNavigationComponent {
-    constructor(navCtrl) {
+    constructor(navCtrl, menu, router) {
         this.navCtrl = navCtrl;
+        this.menu = menu;
+        this.router = router;
         this.imageData = {
             isOpen: true,
             srcOpen: '../../assets/img/OffenIsBanner.jpg',
             srcClosed: '../../assets/img/ZuaIsBanner.jpg'
         };
-        this.activeLink = new Array(7);
     }
-    ngOnInit() {
-        for (let i = 0; i < this.activeLink.length; i++) {
-            this.activeLink[i] = (i === +this.selectedIndex);
-        }
+    ngOnInit() { }
+    navigate(page) {
+        this.navCtrl.navigateRoot(page).then(() => {
+            this.menu.close();
+        });
     }
 };
-tslib_1.__decorate([
-    Input('selectedIndex'),
-    tslib_1.__metadata("design:type", Number)
-], SaNavigationComponent.prototype, "selectedIndex", void 0);
 SaNavigationComponent = tslib_1.__decorate([
     Component({
         selector: 'app-sa-navigation',
         templateUrl: './sa-navigation.component.html',
         styleUrls: ['./sa-navigation.component.scss'],
     }),
-    tslib_1.__metadata("design:paramtypes", [NavController])
+    tslib_1.__metadata("design:paramtypes", [NavController, MenuController, Router])
 ], SaNavigationComponent);
 export { SaNavigationComponent };
 //# sourceMappingURL=sa-navigation.component.js.map

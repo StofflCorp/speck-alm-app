@@ -5,10 +5,7 @@ const routes = [
     { path: '', redirectTo: 'home/news', pathMatch: 'full' },
     { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
     { path: 'socialMedia', loadChildren: () => import('./social-media/social-media.module').then(m => m.SocialMediaPageModule) },
-    {
-        path: 'info',
-        loadChildren: () => import('./info/info.module').then(m => m.InfoPageModule)
-    }
+    { path: 'info', loadChildren: () => import('./info/info.module').then(m => m.InfoPageModule) }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

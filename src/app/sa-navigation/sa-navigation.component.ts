@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NavController} from "@ionic/angular";
+import {MenuController} from "@ionic/angular";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sa-navigation',
@@ -8,24 +10,20 @@ import {NavController} from "@ionic/angular";
 })
 export class SaNavigationComponent implements OnInit {
 
-  @Input('selectedIndex') selectedIndex: number;
-  activeLink: boolean[];
-
   imageData: any = {
     isOpen: true,
     srcOpen: '../../assets/img/OffenIsBanner.jpg',
     srcClosed: '../../assets/img/ZuaIsBanner.jpg'
   };
 
-  constructor(public navCtrl: NavController) {
-    this.activeLink = new Array(7);
+  constructor(public navCtrl: NavController, private menu: MenuController, private router: Router) {}
 
-  }
+  ngOnInit() {}
 
-  ngOnInit() {
-    for (let i = 0; i < this.activeLink.length; i++) {
-      this.activeLink[i] = (i === +this.selectedIndex);
-    }
+  navigate(page: string) {
+    this.navCtrl.navigateRoot(page).then(() => {
+      this.menu.close();
+    });
   }
 
 }
