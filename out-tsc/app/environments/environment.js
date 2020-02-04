@@ -4,6 +4,15 @@
 export const environment = {
     production: false
 };
+export const firebase = {
+    apiKey: "AIzaSyBFm77mPZqkW9SIuk38I3sh00evLYoMnXU",
+    authDomain: "speckalmapp-53380.firebaseapp.com",
+    databaseURL: "https://speckalmapp-53380.firebaseio.com",
+    projectId: "speckalmapp-53380",
+    storageBucket: "speckalmapp-53380.appspot.com",
+    messagingSenderId: "469857097064",
+    appId: "1:469857097064:web:f93a3bbf05bae5423132dd"
+};
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
