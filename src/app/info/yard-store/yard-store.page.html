@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hofladen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="yardStoreContent">
+
+  <img src="../../../assets/img/Info/InnHeader.jpg" id="headerImg">
+  <div class="information">
+    <h5 class="title">Mostschenke</h5>
+    <ion-card>
+      <img src="../../../assets/img/Info/Inn/table.jpg">
+      <ion-card-header>Ankommen-Wohlfühlen-Lachen-Genießen</ion-card-header>
+      <ion-card-content>
+        Alle Produkte werden selber erzeugt und frisch zubereitet.
+        Bei unserem Ab-Hof-Verkauf erhalten Sie die Bio-Köstlichkeiten auch zum Mitnehmen und auf Vorbestellung
+        gibts auch Frischfleisch an unseren Vermarktungstagen. Unsere umfangreiche Jausenkarte bietet für jeden
+        Gaumen den passenden Genuss. Der hausgemachte Most und die edlen Schnäpse laden zu geselligem Beisammensein ein.
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-slides>
+          <ion-slide *ngFor="let img of sliderImages" class="diashow">
+            <ion-img src="{{img}}"></ion-img>
+          </ion-slide>
+        </ion-slides>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>

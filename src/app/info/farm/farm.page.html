@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Bio-Bauernhof</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="farmContent">
+
+  <img src="../../../assets/img/Info/FarmHeader.jpg" id="headerImg">
+  <div class="information">
+    <h5 class="title">Bio-Bauernhof "Oberfrankenberger"</h5>
+    <ion-card>
+      <img src="../../../assets/img/Info/Farm/cowHeader.jpg">
+      <ion-card-content>
+        Ganzheitliches Denken und ein geschlossener Betriebskreislauf sind die Voraussetzung für unsere biologische Landwirtschaft.
+        Die Schonung der Ressourcen Wasser und Boden sind besonders wichtig um für künftige Generationen ein lebenswertes Umfeld zu hinterlassen.
+        Durch sorgfältige Bearbeitung des Bodens, Ausbringung von Kompost und gut aufbereiteten Wirtschaftsdünger wird das Bodenleben gefördert.
+        Dies aktiviert wiederum Bodennährstoffe.
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        Gegenüber der herkömmlichen Landwirtschaft spart die biologische Landwirtschaft bis zu 50% an Treibhausgasen ein (insbesondere bei tierischen Produkten).
+        Die Gründe: Es wird kein synthetischer Stickstoffdünger verwendet, und das Futter kommt nur selten aus Übersee.
+        Außerdem ist die CO2-Bindung im Boden wegen dessen höheren Humusanteils besser. Natürlich sollte man auch bei Bioprodukten auf die Regionalität achten.
+        Denn wenn Bioprodukte aus Übersee gekauft werden, so fällt die Klimabilanz wegen der weiten Transportwege nicht mehr so positiv aus.
+        <br>
+        <br>
+        Die Produktion von Biolebensmitteln wird noch stärker kontrolliert als die Herstellung konventioneller Produkte.
+        Mindestens einmal im Jahr wird jeder Biobauer, jeder Bioverarbeiter und jeder Vermarkter von Bioprodukten
+        (wenn er mit unverpackten Bioprodukten handelt) streng kontrolliert.
+        <br>
+        <br>
+        <ion-slides>
+          <ion-slide *ngFor="let img of sliderImages" class="diashow">
+            <ion-img src="{{img}}"></ion-img>
+          </ion-slide>
+        </ion-slides>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <img src="../../../assets/img/Info/Farm/tractor.jpg">
+      <ion-card-content>
+        Die Speck-Alm hat sich zum Ziel gesetzt nur Jausengerichte aus eigener Bio-Produktion zu kredenzen.
+        Auf dem Hof leben zur Zeit über 120 Schweine in artgerechter Weidehaltung.
+        Ganzjährig im Freien mit genug Platz für jedes Tier und versorgt mit bestem Bio-Futter erleben die Schweine so
+        eine sauguate Zeit am Oberfrankenberger-Hof.
+        Als absoluter Spezialist für artgerechte Weidehaltung und Meister der Speckproduktion sorgt Manfred selber für das
+        Wohlergehen seiner Schützlinge und kümmert sich persönlich um jedes Tier.
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>
