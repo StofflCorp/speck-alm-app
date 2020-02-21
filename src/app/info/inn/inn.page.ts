@@ -17,6 +17,11 @@ export class InnPage implements OnInit {
     "../../../assets/img/Info/Inn/slide7.jpg",
     "../../../assets/img/Info/Inn/slide8.jpg"
   ];
+  slideOptsOne= {
+    initialSlide: 0,
+    slidesPerView: 1,
+    autoplay:true
+  };
 
   constructor() { }
 

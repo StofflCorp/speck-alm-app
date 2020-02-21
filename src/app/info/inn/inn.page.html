@@ -22,7 +22,7 @@
 
     <ion-card>
       <ion-card-content>
-        <ion-slides>
+        <ion-slides [options]="slideOptsOne">
           <ion-slide *ngFor="let img of sliderImages" class="diashow">
             <ion-img src="{{img}}"></ion-img>
           </ion-slide>
