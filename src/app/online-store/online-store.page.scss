@@ -1,0 +1,20 @@
+ion-card {
+  --color: var(--ion-color-sa-grey);
+  --background: white;
+}
+ion-card-header {
+  font-size: 16px;
+  font-weight: bold;
+}
+.information {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  background-color: white;
+}
+.title {
+  color: var(--ion-color-sa-green);
+  padding: 5px 20px;
+  font-weight: bold;
+}
