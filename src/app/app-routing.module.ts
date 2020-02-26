@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  }];
+  },{
+    path: 'online-store',
+    loadChildren: () => import('./online-store/online-store.module').then( m => m.OnlineStorePageModule)
+  }
+];
 
 @NgModule({
   imports: [
