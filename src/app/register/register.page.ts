@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertController, NavController} from '@ionic/angular';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {  MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -14,9 +15,17 @@ export class RegisterPage implements OnInit {
   password: string;
   confPw: string;
 
-  constructor(public alertController: AlertController, private navController: NavController, private afAuth: AngularFireAuth) { }
+  constructor(public alertController: AlertController, private navController: NavController, private afAuth: AngularFireAuth, public menuCtrl: MenuController) { }
 
   ngOnInit() {}
+
+  ionViewWillEnter() {
+    // this.menuCtrl.enable(false);
+  }
+
+  ionViewWillLeave(){
+    // this.menuCtrl.enable(true);
+  }
 
   async register(){
     if (this.firstname === undefined || this.lastname === undefined || this.email === undefined || this.password === undefined || this.confPw === undefined) {

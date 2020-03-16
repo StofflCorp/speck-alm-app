@@ -5,26 +5,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-card>
+    <ion-list>
 
-    <ion-item>
-      <ion-input placeholder="Vorname" [(ngModel)]="firstname"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-input placeholder="Vorname" [(ngModel)]="firstname"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-input placeholder="Nachname" [(ngModel)]="lastname"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-input placeholder="Nachname" [(ngModel)]="lastname"></ion-input>
+      </ion-item>
 
-    <ion-item>
+      <ion-item>
         <ion-input placeholder="E-Mail" [(ngModel)]="email"></ion-input>
-    </ion-item>
+      </ion-item>
 
-    <ion-item>
-      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
-      <ion-input placeholder="Bestätigen" type="password" [(ngModel)]="confPw"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+        <ion-input placeholder="Bestätigen" type="password" [(ngModel)]="confPw"></ion-input>
+      </ion-item>
 
-  </ion-list>
+    </ion-list>
 
-  <ion-button expand="full" (click)="register()">Registrieren</ion-button>
+  </ion-card>
+  <ion-button expand="block" (click)="register()">Registrieren</ion-button>
 </ion-content>

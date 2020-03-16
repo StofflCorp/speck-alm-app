@@ -5,17 +5,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+    <ion-card class="card-center">
 
-    <ion-item>
-      <ion-input placeholder="E-Mail" [(ngModel)]="email" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-  </ion-list>
+      <ion-card-content>
+        <ion-list no-line>
 
-  <ion-button expand="block" (click)="login()">Login</ion-button>
-  <ion-button expand="block" routerLink="../register">Registrieren</ion-button>
+          <ion-item>
+            <ion-input placeholder="E-Mail" [(ngModel)]="email" ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+          </ion-item>
+
+        </ion-list>
+
+        <ion-button expand="block" (click)="login()">Login</ion-button>
+
+      </ion-card-content>
+    </ion-card>
+
+  <div style="display: flex; justify-content: center;">
+    <button style="text-align: center" routerLink="../register">Sie haben noch keinen Account? Registrieren Sie sich</button>
+  </div>
+
   <ion-button expand="block" class="placeBottom" color="light" routerLink="../home/news" routerDirection="root">Login Überspringen</ion-button>
 </ion-content>

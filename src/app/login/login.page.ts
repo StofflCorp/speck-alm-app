@@ -3,6 +3,7 @@ import {AlertController, NavController} from '@ionic/angular';
 import { HomePage } from '../home/home.page';
 import {Router} from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {  MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,17 @@ export class LoginPage implements OnInit {
 
   email: string;
   password: string;
-  constructor(public alertController: AlertController, private navController: NavController, private afAuth: AngularFireAuth) { }
+  constructor(public alertController: AlertController, private navController: NavController, private afAuth: AngularFireAuth, public menuCtrl: MenuController) { }
 
   ngOnInit() {}
+
+  ionViewWillEnter() {
+    //this.menuCtrl.enable(false);
+  }
+  
+  ionViewWillLeave(){
+    //this.menuCtrl.enable(true);
+  }
 
   async login() {
     if (this.email === undefined || this.password === undefined) {
@@ -26,13 +35,13 @@ export class LoginPage implements OnInit {
 
     var login = true;
     // überprüfen ob account schon vorhanden
-    await this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password).catch(function (error){
+    await this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
       login = false;
     });
 
-    if(login) {
+    if (login) {
       this.navController.navigateRoot('/home');
-    } else{
+    } else {
       this.createAlert('E-Mail oder Passwort sind nicht korrekt!');
     }
   }
