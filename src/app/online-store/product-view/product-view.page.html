@@ -6,7 +6,7 @@
 
 <ion-content>
   <div class="information">
-    <ion-tab-button tab="articles">
+    <ion-tab-button (click)='openArticlesWithService(1,"bacon")' tab="articles/1">
       <ion-card>
         <img src="../../../assets/img/online-store/product-view/articles/bacon.jpg">
         <ion-card-content>
@@ -14,9 +14,9 @@
         </ion-card-content>
       </ion-card>
     </ion-tab-button>
-    <ion-tab-button tab="articles">
+    <ion-tab-button (click)='openArticlesWithService(2,"meat")'tab="articles/2">
       <ion-card>
-        <img src="../../../assets/img/online-store/product-view/meat.jpg">
+        <img src="../../../assets/img/online-store/product-view/articles/meat.jpg">
         <ion-card-content>
           Bio-Frischfleisch
         </ion-card-content>
