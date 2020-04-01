@@ -7,6 +7,7 @@ import { ModalController} from '@ionic/angular';
   styleUrls: ['./detailed-article.page.scss'],
 })
 export class DetailedArticlePage implements OnInit {
+  item;
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {

@@ -8,7 +8,7 @@ import {map} from "rxjs/operators";
 })
 export class DataService {
   url = "https://speckalm.htl-perg.ac.at/r";
-  apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOjMsImlhdCI6MTU4NTcyOTI4MCwiZXhwIjoxNTg1NzMyODgwfQ.GSq2_fgT2cltKIE_r114yzyvJ6NvH4pOgfyXNm6ayYg";
+  apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOjMsImlhdCI6MTU4NTczMzA1NiwiZXhwIjoxNTg1NzM2NjU2fQ.d8q42orJhYLYtjkDoFSGuaAlJfrwrKGafaDli4vO5ug";
 
   private data =[];
   constructor(private http: HttpClient) { }

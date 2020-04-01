@@ -8,7 +8,7 @@
   <div class="information">
     <ion-list>
       <ion-tab-button *ngFor="let prod of (products | async)">
-        <ion-card (click)="openModal()">
+        <ion-card (click)="openModal(prod)">
           <ion-card-content>
             {{prod.name}}
           </ion-card-content>

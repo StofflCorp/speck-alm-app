@@ -14,9 +14,12 @@ export class ArticlesPage implements OnInit {
   products:any;
   test:any;
   constructor(private modalController: ModalController, private route: ActivatedRoute, private dataService: DataService) { }
-  async openModal() {
+  async openModal(i) {
     const modal = await this.modalController.create({
-      component: DetailedArticlePage
+      component: DetailedArticlePage,
+      componentProps: {
+        item:i
+      }
     });
     return await modal.present();
   }
