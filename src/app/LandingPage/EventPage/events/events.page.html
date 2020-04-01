@@ -5,29 +5,35 @@
 </ion-header>
 
 <ion-content>
-  <ion-card (click)="clicked()">
-    <ion-img src="../../../assets/img/Events/eventdefault.jpg"></ion-img>
 
-    <ion-card-header >
-      <ion-toolbar >
+  <ion-card (click)="clicked(item)" *ngFor="let item of items">
+    <ion-img></ion-img>
 
-        <ion-card-title>Event</ion-card-title>
+    <ion-card-header>
+      <ion-toolbar>
+
+        <ion-card-title>{{item.name}}</ion-card-title>
 
         <ion-buttons slot="end">
-          <ion-button color="white" (click)="favBtnClicked()">
-            <ion-icon [name]="getIcon()" color="dark"></ion-icon>
+          <ion-button color="white" (click)="favBtnClicked(item)">
+            <ion-icon id="icon{{item.id}}" [name]="getIcon(item)" color="dark"></ion-icon>
           </ion-button>
         </ion-buttons>
+
       </ion-toolbar>
     </ion-card-header>
 
-    <ion-datetime displayFormat="MM.DD.YYYY HH:mm:ss" value="1994-12-15T13:47:20.789" disabled="true"></ion-datetime>
-
     <ion-card-content>
-      <ion-label>
-        blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
-      </ion-label>
+      <ion-label>{{item.description}}</ion-label>
     </ion-card-content>
-  </ion-card>
 
+    <ion-list lines="none">
+      <ion-item>
+        <ion-datetime displayFormat="MM.DD.YYYY" value="{{item.day}}" disabled="true"></ion-datetime>
+        <ion-datetime displayFormat="HH:mm" value="{{item.startTime}}" disabled="true"></ion-datetime>
+        <ion-item>-</ion-item>
+        <ion-datetime displayFormat="HH:mm" value="{{item.endTime}}" disabled="true"></ion-datetime>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>

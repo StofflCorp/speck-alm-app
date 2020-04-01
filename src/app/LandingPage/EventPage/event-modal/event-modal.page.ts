@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventModalPage implements OnInit {
   bol: boolean;
+  item;
+
   constructor() {
     // später muss der Zustand aus der DB geladen werden
     this.bol = false;

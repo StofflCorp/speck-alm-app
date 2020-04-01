@@ -13,11 +13,11 @@ export class SocialMediaPage implements OnInit {
 
   click(str) {
     if (str === 'facebook') {
-      window.open('https://www.facebook.com/SpeckAlm', '_blank');
+      window.open('https://www.facebook.com/SpeckAlm', '_system');
     } else if (str === 'website') {
-      window.open('https://www.speck-alm.at/', '_blank');
+      window.open('https://www.speck-alm.at/', '_system');
     } else if (str === 'videos') {
-      window.open('https://www.speck-alm.at/videos/', '_blank');
+      window.open('https://www.speck-alm.at/videos/', '_system');
     }
   }
 

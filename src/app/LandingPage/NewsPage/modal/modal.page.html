@@ -4,18 +4,19 @@
 
   <ion-header>
     <ion-toolbar>
-      <ion-title>Nachrichtentitel</ion-title>
+      <ion-title>{{item.name}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-card-content>
-    <ion-label>
-      uhasjdfhjlasdhflajsdhlaskjdhlfkajshdlkfjasldfhalsdkjhflkasdjhflkadjh kasjdhflkasjdhffffffffffffffff
-    </ion-label>
+    <ion-label>{{item.description}}</ion-label>
   </ion-card-content>
 
   <ion-toolbar class="bottomClass">
-    <ion-label>sjhdafklklj</ion-label>
+    <ion-item>
+      <ion-label>von {{item.author.prename}} {{item.author.surname}}</ion-label>
+      <ion-datetime disabled value="{{item.updated_at}}" display-timezone="utc"></ion-datetime>
+    </ion-item>
   </ion-toolbar>
 </ion-content>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalController} from '@ionic/angular';
+import {MenuController, ModalController} from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-news',
@@ -8,18 +9,49 @@ import { ModalPage } from '../modal/modal.page';
   styleUrls: ['./news.page.scss'],
 })
 export class NewsPage implements OnInit {
+  items = [];
+  stop: boolean;
 
-  constructor(private mod: ModalController) { }
+  constructor(private mod: ModalController, public menuCtrl: MenuController, public http: HttpClient) {
+    this.menuCtrl.enable(true);
+    this.stop = false;
+    this.loadData();
+  }
 
   ngOnInit() {
   }
 
-  async clicked() {
+  async clicked(i) {
     const modal = await this.mod.create({
-      component: ModalPage
+      component: ModalPage,
+      componentProps: {
+        item: i
+      }
     });
 
     modal.cssClass = 'modal-fullscreen';
     modal.present();
+  }
+
+  loadData(event?) {
+    this.http.get('https://speckalm.htl-perg.ac.at/r/api/news')
+        .subscribe(res => {
+          this.items = this.items.concat(res);
+          if (Object.keys(res).length < 10) {
+            this.stop = true;
+          }
+          if (event) {
+            event.target.complete();
+          }
+        });
+  }
+
+  loadMore(event) {
+    if (this.stop)  {
+      event.target.complete();
+      event.target.disable = true;
+    } else {
+      this.loadData(event);
+    }
   }
 }

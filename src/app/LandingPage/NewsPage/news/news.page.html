@@ -6,20 +6,26 @@
 
 <ion-content>
 
-  <ion-card (click)="clicked()">
-    <ion-img src="../../../assets/img/News/logoo.jpg"></ion-img>
+  <ion-card (click)="clicked(item)" *ngFor="let item of items">
+    <ion-img></ion-img>
 
     <ion-card-header>
-      <ion-card-title>News</ion-card-title>
+      <ion-card-title>{{item.name}}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
       <ion-label>
-        blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+        {{item.description}}
       </ion-label>
     </ion-card-content>
 
   </ion-card>
 
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content
+            loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>

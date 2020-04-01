@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NavController} from "@ionic/angular";
 import {MenuController} from "@ionic/angular";
 import {Router} from "@angular/router";
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-sa-navigation',
@@ -16,11 +17,16 @@ export class SaNavigationComponent implements OnInit {
     srcClosed: '../../assets/img/ZuaIsBanner.jpg'
   };
 
-  constructor(public navCtrl: NavController, private menu: MenuController, private router: Router) {}
+  constructor(public navCtrl: NavController, private menu: MenuController, private router: Router, private global: GlobalService) {}
 
   ngOnInit() {}
 
   navigate(page: string) {
+    if(page === 'login') {
+      this.global.setToken('');
+      this.global.setId(null);
+    }
+
     this.navCtrl.navigateRoot(page).then(() => {
       this.menu.close();
     });

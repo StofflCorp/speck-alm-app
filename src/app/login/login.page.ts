@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertController, NavController} from '@ionic/angular';
-import { HomePage } from '../home/home.page';
-import {Router} from '@angular/router';
-import {AngularFireAuth} from '@angular/fire/auth';
 import {  MenuController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-login',
@@ -15,17 +14,12 @@ export class LoginPage implements OnInit {
 
   email: string;
   password: string;
-  constructor(public alertController: AlertController, private navController: NavController, private afAuth: AngularFireAuth, public menuCtrl: MenuController) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(public alertController: AlertController, private navController: NavController, public menuCtrl: MenuController, public http: HttpClient, public global: GlobalService) {
+    this.menuCtrl.enable(false);
+  }
 
   ngOnInit() {}
-
-  ionViewWillEnter() {
-    //this.menuCtrl.enable(false);
-  }
-  
-  ionViewWillLeave(){
-    //this.menuCtrl.enable(true);
-  }
 
   async login() {
     if (this.email === undefined || this.password === undefined) {
@@ -35,11 +29,17 @@ export class LoginPage implements OnInit {
 
     var login = true;
     // überprüfen ob account schon vorhanden
-    await this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
-      login = false;
-    });
+    let postData = new FormData();
+    postData.append('email', this.email);
+    postData.append('password', this.password);
 
-    if (login) {
+    const response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/auth/login`,postData).toPromise();
+
+    if (response['token'] != null) {
+      this.global.setToken(response['token']);
+      this.global.setId(response['id']);
+      console.log(response['token']);
+
       this.navController.navigateRoot('/home');
     } else {
       this.createAlert('E-Mail oder Passwort sind nicht korrekt!');
