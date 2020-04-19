@@ -6,11 +6,14 @@
 
 <ion-content>
   <div class="information">
-    <ion-card>
-      <img src="../../../assets/img/online-store/product-view/articles/bacon.jpg">
-      <ion-card-content>
-        Bio-Speck
-      </ion-card-content>
-    </ion-card>
+    <ion-list>
+      <ion-tab-button *ngFor="let prod of (products | async)">
+        <ion-card (click)="openModal(prod)">
+          <ion-card-content>
+            {{prod.name}}
+          </ion-card-content>
+        </ion-card>
+      </ion-tab-button>
+    </ion-list>
   </div>
 </ion-content>
