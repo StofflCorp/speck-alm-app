@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EventModalPage} from '../event-modal/event-modal.page';
-import {MenuController, ModalController} from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../../../global.service';
 
@@ -58,13 +58,27 @@ export class EventsPage implements OnInit {
   }
 
   async clicked(i) {
+    let bo: Boolean = false;
+
+    for(let it of this.favItems) {
+      if(i.id === it.id) {
+        bo=true;
+      }
+    }
+
     if (this.clickedModal) {
       const modal = await this.mod.create({
         component: EventModalPage,
         componentProps: {
-          item: i
+          item: i,
+          bol: bo
         }
       });
+
+      modal.onDidDismiss().then((data) => {
+        console.log(data);
+      });
+
       modal.present();
     }
     this.clickedModal = true;
@@ -102,11 +116,10 @@ export class EventsPage implements OnInit {
           }
           i++;
         }
-        console.log(index);
         if (index !== -1){
           this.favItems.splice(index, 1);
         }
-        this.http.delete(`https://speckalm.htl-perg.ac.at/r/api/users/`+this.global.getId() + '/events/' + item.id +"?token="+this.global.getToken());
+        this.http.delete(`https://speckalm.htl-perg.ac.at/r/api/users/`+this.global.getId() + '/events/' + item.id +"?token="+this.global.getToken()).subscribe();
       }
     }
   }
