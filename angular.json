@@ -69,9 +69,6 @@
               },
               {
                 "input": "node_modules/@ionic/angular/css/flex-utils.css"
-              },
-              {
-                "input": "src/theme/variables.css"
               }
             ],
             "scripts": []
