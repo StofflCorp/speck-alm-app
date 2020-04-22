@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { GiftBasketPageRoutingModule } from './gift-basket-routing.module';
 
 import { GiftBasketPage } from './gift-basket.page';
+import { DetailedGiftbasketPage } from './detailed-giftbasket/detailed-giftbasket.page';
+import {DetailedArticlePage} from '../product-view/detailed-article/detailed-article.page';
 
 @NgModule({
   imports: [
@@ -15,6 +17,7 @@ import { GiftBasketPage } from './gift-basket.page';
     IonicModule,
     GiftBasketPageRoutingModule
   ],
-  declarations: [GiftBasketPage]
+  declarations: [GiftBasketPage, DetailedGiftbasketPage],
+  entryComponents: [DetailedGiftbasketPage]
 })
 export class GiftBasketPageModule {}
