@@ -17,7 +17,12 @@
         {{item.description}}
         <p class="price">Preis pro Kg: {{item.price}}</p>
       </ion-card-content>
-      <ion-button>in den Warenkorb</ion-button>
+      <ion-item>
+        <ion-label color="primary" floating>Menge</ion-label>
+        <ion-input type="number"  [(ngModel)]="amount" ></ion-input>
+      </ion-item>
+      <ion-button (click)="addToCart()">in den Warenkorb</ion-button>
     </ion-card>
   </div>
+
 </ion-content>

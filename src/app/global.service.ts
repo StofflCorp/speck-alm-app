@@ -20,6 +20,7 @@ export class GlobalService {
     this.id = id;
   }
   getId(): number {
-    return this.id;
+    //return this.id;
+    return 3;
   }
 }
