@@ -25,6 +25,9 @@ export class DataService {
     if(this.token!=null){
       return this.http.get(`${this.url}/api/${encodeURI(title)}/shop/${id}?token=${this.token}`)
     }
+    else{
+      console.log("token null")
+    }
   }
   searchProducts(title, id): Observable<any>{
     return this.http.get(`${this.url}/api/categories/${encodeURI(id)}/${encodeURI(title)}?token=${this.token}`)

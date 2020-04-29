@@ -27,6 +27,10 @@ const routes: Routes = [
       {
         path: 'gift-basket',
         loadChildren: () => import('./gift-basket/gift-basket.module').then( m => m.GiftBasketPageModule)
+      },
+      {
+        path: 'news',
+        loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
       }
 
     ]

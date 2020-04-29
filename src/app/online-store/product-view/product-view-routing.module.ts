@@ -19,11 +19,8 @@ const routes: Routes = [
       special: DataResolverService
     },
     loadChildren: () => import('./articles/articles.module').then( m => m.ArticlesPageModule)
-  },
-  {
-    path: 'news',
-    loadChildren: () => import('../../home/home.module').then( m => m.HomePageModule)
   }
+
 ];
 
 @NgModule({

@@ -17,17 +17,15 @@ export class ProductViewPage implements OnInit {
   data:any;
   title:any;
   searchTerm = 'categories';
-  constructor(public navCtrl: NavController,private router: Router, private dataService: DataService,private route: ActivatedRoute,public alertController: AlertController, public globalService: GlobalService) { }
+  constructor(private router: Router, private dataService: DataService,private route: ActivatedRoute, public globalService: GlobalService) { }
 
   openArticlesWithService(id:Number, value){
     this.dataService.setData(id, value);
   }
 
   ngOnInit(): void {
-    if(this.globalService.getToken() == null){
-      this.createAlert("Um diesen Bereich der App verwenden zu können müssen sie sich anmelden")
-      this.navCtrl.navigateRoot("news")
-    }
+
+
     if(this.route.snapshot.data['special']){
       this.data = this.route.snapshot.data['special'];
       if(this.data == 1){
@@ -39,14 +37,6 @@ export class ProductViewPage implements OnInit {
     }
     this.results = this.dataService.searchCategories(this.searchTerm, this.data)
   }
-  async createAlert(m: string) {
-    const alert = await this.alertController.create({
-      header: 'Bestelliste',
-      message: m,
-      buttons: ['OK']
-    });
-    await alert.present();
-    await alert.onDidDismiss();
-  }
+
 
 }
