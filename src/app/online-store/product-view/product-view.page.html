@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Kategorien</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,7 +9,7 @@
     <ion-list>
       <ion-tab-button *ngFor="let cat of (results | async)" (click)='openArticlesWithService(cat.id,cat)' tab="articles/{{cat.id}}">
         <ion-card>
-          <img src="../../../assets/img/online-store/product-view/articles/{{cat.name}}.jpg">
+          <ion-img *ngIf="cat.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{cat.image.savedFileName}}?{{dataService.token}}"></ion-img>
           <ion-card-content>
             {{cat.name}}
           </ion-card-content>

@@ -19,7 +19,7 @@
     </ion-list>
 
     <ion-list class="ion-no-padding fixed-bottom">
-      <ion-button (click)="navigate('online-store')" [ngClass]="{'active':this.router.url.split('/')[1]=='online-store'}" expand="full" size="large" fill="clear"><span class="ion-text-left">Online-Shop</span></ion-button>
+      <ion-button (click)="navigate('online-store')" [ngClass]="{'active':this.router.url.split('/')[1]=='online-store'}" expand="full" size="large" fill="clear"><span class="ion-text-left">Bestelliste</span></ion-button>
       <ion-button (click)="navigate('reservation')" [ngClass]="{'active':this.router.url.split('/')[1]=='reservation'}" expand="full" size="large" fill="clear"><span class="ion-text-left">Tischreservierung</span></ion-button>
       <ion-button (click)="navigate('statistics')" [ngClass]="{'active':this.router.url.split('/')[1]=='statistics'}" expand="full" size="large" fill="clear"><span class="ion-text-left">Meine Statistiken</span></ion-button>
       <ion-button (click)="navigate('login')" [ngClass]="{'active':this.router.url.split('/')[1]=='login'}" class="dark" expand="full" size="large"><span class="ion-text-left">Logout</span></ion-button>

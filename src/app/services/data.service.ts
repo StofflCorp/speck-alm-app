@@ -9,25 +9,24 @@ import {GlobalService} from "../global.service";
 })
 export class DataService {
   url = "https://speckalm.htl-perg.ac.at/r";
-  token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOjMsImlhdCI6MTU4NzU0Mjk2MSwiZXhwIjoxNTg3NTQ2NTYxfQ.a3tT93z9zlUK1DVPiNTqHPAKPFip4d6ApgjIAAEfB0U"
+  token = this.globalService.getToken()
   private data =[];
-  constructor(private http: HttpClient, private globalService: GlobalService) { }
+  constructor(private http: HttpClient, private globalService: GlobalService) {
+    this.token = this.globalService.getToken()
+  }
   setData(id,data){
     this.data[id] = data;
   }
   getData(id){
     return this.data[id];
   }
-  searchCategories(title): Observable<any>{
-    /*if(this.globalService.getId() != null){
-      return this.http.get(`${this.url}/api/${encodeURI(title)}?token=${this.globalService.getToken()}`)
-    }*/
-    return this.http.get(`${this.url}/api/${encodeURI(title)}?token=${this.token}`)
+
+  searchCategories(title,id): Observable<any>{
+    if(this.token!=null){
+      return this.http.get(`${this.url}/api/${encodeURI(title)}/shop/${id}?token=${this.token}`)
+    }
   }
   searchProducts(title, id): Observable<any>{
-    /*if(this.globalService.getId() != null){
-      return this.http.get(`${this.url}/api/categories/${encodeURI(id)}/${encodeURI(title)}?token=${this.globalService.getToken()}`)
-    }*/
     return this.http.get(`${this.url}/api/categories/${encodeURI(id)}/${encodeURI(title)}?token=${this.token}`)
   }
   async addToCart(userId, productId, quantity) {

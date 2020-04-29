@@ -2,12 +2,16 @@
   <ion-tabs>
     <ion-tab-bar slot="bottom" selectedTab="product-view">
 
-      <ion-tab-button tab="product-view">
+      <ion-tab-button  (click)="openProductViewWithService(3,3)" tab="product-view/3">
         <ion-icon name="md-appstore"></ion-icon>
       </ion-tab-button>
 
-      <ion-tab-button tab="gift-basket">
+      <ion-tab-button (click)="openProductViewWithService(1,1)" tab="product-view/1">
         <ion-icon name="md-basket"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="openProductViewWithService(2,2)" tab="product-view/2">
+        <ion-icon name="md-appstore"></ion-icon>
       </ion-tab-button>
 
     </ion-tab-bar>
