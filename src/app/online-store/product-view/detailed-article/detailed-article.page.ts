@@ -30,14 +30,19 @@ export class DetailedArticlePage implements OnInit {
     postData.append('quantity', this.amount);
     const response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/3/shoppingCart?token=${this.dataService.token}`, postData).toPromise()
     //const response = this.dataService.addToCart(3, this.item.id, this.amount);
+    if(response['error'] == undefined ){
+      this.createAlert("Produkt erfolgreich hinzugefügt.")
+    }
+    else{
+      this.createAlert("Produkt ist bereits im Warenkorb. ")
+    }
 
-    this.createAlert(response['error'])
   }
   async createAlert(m: string) {
     const alert = await this.alertController.create({
       header: 'Produkt zum Warenkorb hinzufügen',
       message: m,
-      buttons: ['OK']
+      buttons: ['Weiter einkaufen','Zum Warenkorb']
     });
     await alert.present();
     await alert.onDidDismiss();

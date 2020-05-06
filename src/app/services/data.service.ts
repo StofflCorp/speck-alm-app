@@ -9,10 +9,11 @@ import {GlobalService} from "../global.service";
 })
 export class DataService {
   url = "https://speckalm.htl-perg.ac.at/r";
-  token = this.globalService.getToken()
+  //token = this.globalService.getToken()
+  token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOjMsImlhdCI6MTU4ODc0NjE0MiwiZXhwIjoxNTg4NzQ5NzQyfQ.C40-t59-MVhV0FuBkCU99hbz1F5xQieRVAmPNC_ygMU"
   private data =[];
   constructor(private http: HttpClient, private globalService: GlobalService) {
-    this.token = this.globalService.getToken()
+    //this.token = this.globalService.getToken()
   }
   setData(id,data){
     this.data[id] = data;
