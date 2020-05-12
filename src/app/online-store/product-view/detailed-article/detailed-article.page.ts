@@ -11,10 +11,11 @@ import {HttpClient} from "@angular/common/http";
 })
 export class DetailedArticlePage implements OnInit {
   item;
-  amount;
+  amount: number;
   constructor(public alertController: AlertController, private modalController: ModalController, public dataService: DataService, public globalService: GlobalService,private http: HttpClient) { }
 
   ngOnInit() {
+    this.amount = 1;
   }
   async closeModal() {
     await this.modalController.dismiss();
@@ -27,7 +28,7 @@ export class DetailedArticlePage implements OnInit {
     }
     let postData = new FormData();
     postData.append('product', this.item.id);
-    postData.append('quantity', this.amount);
+    postData.append('quantity', this.amount.toString());
     const response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/3/shoppingCart?token=${this.dataService.token}`, postData).toPromise()
     //const response = this.dataService.addToCart(3, this.item.id, this.amount);
     if(response['error'] == undefined ){

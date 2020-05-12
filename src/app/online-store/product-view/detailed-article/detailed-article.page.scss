@@ -2,11 +2,25 @@ ion-title{
   color: var(--ion-color-sa-green);
   font-weight: bold;
 }
-.information {
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  border-radius: 5px 5px 0 0;
-  background-color: white;
+.price{
+  font-size: 16px;
+  font-weight: bold;
 }
+.status{
+  font-size: 10px;
+}
+.center {
+  margin: 0;
+  position: absolute;
 
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.addToCart{
+  --background: var(--ion-color-sa-pink);
+}
+.amount{
+  font-size: 14px;
+}

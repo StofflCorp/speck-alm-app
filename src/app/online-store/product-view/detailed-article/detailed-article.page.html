@@ -15,14 +15,23 @@
       <ion-img *ngIf="item.image_id" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image_id}}?{{dataService.token}}"></ion-img>
       <ion-card-content>
         {{item.description}}
-        <p class="price">Preis: {{item.price}} stk.</p>
+        <br/><br/>
+        <p class="price" style="display:inline">€ {{item.price}}</p>
+        <p class="status" style="display:inline"> {{item.status}}</p>
+        <br/>
+        <ion-item>
+          <ion-label class="amount">Menge: </ion-label>
+          <ion-input class="amount" type="number"  [(ngModel)]="amount" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <div class="center">
+            <ion-button class="addToCart" (click)="addToCart()">in meinen Kühlschrank</ion-button>
+          </div>
+        </ion-item>
+
       </ion-card-content>
-      <ion-item>
-        <ion-label floating>Menge</ion-label>
-        <ion-input type="number"  [(ngModel)]="amount" ></ion-input>
-      </ion-item>
-      <ion-button style="text-align: center" (click)="addToCart()">in meinen Kühlschrank</ion-button>
+
     </ion-card>
   </div>
-
 </ion-content>
