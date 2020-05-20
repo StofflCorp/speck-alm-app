@@ -12,7 +12,7 @@
 <ion-content>
   <div class="information">
     <ion-card>
-      <ion-img *ngIf="item.image_id" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image_id}}?{{dataService.token}}"></ion-img>
+      <ion-img *ngIf="item.image_id" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image_id}}?{{globalService.getToken()}}"></ion-img>
       <ion-card-content>
         {{item.description}}
         <br/><br/>

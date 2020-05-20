@@ -29,7 +29,7 @@ export class DetailedArticlePage implements OnInit {
     let postData = new FormData();
     postData.append('product', this.item.id);
     postData.append('quantity', this.amount.toString());
-    const response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/3/shoppingCart?token=${this.dataService.token}`, postData).toPromise()
+    const response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/3/shoppingCart?token=${this.globalService.getToken()}`, postData).toPromise()
     //const response = this.dataService.addToCart(3, this.item.id, this.amount);
     if(response['error'] == undefined ){
       this.createAlert("Produkt erfolgreich hinzugefügt.")
