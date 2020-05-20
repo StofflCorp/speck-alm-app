@@ -32,16 +32,16 @@ export class LoginPage implements OnInit {
     let postData = new FormData();
     postData.append('email', this.email);
     postData.append('password', this.password);
-
-    const response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/auth/login`,postData).toPromise();
-
-    if (response['token'] != null) {
+    try{
+      const response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/auth/login`,postData).toPromise();
       this.global.setToken(response['token']);
       this.global.setId(response['id']);
       console.log(response['token']);
 
       this.navController.navigateRoot('/home');
-    } else {
+
+    }
+    catch (e){
       this.createAlert('E-Mail oder Passwort sind nicht korrekt!');
     }
   }

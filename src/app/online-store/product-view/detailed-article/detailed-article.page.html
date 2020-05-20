@@ -19,10 +19,9 @@
         <p class="price" style="display:inline">€ {{item.price}}</p>
         <p class="status" style="display:inline"> {{item.status}}</p>
         <br/>
-        <ion-item>
-          <ion-label class="amount">Menge: </ion-label>
-          <ion-input class="amount" type="number"  [(ngModel)]="amount" ></ion-input>
-        </ion-item>
+        <p>Menge auswählen:</p>
+        <ion-range class="amountBar" min="1" max="10" step="1" value="1" [(ngModel)]="amount" ></ion-range><br>
+        <ion-input class="amount" type="number" min="1" max="10" [(ngModel)]="amount" text-center ></ion-input>
 
         <ion-item>
           <div class="center">

@@ -23,4 +23,12 @@ ion-title{
 }
 .amount{
   font-size: 14px;
+  padding: 0;
+}
+
+.amountBar{
+  --height: 10pt;
+  --bar-background: var(--ion-color-sa-dark);
+  --knob-background: var(--ion-color-sa-pink);
+  --bar-background-active: var(--ion-color-sa-pink);
 }

@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
 import {GlobalService} from "../../global.service";
 
 
+
 @Component({
   selector: 'app-product-view',
   templateUrl: './product-view.page.html',
