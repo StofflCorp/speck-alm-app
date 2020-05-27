@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ihr Kühlschrank</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-list>
+      <ion-tab-button *ngFor="let cat of (results)">
+        <ion-card>
+          <ion-card-content>
+            {{cat.name}}
+            
+          </ion-card-content>
+        </ion-card>
+      </ion-tab-button>
+    </ion-list>
+  </div>
+</ion-content>

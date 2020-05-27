@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import {DataResolverService} from "./resolver/data-resolver.service";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home/news', pathMatch: 'full' },
@@ -14,12 +13,17 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },{
+  }, {
     path: 'online-store',
-    loadChildren: () => import('./online-store/online-store.module').then( m => m.OnlineStorePageModule)
-  },  {
+    loadChildren: () => import('./online-store/online-store.module').then(m => m.OnlineStorePageModule)
+  },
+  {
     path: 'reservation',
     loadChildren: () => import('./reservation/reservation.module').then( m => m.ReservationPageModule)
+  },
+  {
+    path: 'shopping-basket',
+    loadChildren: () => import('./shopping-basket/shopping-basket.module').then( m => m.ShoppingBasketPageModule)
   }
 
 ];
