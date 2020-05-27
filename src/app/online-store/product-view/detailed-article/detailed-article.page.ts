@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AlertController, ModalController} from '@ionic/angular';
+import {AlertController, ModalController, NavController} from '@ionic/angular';
 import {DataService} from "../../../services/data.service";
 import {GlobalService} from "../../../global.service";
 import {HttpClient} from "@angular/common/http";
@@ -12,7 +12,7 @@ import {HttpClient} from "@angular/common/http";
 export class DetailedArticlePage implements OnInit {
   item;
   amount: number;
-  constructor(public alertController: AlertController, private modalController: ModalController, public dataService: DataService, public globalService: GlobalService,private http: HttpClient) { }
+  constructor(public alertController: AlertController, private modalController: ModalController, public globalService: GlobalService,private http: HttpClient, private navCtr:NavController) { }
 
   ngOnInit() {
     this.amount = 1;
@@ -43,7 +43,15 @@ export class DetailedArticlePage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Produkt zum Warenkorb hinzufügen',
       message: m,
-      buttons: ['Weiter einkaufen','Zum Warenkorb']
+      buttons: [
+        {
+          text:'Weiter einkaufen',
+          handler: back =>{
+            this.modalController.dismiss();
+            this.navCtr.navigateRoot("online-store")
+          }
+        }
+        ,'Zum Warenkorb']
     });
     await alert.present();
     await alert.onDidDismiss();

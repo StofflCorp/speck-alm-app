@@ -17,7 +17,11 @@ const routes: Routes = [
   },{
     path: 'online-store',
     loadChildren: () => import('./online-store/online-store.module').then( m => m.OnlineStorePageModule)
+  },  {
+    path: 'reservation',
+    loadChildren: () => import('./reservation/reservation.module').then( m => m.ReservationPageModule)
   }
+
 ];
 
 @NgModule({
