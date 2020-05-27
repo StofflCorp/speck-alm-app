@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {DataResolverService} from "./resolver/data-resolver.service";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home/news', pathMatch: 'full' },

@@ -19,6 +19,8 @@ export class OnlineStorePage implements OnInit {
     }
     else{
       this.createAlert("So Funktionierts", "1. Frischfleisch bzw. Produkte vorbestellen<br/><br/>  2. Am bekanngegebenen Abholtermin Fleischprodukte bzw. Produkte abholen <br/><br/> 3. Handverlesene Speck-Alm BIO Qualität genießen.")
+      this.openProductViewWithService(3,3)
+
     }
   }
   async createAlert(header: string, m: string) {

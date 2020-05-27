@@ -26,17 +26,26 @@ export class ProductViewPage implements OnInit {
 
   ngOnInit(): void {
 
-
     if(this.route.snapshot.data['special']){
       this.data = this.route.snapshot.data['special'];
       if(this.data == 1){
         this.title = "Speck-Alm BIO Produkte";
+        this.results = this.dataService.searchCategories(this.searchTerm, this.data)
       }
       else if(this.data == 2){
         this.title = "Hofladen Produkte";
+        this.results = this.dataService.searchCategories(this.searchTerm, this.data)
       }
+      else if(this.data == 3){
+        this.title = "Bio Fleisch"
+      }
+
     }
-    this.results = this.dataService.searchCategories(this.searchTerm, this.data)
+    else{
+      this.title = "Bio Fleisch"
+      this.data = 3
+    }
+
   }
 
 
