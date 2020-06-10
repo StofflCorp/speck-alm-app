@@ -15,6 +15,11 @@ export class ReservationPage implements OnInit {
   }
 
   ngOnInit() {
+    this.setInput();
+  }
+  setInput(){
+    var input= document.getElementById("#txfe_praefix") as HTMLInputElement;
+    //  input.value = "test";
   }
 
 }

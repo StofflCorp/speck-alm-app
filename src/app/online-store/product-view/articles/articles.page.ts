@@ -3,6 +3,7 @@ import { ModalController} from '@ionic/angular';
 import {DetailedArticlePage} from '../detailed-article/detailed-article.page';
 import {ActivatedRoute} from "@angular/router";
 import {DataService} from "../../../services/data.service";
+import {GlobalService} from "../../../global.service";
 
 @Component({
   selector: 'app-articles',
@@ -13,7 +14,7 @@ export class ArticlesPage implements OnInit {
   data:any;
   products:any;
   test:any;
-  constructor(private modalController: ModalController, private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private modalController: ModalController, private route: ActivatedRoute, private dataService: DataService, private globalService:GlobalService) { }
   async openModal(i) {
     const modal = await this.modalController.create({
       component: DetailedArticlePage,

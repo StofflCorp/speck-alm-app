@@ -12,8 +12,9 @@
 <ion-content>
   <div class="information">
     <ion-card>
-      <ion-img *ngIf="item.image_id" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image_id}}?{{globalService.getToken()}}"></ion-img>
+      <ion-img *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}?{{globalService.token}}"></ion-img>
       <ion-card-content>
+
         {{item.description}}
         <br/><br/>
         <p class="price" style="display:inline">€ {{item.price}}</p>
