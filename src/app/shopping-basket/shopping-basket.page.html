@@ -8,11 +8,15 @@
   <div>
     <ion-list>
       <ion-tab-button *ngFor="let cat of (results)">
-        <ion-card>
-          <ion-card-content>
+        <ion-item>
+            <ion-img *ngIf="cat.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{cat.image.savedFileName}}" id=img1 style="width:15%" ></ion-img>
             {{cat.name}}
-          </ion-card-content>
-        </ion-card>
+            (Menge:
+            {{cat.pivot.quantity}})
+            <button class = "deleteBtn">
+              delete
+            </button>
+        </ion-item>
       </ion-tab-button>
     </ion-list>
   </div>
