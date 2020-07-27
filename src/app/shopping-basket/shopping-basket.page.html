@@ -8,15 +8,19 @@
   <div>
     <ion-list>
       <ion-tab-button *ngFor="let cat of (results)">
-        <ion-item>
-            <ion-img *ngIf="cat.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{cat.image.savedFileName}}" id=img1 style="width:15%" ></ion-img>
-            {{cat.name}}
-            (Menge:
-            {{cat.pivot.quantity}})
-            <button class = "deleteBtn">
-              delete
-            </button>
-        </ion-item>
+          <ion-item-sliding>
+            <ion-item>
+                <ion-img *ngIf="cat.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{cat.image.savedFileName}}" id=img1 style="width:15%" ></ion-img>
+                {{cat.name}}
+                (Menge:
+                {{cat.pivot.quantity}})
+            </ion-item>
+              <ion-item-options side ="end">
+                  <button color ="warning" ion-button>
+                      <ion-icon name="trash"></ion-icon>
+                  </button>
+              </ion-item-options>
+          </ion-item-sliding>
       </ion-tab-button>
     </ion-list>
   </div>
