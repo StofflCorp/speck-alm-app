@@ -34,6 +34,7 @@ export class OnlineStorePage implements OnInit {
   }
   openProductViewWithService(id, value) {
       this.dataService.setData(id, value);
+
   }
 
 }
