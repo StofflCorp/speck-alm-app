@@ -9,25 +9,34 @@ import {GlobalService} from "../global.service";
 })
 export class DataService {
   url = "https://speckalm.htl-perg.ac.at/r";
-
   private data =[];
-  constructor(private http: HttpClient, private globalService: GlobalService) { }
+  constructor(private http: HttpClient, private globalService: GlobalService) {
+  }
   setData(id,data){
     this.data[id] = data;
   }
   getData(id){
     return this.data[id];
   }
-  searchCategories(title): Observable<any>{
-    if(this.globalService.getId() != null){
-      return this.http.get(`${this.url}/api/${encodeURI(title)}?token=${this.globalService.getToken()}`)
+
+  searchCategories(title,id): Observable<any>{
+    if(this.globalService.getToken()!=null){
+      return this.http.get(`${this.url}/api/${encodeURI(title)}/shop/${id}?token=${this.globalService.getToken()}`)
+    }
+    else{
+      console.log("token null")
     }
   }
   searchProducts(title, id): Observable<any>{
-    if(this.globalService.getId() != null){
-      return this.http.get(`${this.url}/api/categories/${encodeURI(id)}/${encodeURI(title)}?token=${this.globalService.getToken()}`)
-    }
-
+    return this.http.get(`${this.url}/api/categories/${encodeURI(id)}/${encodeURI(title)}?token=${this.globalService.getToken()}`)
+  }
+  async addToCart(userId, productId, quantity) {
+    let postData = new FormData();
+    postData.append('product', productId);
+    postData.append('quantity', quantity);
+    const response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/${userId}/shoppingCart?token=${this.globalService.getToken()}`, postData).toPromise()
+    console.log(response['error'])
+    return await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/${userId}/shoppingCart?token=${this.globalService.getToken()}`, postData).toPromise();
   }
 }
   

@@ -9,6 +9,7 @@
     <ion-list>
       <ion-tab-button *ngFor="let prod of (products | async)">
         <ion-card (click)="openModal(prod)">
+          <ion-img *ngIf="prod.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{prod.image.savedFileName}}?{{globalService.token}}"></ion-img>
           <ion-card-content>
             {{prod.name}}
           </ion-card-content>

@@ -12,12 +12,26 @@
 <ion-content>
   <div class="information">
     <ion-card>
-      <img src="../../../assets/img/online-store/product-view/articles/meat.jpg">
+      <ion-img *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}?{{globalService.token}}"></ion-img>
       <ion-card-content>
+
         {{item.description}}
-        <p class="price">Preis pro Kg: {{item.price}}</p>
+        <br/><br/>
+        <p class="price" style="display:inline">€ {{item.price}}</p>
+        <p class="status" style="display:inline"> {{item.status}}</p>
+        <br/>
+        <p>Menge auswählen:</p>
+        <ion-range class="amountBar" min="1" max="10" step="1" value="1" [(ngModel)]="amount" ></ion-range><br>
+        <ion-input class="amount" type="number" min="1" max="10" [(ngModel)]="amount" text-center ></ion-input>
+
+        <ion-item>
+          <div class="center">
+            <ion-button class="addToCart" (click)="addToCart()">in meinen Kühlschrank</ion-button>
+          </div>
+        </ion-item>
+
       </ion-card-content>
-      <ion-button>in den Warenkorb</ion-button>
+
     </ion-card>
   </div>
 </ion-content>
