@@ -9,19 +9,20 @@
     <ion-list>
       <ion-tab-button *ngFor="let cat of (results)">
           <ion-item-sliding>
-            <ion-item (click)="expandItem(cat)">
-                <div class="image">
-                    <ion-img *ngIf="cat.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{cat.image.savedFileName}}"></ion-img>
-                </div>
+            <ion-item>
+                <ion-avatar slot="start" *ngIf="cat.image">
+                    <img src="https://speckalm.htl-perg.ac.at/r/storage/images/{{cat.image.savedFileName}}" alt="Artikel">
+                </ion-avatar>
                 {{cat.name}}
                 <br/>
-                Menge: {{cat.pivot.quantity}}
+                (Menge:
+                {{cat.pivot.quantity}})
                 <span style="text-align: right">{{cat.price*cat.pivot.quantity}}</span>
             </ion-item>
               <ion-item-options side ="end">
-                  <button color ="warning" (click)="deleteArticle(cat.id)" ion-button>
+                  <ion-button color ="danger" >
                       <ion-icon name="trash"></ion-icon>
-                  </button>
+                  </ion-button>
               </ion-item-options>
           </ion-item-sliding>
       </ion-tab-button>

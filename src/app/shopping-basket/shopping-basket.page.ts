@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {DataService} from '../services/data.service';
-import {Observable} from 'rxjs';
 import {GlobalService} from '../global.service';
 import {DetailedArticlePage} from '../online-store/product-view/detailed-article/detailed-article.page';
 import {ModalController} from '@ionic/angular';
@@ -16,7 +14,6 @@ export class ShoppingBasketPage implements OnInit {
 
   constructor(private modalController: ModalController, public globalService: GlobalService, public http: HttpClient) {
   }
-
 
   ngOnInit() {
     if (this.globalService.token != null) {
