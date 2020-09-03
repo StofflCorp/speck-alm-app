@@ -19,6 +19,10 @@ const routes: Routes = [
       special: DataResolverService
     },
     loadChildren: () => import('./articles/articles.module').then( m => m.ArticlesPageModule)
+  },
+  {
+    path: 'shopping-basket',
+    loadChildren: () => import('./../shopping-basket/shopping-basket.module').then( m => m.ShoppingBasketPageModule)
   }
 
 ];

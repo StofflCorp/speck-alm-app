@@ -4,10 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { ArticlesPage } from './articles.page';
 
 const routes: Routes = [
+
   {
     path: '',
     component: ArticlesPage
   }
+
 ];
 
 @NgModule({

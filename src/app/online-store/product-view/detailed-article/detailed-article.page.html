@@ -14,13 +14,12 @@
     <ion-card>
       <ion-img *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}?{{globalService.token}}"></ion-img>
       <ion-card-content>
-
+        <h1>Produktbeschreibung</h1>
         {{item.description}}
         <br/><br/>
-        <p class="price" style="display:inline">€ {{item.price}}</p>
-        <p class="status" style="display:inline"> {{item.status}}</p>
-        <br/>
-        <p>Menge auswählen:</p>
+        <p class="price">€ {{item.price}} </p>
+        <p class="status"*ngIf="item.status == 'in_stock'; else elseBlock" >Vorrätig</p><ng-template  #elseBlock><p class="status">Ausverkauft</p></ng-template>
+        <p><br/>Menge auswählen:</p>
         <ion-range class="amountBar" min="1" max="10" step="1" value="1" [(ngModel)]="amount" ></ion-range><br>
         <ion-input class="amount" type="number" min="1" max="10" [(ngModel)]="amount" text-center ></ion-input>
 

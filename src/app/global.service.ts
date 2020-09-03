@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class GlobalService {
   // public token: string;
-  public token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOjcsImlhdCI6MTU5MTc3MjI0NCwiZXhwIjoxNTkxODU4NjQ0fQ.3BNUdPxCeOOpZmcGuEuS4jZi7iuU0lZ4V4UaWJ-kQI0';
+  public token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOjEsImlhdCI6MTU5OTExNDY4MywiZXhwIjoxNTk5MjAxMDgzfQ.dkzo5MEBtl0zvvBS9-rFbYaL0uF1lustF5r856qPs_E';
   public id = 3;
 
   constructor() { }
