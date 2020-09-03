@@ -24,7 +24,8 @@ const routes: Routes = [
   {
     path: 'shopping-basket',
     loadChildren: () => import('./shopping-basket/shopping-basket.module').then( m => m.ShoppingBasketPageModule)
-  }
+  },
+
 
 ];
 
