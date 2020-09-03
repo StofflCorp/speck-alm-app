@@ -4,8 +4,10 @@ ion-title{
 }
 .price{
   font-size: 16px;
+  display:inline;
+  color: var(--ion-color-sa-pink);
   font-weight: bold;
-  display:inline
+  padding: 0px 0px 5px 0px;
 }
 .status{
   font-size: 10px;
@@ -26,11 +28,20 @@ ion-title{
 .amount{
   font-size: 14px;
   padding: 0;
+  margin: 0;
 }
 
 .amountBar{
+  padding: 0;
+  margin: 0;
   --height: 10pt;
   --bar-background: var(--ion-color-sa-dark);
   --knob-background: var(--ion-color-sa-pink);
   --bar-background-active: var(--ion-color-sa-pink);
+}
+.title{
+  color: var(--ion-color-sa-pink);
+  padding: 10px 0px 10px 0px;
+  font-weight: bold;
+  font-size:20px;
 }
