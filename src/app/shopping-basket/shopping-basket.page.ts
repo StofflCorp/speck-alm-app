@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {DataService} from '../services/data.service';
-import {Observable} from 'rxjs';
 import {GlobalService} from '../global.service';
 
 @Component({
@@ -19,7 +17,7 @@ export class ShoppingBasketPage implements OnInit {
     if (this.globalService.token != null) {
       console.log(this.globalService.getId());
       // tslint:disable-next-line:max-line-length
-      const response = this.http.get(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.token}`).subscribe((o:any) =>{
+      this.http.get(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.token}`).subscribe((o: any) => {
         this.results = o.products;
       });
     } else {
