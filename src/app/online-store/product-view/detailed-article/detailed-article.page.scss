@@ -4,10 +4,10 @@ ion-title{
 }
 .price{
   font-size: 16px;
-  display:inline;
+  //display:inline;
   color: var(--ion-color-sa-pink);
   font-weight: bold;
-  padding: 0px 0px 5px 0px;
+  margin: 00px 0px 5px 0px;
 }
 .status{
   font-size: 10px;
@@ -24,6 +24,7 @@ ion-title{
 }
 .addToCart{
   --background: var(--ion-color-sa-pink);
+  
 }
 .amount{
   font-size: 14px;
@@ -32,16 +33,36 @@ ion-title{
 }
 
 .amountBar{
-  padding: 0;
+  padding: 15px 0px 10px 0px;
   margin: 0;
   --height: 10pt;
   --bar-background: var(--ion-color-sa-dark);
   --knob-background: var(--ion-color-sa-pink);
   --bar-background-active: var(--ion-color-sa-pink);
+
 }
 .title{
   color: var(--ion-color-sa-pink);
-  padding: 10px 0px 10px 0px;
+  padding: 0px 0px 10px 0px;
   font-weight: bold;
   font-size:20px;
 }
+.class{
+ border-radius: 30px;
+}
+#headerImg {
+  margin: 0 0 -25px 0;
+  position: fixed;
+}
+.information {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  top: 200px;
+  border-radius: 5px 5px 0 0;
+  background-color: transparent;
+}
+.card{
+  background-color: white;
+}
+
