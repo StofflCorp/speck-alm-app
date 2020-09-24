@@ -10,7 +10,7 @@ import {AlertController, NavController} from "@ionic/angular";
 })
 export class OnlineStorePage implements OnInit {
 
-  constructor(public navCtrl: NavController,public dataService: DataService,  public alertController: AlertController, public globalService: GlobalService) { }
+  constructor(public navCtrl: NavController, public dataService: DataService,  public alertController: AlertController, public globalService: GlobalService) { }
 
   ngOnInit() {
     if(this.globalService.getToken() == null){
@@ -18,7 +18,7 @@ export class OnlineStorePage implements OnInit {
       this.navCtrl.navigateRoot("login")
     }
     else{
-      this.createAlert("So Funktionierts", "1. Frischfleisch bzw. Produkte vorbestellen<br/><br/>  2. Am bekanngegebenen Abholtermin Fleischprodukte bzw. Produkte abholen <br/><br/> 3. Handverlesene Speck-Alm BIO Qualität genießen.")
+      this.createAlert("So Funktionierts", "1. Frischfleisch bzw. Produkte vorbestellen<br/><br/>  2. Am bekanntgegebenen Abholtermin Produkte abholen <br/><br/> 3. Handverlesene Speck-Alm BIO Qualität genießen.")
       this.openProductViewWithService(3,3)
 
     }
