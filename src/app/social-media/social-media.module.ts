@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { SocialMediaPageRoutingModule } from './social-media-routing.module';
 import { SocialMediaPage } from './social-media.page';
-import { HomePageModule } from "../home/home.module";
+import { HomePageModule } from '../home/home.module';
 
 @NgModule({
     imports: [

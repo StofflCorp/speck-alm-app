@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertController, ModalController, NavController} from '@ionic/angular';
-import {DataService} from "../../../services/data.service";
-import {GlobalService} from "../../../global.service";
-import {HttpClient} from "@angular/common/http";
+import {GlobalService} from '../../../global.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-detailed-article',
@@ -12,7 +11,7 @@ import {HttpClient} from "@angular/common/http";
 export class DetailedArticlePage implements OnInit {
   item;
   amount: number;
-  constructor(public alertController: AlertController, private modalController: ModalController, public globalService: GlobalService,private http: HttpClient, private navCtr:NavController) { }
+  constructor(public alertController: AlertController, private modalController: ModalController, public globalService: GlobalService, private http: HttpClient, private navCtr: NavController) { }
 
   ngOnInit() {
     this.amount = 1;
@@ -26,16 +25,15 @@ export class DetailedArticlePage implements OnInit {
       this.createAlert('Menge darf nicht leer sein!');
       return;
     }
-    let postData = new FormData();
+    const postData = new FormData();
     postData.append('product', this.item.id);
     postData.append('quantity', this.amount.toString());
-    const response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.getToken()}`, postData).toPromise()
-    //const response = this.dataService.addToCart(3, this.item.id, this.amount);
-    if(response['error'] == undefined ){
-      this.createAlert("Produkt erfolgreich hinzugefügt.")
-    }
-    else{
-      this.createAlert("Produkt ist bereits im Warenkorb. ")
+    const response: any = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.getToken()}`, postData).toPromise();
+    // const response = this.dataService.addToCart(3, this.item.id, this.amount);
+    if (response.error === undefined ) {
+      this.createAlert('Produkt erfolgreich hinzugefügt.');
+    } else {
+      this.createAlert('Produkt ist bereits im Warenkorb. ');
     }
 
   }
@@ -45,18 +43,18 @@ export class DetailedArticlePage implements OnInit {
       message: m,
       buttons: [
         {
-          text:'Weiter einkaufen',
-          handler: back =>{
+          text: 'Weiter einkaufen',
+          handler: back => {
             this.modalController.dismiss();
-            this.navCtr.navigateRoot("online-store")
+            this.navCtr.navigateRoot('online-store');
           }
         }
         ,
         {
-          text:'Zum Warenkorb',
-          handler: back =>{
+          text: 'Zum Warenkorb',
+          handler: back => {
             this.modalController.dismiss();
-            this.navCtr.navigateRoot("shopping-basket")
+            this.navCtr.navigateRoot('shopping-basket');
           }
         }
         ]
