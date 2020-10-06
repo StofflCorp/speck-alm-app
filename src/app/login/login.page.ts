@@ -4,7 +4,6 @@ import {  MenuController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../global.service';
 import {isNumber} from 'util';
-import { cordova } from '@ionic-native/core';
 import {StorageService} from '../storage.service';
 
 @Component({
@@ -53,7 +52,8 @@ export class LoginPage implements OnInit {
       this.createAlert('E-Mail- und Passwortfeld dürfen nicht leer sein!');
       return;
     }
-// überprüfen ob account schon vorhanden
+
+    // überprüfen ob account schon vorhanden
     const postData = new FormData();
     postData.append('email', this.email);
     postData.append('password', this.password);
