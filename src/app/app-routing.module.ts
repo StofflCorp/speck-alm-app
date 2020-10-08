@@ -28,7 +28,11 @@ const routes: Routes = [
   {
     path: 'weather',
     loadChildren: () => import('./weather/weather.module').then( m => m.WeatherPageModule)
-  }
+  },
+  {
+    path: 'jokes',
+    loadChildren: () => import('./jokes/jokes.module').then( m => m.JokesPageModule)
+  },
 
 
 ];
