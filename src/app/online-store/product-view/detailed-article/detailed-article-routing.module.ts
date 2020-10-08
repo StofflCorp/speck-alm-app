@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DetailedArticlePage } from './detailed-article.page';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -14,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'shopping-basket',
-    loadChildren: () => import('../../shopping-basket/shopping-basket.module').then( m => m.ShoppingBasketPageModule)
+    loadChildren: () => import('../../../shopping-basket/shopping-basket.module').then( m => m.ShoppingBasketPageModule)
   }
 ];
 

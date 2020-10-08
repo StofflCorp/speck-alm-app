@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {GlobalService} from '../global.service';
-import {DetailedArticlePage} from '../online-store/product-view/detailed-article/detailed-article.page';
+// @ts-ignore
+import { EditArticlePage } from './edit-article/edit-article.page';
 import {ModalController} from '@ionic/angular';
 
 @Component({
@@ -14,10 +15,19 @@ export class ShoppingBasketPage implements OnInit {
 
   constructor(private modalController: ModalController, public globalService: GlobalService, public http: HttpClient) {
   }
+  async openModal(i, a, p) {
+    const modal = await this.modalController.create({
+      component: EditArticlePage,
+      componentProps: {
+        item:i
+      }
+    });
+    return await modal.present();
+  }
+
 
   ngOnInit() {
     if (this.globalService.token != null) {
-      console.log(this.globalService.getId());
       // tslint:disable-next-line:max-line-length
       const response = this.http.get(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.token}`).subscribe((o: any) => {
         this.results = o.products;
@@ -25,13 +35,11 @@ export class ShoppingBasketPage implements OnInit {
     } else {
       console.log('token null');
     }
-    console.log(this.results);
   }
 
     deleteArticle(id) {
       // tslint:disable-next-line:max-line-length
       const cache = `https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/` + id + `?token=${this.globalService.token}`;
-      console.log(cache);
       this.http.delete(cache).subscribe();
       location.reload();
     }

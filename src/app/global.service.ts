@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class GlobalService {
   // public token: string;
-  public token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOjEsImlhdCI6MTU5OTExNDY4MywiZXhwIjoxNTk5MjAxMDgzfQ.dkzo5MEBtl0zvvBS9-rFbYaL0uF1lustF5r856qPs_E';
+  // tslint:disable-next-line:max-line-length
+  public token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOjMsImlhdCI6MTYwMjE1NTI5OCwiZXhwIjoxNjAyMjQxNjk4fQ.LO4FrK0zwM9Nj4sRMq7O6pD6P2ANK_qXggticxcYz3k';
   public id = 3;
 
   constructor() { }
