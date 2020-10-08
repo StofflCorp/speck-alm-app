@@ -39,7 +39,7 @@ export class ShoppingBasketPage implements OnInit {
 
     deleteArticle(id) {
       // tslint:disable-next-line:max-line-length
-      const cache = `https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/` + id + `?token=${this.globalService.token}`;
+      const cache = `https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/` + id + `?token=${this.globalService.getToken()}`;
       this.http.delete(cache).subscribe();
       location.reload();
     }
