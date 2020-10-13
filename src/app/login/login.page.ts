@@ -3,6 +3,9 @@ import {AlertController, NavController} from '@ionic/angular';
 import {  MenuController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../global.service';
+import {isNumber} from 'util';
+import { cordova } from '@ionic-native/core';
+import {StorageService} from '../storage.service';
 
 @Component({
   selector: 'app-login',
@@ -15,33 +18,52 @@ export class LoginPage implements OnInit {
   email: string;
   password: string;
   // tslint:disable-next-line:max-line-length
-  constructor(public alertController: AlertController, private navController: NavController, public menuCtrl: MenuController, public http: HttpClient, public global: GlobalService) {
+  constructor(public alertController: AlertController,
+              private navController: NavController,
+              public menuCtrl: MenuController,
+              public http: HttpClient,
+              public global: GlobalService,
+              public storage: StorageService) {
     this.menuCtrl.enable(false);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.silentLogin();
+  }
+
+  private async silentLogin() {
+    const t = this.global.getToken();
+    const i = this.global.getId();
+    if (t != null && i != null && isNumber(i)) {
+      const postData = new FormData();
+      postData.append('token', t);
+      postData.append('id', i.toString());
+      const response: any = await this.http.post('https://speckalm.htl-perg.ac.at/r/auth/refreshToken', postData).toPromise();
+
+      if (!response.error) {
+        this.global.setToken(response.token);
+        this.global.setId(response.id);
+        await this.navController.navigateRoot('/home');
+      }
+    }
+  }
 
   async login() {
     if (this.email === undefined || this.password === undefined) {
-        this.createAlert('E-Mail- und Passwortfeld dürfen nicht leer sein!');
-        return;
+      this.createAlert('E-Mail- und Passwortfeld dürfen nicht leer sein!');
+      return;
     }
-
-    var login = true;
-    // überprüfen ob account schon vorhanden
-    let postData = new FormData();
+// überprüfen ob account schon vorhanden
+    const postData = new FormData();
     postData.append('email', this.email);
     postData.append('password', this.password);
-    try{
-      const response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/auth/login`,postData).toPromise();
-      this.global.setToken(response['token']);
-      this.global.setId(response['id']);
-      console.log(response['token']);
-
+    try {
+      const response: any = await this.http.post(`https://speckalm.htl-perg.ac.at/r/auth/login`, postData).toPromise();
+      this.global.setToken(response.token);
+      this.global.setId(response.id);
       this.navController.navigateRoot('/home');
 
-    }
-    catch (e){
+    } catch (e) {
       this.createAlert('E-Mail oder Passwort sind nicht korrekt!');
     }
   }

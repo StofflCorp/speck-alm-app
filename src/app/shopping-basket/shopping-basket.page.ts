@@ -16,21 +16,19 @@ export class ShoppingBasketPage implements OnInit {
   }
 
   ngOnInit() {
-    if (this.globalService.token != null) {
-      console.log(this.globalService.getId());
+    if (this.globalService.getToken() != null) {
       // tslint:disable-next-line:max-line-length
-      const response = this.http.get(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.token}`).subscribe((o: any) => {
+      this.http.get(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.getToken()}`).subscribe((o: any) => {
         this.results = o.products;
       });
     } else {
       console.log('token null');
     }
-    console.log(this.results);
   }
 
     deleteArticle(id) {
       // tslint:disable-next-line:max-line-length
-      const cache = `https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/` + id + `?token=${this.globalService.token}`;
+      const cache = `https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/` + id + `?token=${this.globalService.getToken()}`;
       console.log(cache);
       this.http.delete(cache).subscribe();
       location.reload();
