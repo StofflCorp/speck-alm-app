@@ -10,11 +10,11 @@
 </ion-header>-->
 
 <ion-content>
-
-  <ion-img *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}?{{globalService.token}}" id="headerImg"></ion-img>
   <ion-button slot="end" (click) = "closeModal()">
     <ion-icon slot = "icon-only" name="close"></ion-icon>
   </ion-button>
+  <ion-img *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}?{{globalService.token}}" id="headerImg"></ion-img>
+
   <div class="information">
 
     <ion-card class="card">
@@ -25,9 +25,18 @@
         <br/><br/>
 
        <!--<p class="status"*ngIf="item.status == 'in_stock'; else elseBlock" >Vorrätig</p><ng-template  #elseBlock><p class="status">Ausverkauft</p></ng-template>-->
-          <ion-range  pin=true; class="amountBar" min="1" max="10" step="1" value="1" [(ngModel)]="amount" >
+          <ion-range   pin=true; class="amountBar" min="1" max="10" step="1" value="1" [(ngModel)]="amount" (ionChange)="sliderValueChanged()">
           </ion-range>
-        <p class="price">{{item.price}}€ pro Stück</p>
+        <table class="table">
+          <tr>
+            <td class="price" >{{item.price}}€ pro Stück </td>
+            <td class="sum" *ngIf="price == undefined; else elseBlock">{{item.price}} €</td> <ng-template  #elseBlock><td class="sum">{{price}} €</td></ng-template>
+          </tr>
+        </table>
+        <p class="status"*ngIf="item.status == 'in_stock'; else elseBlockState" >Vorrätig</p><ng-template  #elseBlockState><p class="status">Ausverkauft</p></ng-template>
+
+        <!--<p class="sum" *ngIf="price == undefined; else elseBlock" >{{item.price}} €</p><ng-template  #elseBlock><p class="sum">{{price}} €</p></ng-template>
+        <p class="sum">{{price}}€</p>-->
         <ion-item>
           <div class="center">
             <ion-button class="addToCart" (click)="addToCart()">in meinen Kühlschrank</ion-button>
@@ -35,7 +44,6 @@
         </ion-item>
 
       </ion-card-content>
-
     </ion-card>
   </div>
 </ion-content>

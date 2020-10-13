@@ -11,7 +11,7 @@ ion-title{
 }
 .status{
   font-size: 10px;
-  display:inline
+
 }
 .center {
   margin: 0;
@@ -39,7 +39,7 @@ ion-title{
   --bar-background: var(--ion-color-sa-dark);
   --knob-background: var(--ion-color-sa-pink);
   --bar-background-active: var(--ion-color-sa-pink);
-
+  --pin-background: var(--ion-color-sa-pink);
 }
 .title{
   color: var(--ion-color-sa-pink);
@@ -53,6 +53,8 @@ ion-title{
 #headerImg {
   margin: 0 0 -25px 0;
   position: fixed;
+  border-radius: 10px !important;
+  overflow: hidden;
 }
 .information {
   z-index: 1;
@@ -64,5 +66,17 @@ ion-title{
 }
 .card{
   background-color: white;
+}
+.sum{
+  font-size: 16px;
+  //display:inline;
+  color: var(--ion-color-sa-pink);
+  font-weight: bold;
+  margin: 00px 0px 5px 0px;
+  text-align: right ;
+
+}
+.table{
+  width: 100%;
 }
 

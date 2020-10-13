@@ -1,1 +1,49 @@
 @import "../product-view.page";
+.table{
+  width: 100%;
+}
+.pictCol{
+  width: 40%;
+}
+.picture{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+.column{
+  vertical-align: text-top;
+  height: 100%;
+  padding: 00px 00px 00px 10px;
+}
+.productName{
+  vertical-align: text-top !important;
+  font-size: 16px;
+
+  color: var(--ion-color-sa-pink);
+  font-weight: bold;
+  margin: 05px 05px 00px 00px;
+  padding: 00px 00px 00px 00px;
+}
+.text{
+  margin: 05px 05px 00px 00px;
+  padding: 00px 00px 00px 00px;
+  vertical-align: text-top;
+  font-size: 12px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+ion-card{
+  width: 100%;
+  border-radius: 20px;
+}
+ion-item-divider{
+  margin: 00px 00px 00px 00px;
+  padding: 00px 00px 00px 00px;
+  vertical-align: top !important;
+}

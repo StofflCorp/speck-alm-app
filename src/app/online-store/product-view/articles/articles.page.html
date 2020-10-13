@@ -9,10 +9,21 @@
     <ion-list>
       <ion-tab-button *ngFor="let prod of (products | async)">
         <ion-card (click)="openModal(prod)">
-          <ion-img *ngIf="prod.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{prod.image.savedFileName}}?{{globalService.token}}"></ion-img>
-          <ion-card-content>
-            {{prod.name}}
-          </ion-card-content>
+          <table class="table">
+            <tr >
+              <td class="pictCol">
+                <ion-img class="picture" *ngIf="prod.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{prod.image.savedFileName}}?{{globalService.token}}"></ion-img>
+              </td>
+
+              <td class="column">
+                <p class="productName">
+                  {{prod.name}}
+                </p>
+                <ion-item-divider >noch ca. {{prod.stock}} Stk. übrig </ion-item-divider>
+                <p class="text" >{{prod.description}}</p>
+              </td>
+            </tr>
+          </table>
         </ion-card>
       </ion-tab-button>
     </ion-list>

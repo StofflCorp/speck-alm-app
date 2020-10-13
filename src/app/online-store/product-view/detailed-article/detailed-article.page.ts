@@ -12,7 +12,9 @@ import {HttpClient} from "@angular/common/http";
 export class DetailedArticlePage implements OnInit {
   item;
   amount: number;
-  constructor(public alertController: AlertController, private modalController: ModalController, public globalService: GlobalService,private http: HttpClient, private navCtr:NavController) { }
+  price: number;
+  constructor(public alertController: AlertController, private modalController: ModalController, public globalService: GlobalService,private http: HttpClient, private navCtr:NavController) {
+  }
 
   ngOnInit() {
     this.amount = 1;
@@ -63,5 +65,11 @@ export class DetailedArticlePage implements OnInit {
     });
     await alert.present();
     await alert.onDidDismiss();
+  }
+
+  sliderValueChanged() {
+    this.price = this.amount * this.item.price;
+    // @ts-ignore
+    this.price = this.price.toFixed(2);
   }
 }
