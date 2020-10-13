@@ -9,18 +9,22 @@
     <ion-list>
       <ion-tab-button *ngFor="let cat of (results)">
           <ion-item-sliding>
-            <ion-item>
+            <ion-item (click)="openModal(cat)">
                 <ion-avatar slot="start" *ngIf="cat.image">
                     <img src="https://speckalm.htl-perg.ac.at/r/storage/images/{{cat.image.savedFileName}}" alt="Artikel">
                 </ion-avatar>
-                {{cat.name}}
-                <br/>
-                (Menge:
-                {{cat.pivot.quantity}})
-                <span style="text-align: right">{{cat.price*cat.pivot.quantity}}</span>
+                <div style="width: 100%">
+                    {{cat.name}}
+                    <br/>
+                    <div style ="font-size: small">
+                    Menge:
+                    {{cat.pivot.quantity}}
+                    </div>
+                </div>
+                <span style="text-align: right;width: 80px">{{cat.price*cat.pivot.quantity | number:'1.2-2'}} €</span>
             </ion-item>
               <ion-item-options side ="end">
-                  <ion-button color ="danger" >
+                  <ion-button color ="danger" (click)="deleteArticle(cat.id)">
                       <ion-icon name="trash"></ion-icon>
                   </ion-button>
               </ion-item-options>

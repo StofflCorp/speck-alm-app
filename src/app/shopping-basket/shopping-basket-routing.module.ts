@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ShoppingBasketPage
+  },
+  {
+    path: 'edit-article',
+    loadChildren: () => import('./edit-article/edit-article.module').then( m => m.EditArticlePageModule)
   }
 ];
 

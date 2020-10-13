@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {GlobalService} from '../global.service';
-import {DetailedArticlePage} from '../online-store/product-view/detailed-article/detailed-article.page';
+// @ts-ignore
+import { EditArticlePage } from './edit-article/edit-article.page';
 import {ModalController} from '@ionic/angular';
 
 @Component({
@@ -14,6 +15,16 @@ export class ShoppingBasketPage implements OnInit {
 
   constructor(private modalController: ModalController, public globalService: GlobalService, public http: HttpClient) {
   }
+  async openModal(i, a, p) {
+    const modal = await this.modalController.create({
+      component: EditArticlePage,
+      componentProps: {
+        item: i
+      }
+    });
+    return await modal.present();
+  }
+
 
   ngOnInit() {
     if (this.globalService.getToken() != null) {
@@ -28,8 +39,7 @@ export class ShoppingBasketPage implements OnInit {
 
     deleteArticle(id) {
       // tslint:disable-next-line:max-line-length
-      const cache = `https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/` + id + `?token=${this.globalService.getToken()}`;
-      console.log(cache);
+      const cache = `https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/` + id + `?token=${this.globalService.token}`;
       this.http.delete(cache).subscribe();
       location.reload();
     }

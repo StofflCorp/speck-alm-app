@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertController, ModalController, NavController} from '@ionic/angular';
+import {DataService} from '../../../services/data.service';
 import {GlobalService} from '../../../global.service';
 import {HttpClient} from '@angular/common/http';
 
