@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: GiftBasketPage
+  },
+  {
+    path: 'detailed-giftbasket',
+    loadChildren: () => import('./detailed-giftbasket/detailed-giftbasket.module').then( m => m.DetailedGiftbasketPageModule)
   }
 ];
 
