@@ -26,14 +26,19 @@ export class OnlineStorePage implements OnInit {
     const alert = await this.alertController.create({
       header,
       message: m,
-      buttons: ['OK']
+      cssClass:'getCustom',
+      buttons: [
+        {
+          text:'OK'
+
+        }
+      ]
     });
     await alert.present();
     await alert.onDidDismiss();
   }
   openProductViewWithService(id, value) {
       this.dataService.setData(id, value);
-
   }
 
 }
