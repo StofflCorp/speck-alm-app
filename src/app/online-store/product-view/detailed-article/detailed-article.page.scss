@@ -7,7 +7,7 @@ ion-title{
   //display:inline;
   color: var(--ion-color-sa-pink);
   font-weight: bold;
-  margin: 00px 0px 5px 0px;
+  margin: 0 0 5px 0;
 }
 .status{
   font-size: 10px;
@@ -33,7 +33,7 @@ ion-title{
 }
 
 .amountBar{
-  padding: 15px 0px 10px 0px;
+  padding: 15px 0 10px 0;
   margin: 0;
   --height: 10pt;
   --bar-background: var(--ion-color-sa-dark);
@@ -43,7 +43,7 @@ ion-title{
 }
 .title{
   color: var(--ion-color-sa-pink);
-  padding: 0px 0px 10px 0px;
+  padding: 0 0 10px 0;
   font-weight: bold;
   font-size:20px;
 }
