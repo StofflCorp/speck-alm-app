@@ -8,7 +8,7 @@ import { ModalController } from '@ionic/angular';
 })
 
 export class ModalPage implements OnInit {
-  item;
+  item: any;
 
   constructor(private mod: ModalController) { }
 

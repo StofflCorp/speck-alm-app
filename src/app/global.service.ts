@@ -1,27 +1,35 @@
 import { Injectable } from '@angular/core';
+import {StorageService} from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalService {
   // public token: string;
-  // tslint:disable-next-line:max-line-length
-  public token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOjMsImlhdCI6MTYwMjE1NTI5OCwiZXhwIjoxNjAyMjQxNjk4fQ.LO4FrK0zwM9Nj4sRMq7O6pD6P2ANK_qXggticxcYz3k';
-  public id = 3;
+  private token = null;
+  private id = null;
 
-  constructor() { }
+  constructor(private storage: StorageService) {}
 
   setToken(token: string) {
     this.token = token;
+    this.storage.store('token', token);
   }
   getToken(): string {
+    if (this.token == null) {
+      this.token = this.storage.retrieve('token');
+    }
     return this.token;
   }
 
   setId(id: number) {
     this.id = id;
+    this.storage.store('id', id);
   }
   getId(): number {
+    if (this.id == null) {
+      this.id = this.storage.retrieve('id');
+    }
     return this.id;
   }
 }

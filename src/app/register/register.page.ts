@@ -37,19 +37,19 @@ export class RegisterPage implements OnInit {
 
     let register = false;
 
-    let postData = new FormData();
+    const postData = new FormData();
     postData.append('prename', this.firstname);
     postData.append('surname', this.lastname);
     postData.append('email', this.email);
     postData.append('password', this.password);
-    const response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users`,postData).toPromise();
+    const response: any = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users`, postData).toPromise();
 
-    if(response['token'] && response['user']){
+    if (response.token && response.user) {
       register = true;
     }
 
     // Check if email already exists
-    if(register) {
+    if (register) {
       this.createAlert('Account wurde erstellt bitte bestätigen Sie ihre E-Mail Adresse!');
       this.navController.navigateRoot('/login');
     } else {

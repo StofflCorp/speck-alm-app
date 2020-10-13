@@ -28,8 +28,8 @@ export class EventsPage implements OnInit {
   }
 
   loadFav() {
-    if(this.global.getId() != null){
-      this.http.get( 'https://speckalm.htl-perg.ac.at/r/api/users/'+this.global.getId()+'/events?token='+this.global.getToken()).subscribe(res => {
+    if (this.global.getId() != null) {
+      this.http.get( 'https://speckalm.htl-perg.ac.at/r/api/users/' + this.global.getId() + '/events?token=' + this.global.getToken()).subscribe(res => {
         this.favItems = this.favItems.concat(res);
       });
     }
@@ -49,7 +49,7 @@ export class EventsPage implements OnInit {
   }
 
   loadMore(event) {
-    if(this.stop) {
+    if (this.stop) {
       event.target.complete();
       event.target.disable = true;
     } else {
@@ -58,11 +58,11 @@ export class EventsPage implements OnInit {
   }
 
   async clicked(i) {
-    let bo: Boolean = false;
+    let bo = false;
 
-    for(let it of this.favItems) {
-      if(i.id === it.id) {
-        bo=true;
+    for (const it of this.favItems) {
+      if (i.id === it.id) {
+        bo = true;
       }
     }
 
@@ -85,8 +85,8 @@ export class EventsPage implements OnInit {
   }
 
   getIcon(item) {
-    for(let i of this.favItems) {
-      if(item.id === i.id) {
+    for (const i of this.favItems) {
+      if (item.id === i.id) {
         return 'star';
       }
     }
@@ -95,31 +95,32 @@ export class EventsPage implements OnInit {
   }
 
   favBtnClicked(item) {
-    if(this.global.getId() != null){
+    if (this.global.getId() != null) {
       this.clickedModal = false;
       console.log(item);
-      let elem = document.getElementById("icon"+item.id);
+      const elem = document.getElementById('icon' + item.id);
 
-      if(elem.getAttribute("ng-reflect-name") === 'star-outline') {
+      if (elem.getAttribute('ng-reflect-name') === 'star-outline') {
         this.favItems.push(item);
 
-        let postData = new FormData();
-        postData.append("token",this.global.getToken());
-        postData.append("event", item.id);
-        this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/`+this.global.getId()+'/events',postData).subscribe();
+        const postData = new FormData();
+        postData.append('token', this.global.getToken());
+        postData.append('event', item.id);
+        this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/` + this.global.getId() + '/events', postData).subscribe();
 
       } else {
-        let index: number = 0;
-        for(let i of this.favItems) {
-          if(item.id === i.id){
+        const index = 0;
+        for (let i of this.favItems) {
+          if (item.id === i.id) {
              break;
           }
           i++;
         }
-        if (index !== -1){
+        // @ts-ignore
+        if (index !== -1) {
           this.favItems.splice(index, 1);
         }
-        this.http.delete(`https://speckalm.htl-perg.ac.at/r/api/users/`+this.global.getId() + '/events/' + item.id +"?token="+this.global.getToken()).subscribe();
+        this.http.delete(`https://speckalm.htl-perg.ac.at/r/api/users/` + this.global.getId() + '/events/' + item.id + '?token=' + this.global.getToken()).subscribe();
       }
     }
   }

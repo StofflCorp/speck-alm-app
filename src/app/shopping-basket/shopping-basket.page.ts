@@ -19,7 +19,7 @@ export class ShoppingBasketPage implements OnInit {
     const modal = await this.modalController.create({
       component: EditArticlePage,
       componentProps: {
-        item:i
+        item: i
       }
     });
     return await modal.present();
@@ -27,9 +27,9 @@ export class ShoppingBasketPage implements OnInit {
 
 
   ngOnInit() {
-    if (this.globalService.token != null) {
+    if (this.globalService.getToken() != null) {
       // tslint:disable-next-line:max-line-length
-      const response = this.http.get(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.token}`).subscribe((o: any) => {
+      this.http.get(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.getToken()}`).subscribe((o: any) => {
         this.results = o.products;
       });
     } else {
@@ -39,7 +39,7 @@ export class ShoppingBasketPage implements OnInit {
 
     deleteArticle(id) {
       // tslint:disable-next-line:max-line-length
-      const cache = `https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/` + id + `?token=${this.globalService.token}`;
+      const cache = `https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/` + id + `?token=${this.globalService.getToken()}`;
       this.http.delete(cache).subscribe();
       location.reload();
     }

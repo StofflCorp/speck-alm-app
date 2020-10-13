@@ -26,19 +26,19 @@ export class EventModalPage implements OnInit {
   }
 
   favBtnClicked() {
-    if(this.bol) {
-      this.http.delete(`https://speckalm.htl-perg.ac.at/r/api/users/`+this.global.getId() + '/events/' + this.item.id +"?token="+this.global.getToken()).subscribe();
+    if (this.bol) {
+      this.http.delete(`https://speckalm.htl-perg.ac.at/r/api/users/` + this.global.getId() + '/events/' + this.item.id + '?token=' + this.global.getToken()).subscribe();
     } else {
-      let postData = new FormData();
-      postData.append("token",this.global.getToken());
-      postData.append("event", this.item.id);
-      this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/`+this.global.getId()+'/events',postData).subscribe();
+      const postData = new FormData();
+      postData.append('token', this.global.getToken());
+      postData.append('event', this.item.id);
+      this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/` + this.global.getId() + '/events', postData).subscribe();
     }
     this.bol = !this.bol;
   }
 
-  closeModal () {
-    let data = {'bol':this.bol};
+  closeModal() {
+    const data = {bol: this.bol};
     this.modalController.dismiss({data});
   }
 }
