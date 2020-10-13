@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Produkt bearbeiten</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img style="height: 50%" *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}?{{globalService.token}}" id="headerImg"></ion-img>
+  <ion-card-content>
+    <h1 class="title">{{item.name}}</h1>
+    <br/><br/>
+
+    <!--<p class="status"*ngIf="item.status == 'in_stock'; else elseBlock" >Vorrätig</p><ng-template  #elseBlock><p class="status">Ausverkauft</p></ng-template>-->
+    <ion-range  pin=true; class="amountBar" min="1" max="10" step="1" value="amount" [(ngModel)]="amount" >
+    </ion-range>
+    <p class="price" style="font-size: large; text-align: center">{{amount*item.price| number:'1.2-2'}}€</p>
+    <ion-item>
+      <div class="center">
+        <ion-button (click)="editAmount()">Produkt ändern</ion-button>
+      </div>
+    </ion-item>
+
+  </ion-card-content>
+</ion-content>
