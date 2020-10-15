@@ -13,7 +13,7 @@
   <ion-button slot="end" (click) = "closeModal()">
     <ion-icon slot = "icon-only" name="close"></ion-icon>
   </ion-button>
-  <ion-img *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}?{{globalService.token}}" id="headerImg"></ion-img>
+  <ion-img *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}?{{globalService.getToken()}}" id="headerImg"></ion-img>
 
   <div class="information">
 
@@ -33,7 +33,7 @@
             <td class="sum" *ngIf="price == undefined; else elseBlock">{{item.price}} €</td> <ng-template  #elseBlock><td class="sum">{{price}} €</td></ng-template>
           </tr>
         </table>
-        <p class="status"*ngIf="item.status == 'in_stock'; else elseBlockState" >Vorrätig</p><ng-template  #elseBlockState><p class="status">Ausverkauft</p></ng-template>
+        <p class="status"  *ngIf="item.status == 'in_stock'; else elseBlockState" >Vorrätig</p><ng-template  #elseBlockState><p class="status">Ausverkauft</p></ng-template>
 
         <!--<p class="sum" *ngIf="price == undefined; else elseBlock" >{{item.price}} €</p><ng-template  #elseBlock><p class="sum">{{price}} €</p></ng-template>
         <p class="sum">{{price}}€</p>-->
