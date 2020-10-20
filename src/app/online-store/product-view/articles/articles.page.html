@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Produkte</ion-title>
+    <ion-title class="title">Produkte</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +12,7 @@
           <table class="table">
             <tr >
               <td class="pictCol">
-                <ion-img class="picture" *ngIf="prod.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{prod.image.savedFileName}}?{{globalService.token}}"></ion-img>
+                <ion-img class="picture" *ngIf="prod.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{prod.image.savedFileName}}"></ion-img>
               </td>
 
               <td class="column">

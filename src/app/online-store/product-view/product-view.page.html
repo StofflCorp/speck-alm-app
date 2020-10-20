@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{title}}</ion-title>
+    <ion-title class="title">{{title}}</ion-title>
     <ion-buttons slot ="end">
       <ion-button (click) = "toBasket()">
         <ion-icon slot = "icon-only" name="close"></ion-icon>
@@ -14,7 +14,7 @@
     <ion-list *ngIf="data==1||data==2">
         <ion-tab-button *ngFor="let cat of (results | async)" (click)='openArticlesWithService(cat.id,cat)' tab="articles/{{cat.id}}">
           <ion-card>
-            <ion-img *ngIf="cat.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{cat.image.savedFileName}}?{{globalService.token}}"></ion-img>
+            <ion-img *ngIf="cat.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{cat.image.savedFileName}}"></ion-img>
             <ion-card-content>
               {{cat.name}}
             </ion-card-content>

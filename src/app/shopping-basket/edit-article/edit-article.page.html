@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-img style="height: 50%" *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}?{{globalService.token}}" id="headerImg"></ion-img>
+  <ion-img style="height: 50%" *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}?{{globalService.getToken()}}" id="headerImg"></ion-img>
   <ion-card-content>
     <h1 class="title">{{item.name}}</h1>
     <br/><br/>
@@ -16,7 +16,7 @@
     <p class="price" style="font-size: large; text-align: center">{{amount*item.price| number:'1.2-2'}}€</p>
     <ion-item>
       <div class="center">
-        <ion-button (click)="editAmount()">Produkt ändern</ion-button>
+        <ion-button class="edit" (click)="editAmount()">Produkt ändern</ion-button>
       </div>
     </ion-item>
 

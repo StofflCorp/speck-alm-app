@@ -5,7 +5,10 @@
     "types": []
   },
   "include": [
-    "src/**/*.ts"
+    //"src/**/*.ts"
+    "src/main.ts",
+    "src/polyfills.ts",
+    "src/zone-flags.ts"
   ],
   "exclude": [
     "src/test.ts",
