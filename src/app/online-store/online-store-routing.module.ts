@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { OnlineStorePage } from './online-store.page';
-import {DataResolverService} from "../resolver/data-resolver.service";
+import {DataResolverService} from '../resolver/data-resolver.service';
 
 const routes: Routes = [
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'product-view/:id',
-        resolve:{
+        resolve: {
           special: DataResolverService
         },
         loadChildren: () => import('./product-view/product-view.module').then( m => m.ProductViewPageModule)

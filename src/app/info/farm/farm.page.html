@@ -6,11 +6,11 @@
 
 <ion-content id="farmContent">
 
-  <img src="../../../assets/img/Info/FarmHeader.jpg" id="headerImg">
+  <img [src]="'../../../assets/img/Info/FarmHeader.jpg'" id="headerImg">
   <div class="information">
     <h5 class="title">Bio-Bauernhof "Oberfrankenberger"</h5>
     <ion-card>
-      <img src="../../../assets/img/Info/Farm/cowHeader.jpg">
+      <img [src]="'../../../assets/img/Info/Farm/cowHeader.jpg'">
       <ion-card-content>
         Ganzheitliches Denken und ein geschlossener Betriebskreislauf sind die Voraussetzung für unsere biologische Landwirtschaft.
         Die Schonung der Ressourcen Wasser und Boden sind besonders wichtig um für künftige Generationen ein lebenswertes Umfeld zu hinterlassen.
@@ -34,14 +34,14 @@
         <br>
         <ion-slides>
           <ion-slide *ngFor="let img of sliderImages" class="diashow">
-            <ion-img src="{{img}}"></ion-img>
+            <ion-img [src]="img"></ion-img>
           </ion-slide>
         </ion-slides>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
-      <img src="../../../assets/img/Info/Farm/tractor.jpg">
+      <img [src]="'../../../assets/img/Info/Farm/tractor.jpg'">
       <ion-card-content>
         Die Speck-Alm hat sich zum Ziel gesetzt nur Jausengerichte aus eigener Bio-Produktion zu kredenzen.
         Auf dem Hof leben zur Zeit über 120 Schweine in artgerechter Weidehaltung.

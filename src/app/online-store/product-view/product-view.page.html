@@ -14,7 +14,7 @@
     <ion-list *ngIf="data==1||data==2">
         <ion-tab-button *ngFor="let cat of (results | async)" (click)='openArticlesWithService(cat.id,cat)' tab="articles/{{cat.id}}">
           <ion-card>
-            <ion-img *ngIf="cat.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{cat.image.savedFileName}}"></ion-img>
+            <ion-img *ngIf="cat.image" [src]="'https://speckalm.htl-perg.ac.at/r/storage/images/'+cat.image.savedFileName"></ion-img>
             <ion-card-content>
               {{cat.name}}
             </ion-card-content>
@@ -25,7 +25,7 @@
         <ion-tab-button>
         <ion-card>
 
-          <ion-img src="../../../assets/img/online-store/Kalb.jpg"></ion-img>
+          <ion-img [src]="'../../../assets/img/online-store/Kalb.jpg'"></ion-img>
           <ion-card-content>
             Kalb
           </ion-card-content>
@@ -33,7 +33,7 @@
       </ion-tab-button>
       <ion-tab-button>
         <ion-card>
-          <ion-img src="../../../assets/img/online-store/Rind.jpg"></ion-img>
+          <ion-img [src]="'../../../assets/img/online-store/Rind.jpg'"></ion-img>
           <ion-card-content>
             Rind
           </ion-card-content>
@@ -41,7 +41,7 @@
       </ion-tab-button>
       <ion-tab-button>
         <ion-card>
-          <ion-img src="../../../assets/img/online-store/Schwein.jpg"></ion-img>
+          <ion-img [src]="'../../../assets/img/online-store/Schwein.jpg'"></ion-img>
           <ion-card-content>
             Schwein
           </ion-card-content>
