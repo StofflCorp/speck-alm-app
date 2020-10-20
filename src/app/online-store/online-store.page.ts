@@ -26,10 +26,10 @@ export class OnlineStorePage implements OnInit {
     const alert = await this.alertController.create({
       header,
       message: m,
-      cssClass:'getCustom',
+      cssClass: 'getCustom',
       buttons: [
         {
-          text:'OK'
+          text: 'OK'
 
         }
       ]

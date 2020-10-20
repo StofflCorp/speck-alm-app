@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'articles/:id',
-    resolve:{
+    resolve: {
       special: DataResolverService
     },
     loadChildren: () => import('./articles/articles.module').then( m => m.ArticlesPageModule)

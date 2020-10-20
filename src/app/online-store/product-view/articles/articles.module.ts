@@ -16,7 +16,7 @@ import {DetailedArticlePage} from '../detailed-article/detailed-article.page';
     IonicModule,
     ArticlesPageRoutingModule
   ],
-  declarations: [ArticlesPage, DetailedArticlePage],
+  declarations: [ArticlesPage],
   entryComponents: [DetailedArticlePage]
 })
 export class ArticlesPageModule {}
