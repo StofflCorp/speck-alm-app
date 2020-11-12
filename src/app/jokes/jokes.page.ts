@@ -16,8 +16,12 @@ export class JokesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.jokes = this.http.get(`https://speckalm.htl-perg.ac.at/r/api/jokes/1`).subscribe();
-    console.log(this.jokes);
+
+    const random = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+
+    this.jokes = this.http.get(`https://speckalm.htl-perg.ac.at/r/api/jokes/${random}`).subscribe((o: any) => {
+      this.jokes = o;
+    });
   }
 
 }
