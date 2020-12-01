@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {HomePageModule} from './home/home.module';
 import {HttpClientModule} from '@angular/common/http';
+import {CalendarService} from 'ion2-calendar/dist/services/calendar.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
+    CalendarService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

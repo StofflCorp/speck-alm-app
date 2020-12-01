@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Bestelldatum sichern</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+      <calendar
+              [calendarMode]="calendar.mode"
+              [currentDate]="calendar.currentDate"
+              [showEventDetail] = "false"
+              [markDisabled]="markDisabled"
+              (onTitleChanged)="onViewTitleChanged()"
+              (onTimeSelected)="onTimeSelected($event)"
+              step="30"
+              startingDayWeek="1">
+    </calendar>
+    <div class="center" style="width:100%">
+      <ion-button class="orderButton" (click)="order()">Bestellen</ion-button>
+    </div>
+  </div>
+</ion-content>
