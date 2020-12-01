@@ -45,9 +45,11 @@ export class DetailedArticlePage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Produkt zum Warenkorb hinzufügen',
       message: m,
+
       buttons: [
         {
           text:'Weiter einkaufen',
+
           handler: back =>{
             this.modalController.dismiss();
             this.navCtr.navigateRoot("online-store")
