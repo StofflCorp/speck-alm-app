@@ -1,79 +1,21 @@
-@import "../online-store/online-store.page";
-ion-title{
-  color: var(--ion-color-sa-pink);
+ion-card {
+  --color: var(--ion-color-sa-grey);
+  --background: white;
+}
+ion-card-header {
+  font-size: 16px;
   font-weight: bold;
 }
-#iframeWetterOnline{
-  margin: 0 auto;
-  display: block;
-  width: 95% ;
-  height: 100%;
-  border: none;
-}
-.table{
+.information {
+  z-index: 1;
+  position: absolute;
   width: 100%;
-  height: 100%;
-  margin: 00px;
-  padding: 00px;
-
+  border-radius: 5px 5px 0 0;
+  background-color: white;
 }
-
-.row{
-  margin: 00px;
-  padding: 00px;
-  vertical-align: top;
-  horiz-align: center;
-  text-align: center;
-}
-.forecast{
-  width: 30%;
-  margin: 05px 05px 05px 05px;
-  padding: 00% 00% 10% 0%;
-  vertical-align: bottom;
-  horiz-align: center;
-  text-align: center;
-  border: 1px solid ;
-  border-color: var(--ion-color-sa-pink);
-  border-collapse: collapse;
-}
-.temp{
-  color: var(--ion-color-sa-pink);
-  padding: 0px;
-  margin: 0px;
+.title {
+  color: var(--ion-color-sa-green);
+  padding: 5px 20px;
   font-weight: bold;
-  font-size:40px;
 }
-.description{
-  padding: 0px;
-  margin: 0px;
-}
-.currentDetail{
-  margin: 20% 10% 10% 10%;
-  width: 100%;
 
-}
-.pictureTD{
-  horiz-align: left;
-  vertical-align: top;
-  width: 50%;
-}
-.picture{
-  width: 50%;
-}
-.forecastTr{
-  vertical-align: bottom;
-  background-color: var(--ion-color-sa-dark);
-  color: darkgrey;
-  height: 40%;
-}
-.weather{
-  width:30% ;
-  height: 100%;
-  horiz-align: left;
-  vertical-align: top;
-  text-align: left;
-
-}
-.day{
-  color: var(--ion-color-sa-pink)
-}
