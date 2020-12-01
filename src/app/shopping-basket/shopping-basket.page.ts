@@ -4,6 +4,7 @@ import {GlobalService} from '../global.service';
 // @ts-ignore
 import { EditArticlePage } from './edit-article/edit-article.page';
 import {ModalController} from '@ionic/angular';
+import {OrderPage} from './order/order.page';
 
 @Component({
   selector: 'app-shopping-basket',
@@ -15,7 +16,7 @@ export class ShoppingBasketPage implements OnInit {
 
   constructor(private modalController: ModalController, public globalService: GlobalService, public http: HttpClient) {
   }
-  async openModal(i, a, p) {
+  async openModal(i) {
     const modal = await this.modalController.create({
       component: EditArticlePage,
       componentProps: {
@@ -24,7 +25,12 @@ export class ShoppingBasketPage implements OnInit {
     });
     return await modal.present();
   }
-
+  async openOrderModal(){
+    const modal = await this.modalController.create({
+      component: OrderPage,
+    });
+    return await modal.present();
+  }
 
   ngOnInit() {
     if (this.globalService.getToken() != null) {
