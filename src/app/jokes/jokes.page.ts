@@ -11,17 +11,24 @@ import {ModalController} from '@ionic/angular';
 export class JokesPage implements OnInit {
 
   public jokes;
+  public jokeList: any = [];
 
   constructor(private modalController: ModalController, public globalService: GlobalService, public http: HttpClient) {
   }
 
   ngOnInit() {
+    this.jokeList = this.http.get(`https://speckalm.htl-perg.ac.at/r/api/jokes`).subscribe((o: any) => {
+      this.jokeList = o;
+      const random = Math.floor(Math.random() * (this.jokeList.length - 1 + 1)) + 1;
+      console.log(this.jokeList);
+      this.jokes = this.jokeList['0'];
+      console.log(this.jokes);
 
-    const random = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
-
-    this.jokes = this.http.get(`https://speckalm.htl-perg.ac.at/r/api/jokes/${random}`).subscribe((o: any) => {
-      this.jokes = o;
     });
+
+    /*this.jokes = this.http.get(`https://speckalm.htl-perg.ac.at/r/api/jokes/${random}`).subscribe((u: any) => {
+      this.jokes = u;
+    });*/
   }
 
 }

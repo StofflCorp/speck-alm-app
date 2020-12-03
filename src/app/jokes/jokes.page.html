@@ -4,34 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card>
-    <ion-card-content>
-      <ion-label>{{jokes.content}}</ion-label>
-      <ion-img src="../../assets/img/bauer.jpg"></ion-img>
-    </ion-card-content>
-  </ion-card>
+<ion-content *ngIf="jokes">
+  <ion-slides options={jokeList} >
+    <ion-slide *ngFor="let joke of jokeList">
+      <ion-card>
+        <ion-card-content>
+          <ion-img src="../../assets/img/bauer.jpg"></ion-img>
+        </ion-card-content>
+        <h3>{{joke.content}}</h3>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 
-  <!--<ion-grid>
-    <ion-row>
-      <ion-col>
-        <div>
-          <ion-card>
-            <ion-card-content>
-              <ion-label>Zurück</ion-label>
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-col>
-      <ion-col>
-        <div>
-          <ion-card>
-            <ion-card-content>
-              <ion-label>Nächster</ion-label>
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>-->
+  <div class="slideImg">
+    <ion-img src="../../assets/img/slide.jpg"></ion-img>
+  </div>
+
 </ion-content>
