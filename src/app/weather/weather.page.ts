@@ -5,11 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './weather.page.html',
   styleUrls: ['./weather.page.scss'],
 })
-export class WeatherPage implements OnInit {
+export class WeatherPage{
 
   constructor() { }
 
   ngOnInit() {
   }
+
 
 }

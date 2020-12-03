@@ -1,21 +1,14 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Wetter Speckalm</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="overlay">
-    <ion-card style="height: 400px">
-      <iframe id="iframeWetterOnline"  src='https://api.wetteronline.de/wetterwidget?gid=11014&modeid=FC3&seourl=bad-kreuzen&locationname=Bad Kreuzen&lang=de'></iframe>
-    </ion-card>
-    <ion-card>
-      <ion-card-content>
-        Webcam Burg Bad Kreuzen
-      </ion-card-content>
-      <iframe src="https://www.burg-kreuzen.at/webcam.php" title="Webcam" width="100%"></iframe>
-    </ion-card>
-  </div>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" selectedTab="weather">
 
+      <ion-tab-button tab="weather">
+        <ion-icon name="cloud-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="webcam">
+        <ion-icon src="assets/icon/radio-button-on-outline.svg"></ion-icon>
+      </ion-tab-button>
 
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>
