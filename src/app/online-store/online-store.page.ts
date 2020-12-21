@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../services/data.service';
 import {GlobalService} from '../global.service';
 import {AlertController, NavController} from '@ionic/angular';
 
@@ -10,16 +9,18 @@ import {AlertController, NavController} from '@ionic/angular';
 })
 export class OnlineStorePage implements OnInit {
 
-  constructor(public navCtrl: NavController, public dataService: DataService,  public alertController: AlertController, public globalService: GlobalService) { }
+  constructor(public navCtrl: NavController, public alertController: AlertController, public globalService: GlobalService) { }
 
   ngOnInit() {
     if (this.globalService.getToken() == null) {
-      this.createAlert('Bestelliste', 'Um diesen Bereich der App verwenden zu können müssen sie sich anmelden');
+      this.createAlert('Bestelliste', 'Um diesen Bereich der App verwenden zu können, müssen Sie sich anmelden!');
       this.navCtrl.navigateRoot('login');
     } else {
-      this.createAlert('So Funktionierts', '1. Frischfleisch bzw. Produkte vorbestellen<br/><br/>  2. Am bekanntgegebenen Abholtermin Produkte abholen <br/><br/> 3. Handverlesene Speck-Alm BIO Qualität genießen.');
-      this.openProductViewWithService(3, 3);
-
+      const isFirst: string = localStorage.getItem('isFirstLogin');
+      if (isFirst == null || (/true/i).test(isFirst)) {
+        this.createAlert('So Funktionierts', '1. Frischfleisch bzw. Produkte vorbestellen<br/><br/>  2. Am bekanntgegebenen Abholtermin Produkte abholen <br/><br/> 3. Handverlesene Speck-Alm BIO Qualität genießen.');
+        localStorage.setItem('isFirstLogin', 'false');
+      }
     }
   }
   async createAlert(header: string, m: string) {
@@ -30,15 +31,11 @@ export class OnlineStorePage implements OnInit {
       buttons: [
         {
           text: 'OK'
-
         }
       ]
     });
     await alert.present();
     await alert.onDidDismiss();
-  }
-  openProductViewWithService(id, value) {
-      this.dataService.setData(id, value);
   }
 
 }

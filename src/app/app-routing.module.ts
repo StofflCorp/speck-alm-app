@@ -33,8 +33,6 @@ const routes: Routes = [
     path: 'jokes',
     loadChildren: () => import('./jokes/jokes.module').then( m => m.JokesPageModule)
   },
-
-
 ];
 
 @NgModule({

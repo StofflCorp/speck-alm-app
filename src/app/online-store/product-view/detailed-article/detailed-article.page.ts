@@ -12,6 +12,12 @@ export class DetailedArticlePage implements OnInit {
   item;
   amount: number;
   price: number;
+
+  selectedPartition;
+  selectedSubPartitionType;
+  partitionValue;
+  includeBone;
+
   constructor(public alertController: AlertController, private modalController: ModalController, public globalService: GlobalService, private http: HttpClient, private navCtr: NavController) {
   }
 
@@ -30,6 +36,15 @@ export class DetailedArticlePage implements OnInit {
     const postData = new FormData();
     postData.append('product', this.item.id);
     postData.append('quantity', this.amount.toString());
+
+    if (this.item.type === 1) {
+      postData.append('partition_id', this.selectedPartition.id);
+      postData.append('partition_value', this.partitionValue);
+      if (this.item.bone_weight > 0) {
+        postData.append('include_bone', this.includeBone);
+      }
+    }
+
     const response: any = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.getToken()}`, postData).toPromise();
     // const response = this.dataService.addToCart(3, this.item.id, this.amount);
     if (response.error === undefined ) {
@@ -67,9 +82,7 @@ export class DetailedArticlePage implements OnInit {
     await alert.onDidDismiss();
   }
 
-  sliderValueChanged() {
-    this.price = this.amount * this.item.price;
-    // @ts-ignore
-    this.price = this.price.toFixed(2);
+  resetSubPartitionType() {
+    this.selectedSubPartitionType = null;
   }
 }

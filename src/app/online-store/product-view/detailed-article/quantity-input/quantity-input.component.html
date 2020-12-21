@@ -1,0 +1,13 @@
+<table style="width: 100%">
+  <tr class="inputHeader">
+    <td class="ion-align-items-center">Menge wählen:</td>
+    <td class="inline"><ion-input style="margin-right: 10px" [min]="min" [max]="minOf(max, item.stock)" (ionChange)="formatNumber($event)" [(ngModel)]="amount" [step]="steps" type="number" placeholder="Menge"></ion-input>{{unitLabel}}</td>
+  </tr>
+  <tr>
+    <td colspan="2"><ion-range [pin]="pin" [snaps]="snaps" class="amountBar" [min]="min" [max]="minOf(max, item.stock)" [step]="steps" [(ngModel)]="amount"></ion-range></td>
+  </tr>
+  <tr>
+    <td class="price" >{{item.price}}€ pro {{unitLabel}} </td>
+    <td class="sum">Gesamt: {{(item.price*(amount)).toFixed(2)}} €</td>
+  </tr>
+</table>
