@@ -47,6 +47,8 @@
               </ion-select>
             </ion-card-content>
 
+            <!-- TODO: Entweder Stückartikel (normal mit Stückangabe) oder Gewichtartikel als a. im Ganzen (normal Gewichtangabe) oder b. geschnitten - ebenfalls Gewichtangabe mit zusätzlichem Eingabefeld zur Erklärung, wie das Fleisch geschnitten werden soll -->
+
             <!-- Gewicht-Teil -->
             <ion-card-content *ngIf="selectedSubPartitionType == 0" class="partitionInput ion-no-padding">
               <app-quantity-input [(ngModel)]="amount" [item]="item" unitLabel="kg" pin="false" snaps="true" [min]="selectedPartition.partition_weight/1000" max="10" [steps]="selectedPartition.partition_weight/1000"></app-quantity-input>
