@@ -13,7 +13,7 @@ import { OnlineStorePage } from './online-store.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    OnlineStorePageRoutingModule
+    OnlineStorePageRoutingModule,
   ],
   declarations: [OnlineStorePage]
 })

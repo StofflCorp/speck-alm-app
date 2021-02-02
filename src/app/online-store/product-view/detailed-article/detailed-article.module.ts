@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DetailedArticlePageRoutingModule } from './detailed-article-routing.module';
 
 import { DetailedArticlePage } from './detailed-article.page';
+import {QuantityInputComponent} from './quantity-input/quantity-input.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { DetailedArticlePage } from './detailed-article.page';
     IonicModule,
     DetailedArticlePageRoutingModule
   ],
-  declarations: [DetailedArticlePage]
+  declarations: [DetailedArticlePage, QuantityInputComponent]
 })
 export class DetailedArticlePageModule {}

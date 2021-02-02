@@ -7,7 +7,7 @@
 <ion-content>
 
   <ion-card (click)="clicked(item)" *ngFor="let item of items">
-    <ion-img *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}"></ion-img>
+    <ion-img *ngIf="item.image" [src]="'https://speckalm.htl-perg.ac.at/r/storage/images/'+item.image.savedFileName"></ion-img>
 
     <ion-card-header>
       <ion-card-title>{{item.name}}</ion-card-title>

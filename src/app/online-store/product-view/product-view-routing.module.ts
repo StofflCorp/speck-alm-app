@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'articles/:id',
-    resolve:{
+    resolve: {
       special: DataResolverService
     },
     loadChildren: () => import('./articles/articles.module').then( m => m.ArticlesPageModule)
@@ -23,8 +23,18 @@ const routes: Routes = [
   {
     path: 'shopping-basket',
     loadChildren: () => import('../../shopping-basket/shopping-basket.module').then( m => m.ShoppingBasketPageModule)
+  },
+  {
+    path: 'meat-parts',
+    loadChildren: () => import('./meat-parts/meat-parts.module').then( m => m.MeatPartsPageModule)
+  },
+  {
+    path: 'meat-parts/:id',
+    resolve: {
+      special: DataResolverService
+    },
+    loadChildren: () => import('./meat-parts/meat-parts.module').then( m => m.MeatPartsPageModule)
   }
-
 ];
 
 @NgModule({

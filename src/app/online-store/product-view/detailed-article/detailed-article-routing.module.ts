@@ -9,14 +9,6 @@ const routes: Routes = [
     path: '',
     component: DetailedArticlePage
   },
-  {
-    path: 'store',
-    loadChildren: () => import('../../online-store.module').then( m => m.OnlineStorePageModule)
-  },
-  {
-    path: 'shopping-basket',
-    loadChildren: () => import('../../../shopping-basket/shopping-basket.module').then( m => m.ShoppingBasketPageModule)
-  }
 ];
 
 

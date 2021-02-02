@@ -1,19 +1,8 @@
-<!--<ion-header>
-  <ion-toolbar>
-    <ion-title>{{item.name}}</ion-title>
-      <ion-buttons slot ="end">
-        <ion-button (click) = "closeModal()">
-          <ion-icon slot = "icon-only" name="close"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-  </ion-toolbar>
-</ion-header>-->
-
 <ion-content>
   <ion-button slot="end" (click) = "closeModal()">
-    <ion-icon slot = "icon-only" name="close"></ion-icon>
+    <ion-icon slot="icon-only" name="close"></ion-icon>
   </ion-button>
-  <ion-img *ngIf="item.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{item.image.savedFileName}}" id="headerImg"></ion-img>
+  <ion-img *ngIf="item.image" [src]="'https://speckalm.htl-perg.ac.at/r/storage/images/'+item.image.savedFileName" id="headerImg"></ion-img>
 
   <div class="information">
 
@@ -22,26 +11,63 @@
       <ion-card-content>
         <h1 class="title">{{item.name}}</h1>
         {{item.description}}
-        <br/><br/>
+        <br/>
 
-       <!--<p class="status"*ngIf="item.status == 'in_stock'; else elseBlock" >Vorrätig</p><ng-template  #elseBlock><p class="status">Ausverkauft</p></ng-template>-->
-          <ion-range   pin=true; class="amountBar" min="1" max="10" step="1" value="1" [(ngModel)]="amount" (ionChange)="sliderValueChanged()">
-          </ion-range>
-        <table class="table">
-          <tr>
-            <td class="price" >{{item.price}}€ pro Stück </td>
-            <td class="sum" *ngIf="price == undefined; else elseBlock">{{item.price}} €</td> <ng-template  #elseBlock><td class="sum">{{price}} €</td></ng-template>
-          </tr>
-        </table>
-        <p class="status"*ngIf="item.status == 'in_stock'; else elseBlockState" >Vorrätig</p><ng-template  #elseBlockState><p class="status">Ausverkauft</p></ng-template>
+        <div *ngIf="item.type == 0; else meatProduct">
+          <!--<p class="status"*ngIf="item.status == 'in_stock'; else elseBlock" >Vorrätig</p><ng-template  #elseBlock><p class="status">Ausverkauft</p></ng-template>-->
+          <app-quantity-input [(ngModel)]="amount" [item]="item" unitLabel="Stück" pin="true" snaps="true" min="1" max="10" steps="1"></app-quantity-input>
+          <p class="status"  *ngIf="item.status == 'in_stock'; else elseBlockState" >Vorrätig</p><ng-template  #elseBlockState><p class="status">Ausverkauft</p></ng-template>
 
-        <!--<p class="sum" *ngIf="price == undefined; else elseBlock" >{{item.price}} €</p><ng-template  #elseBlock><p class="sum">{{price}} €</p></ng-template>
-        <p class="sum">{{price}}€</p>-->
-        <ion-item>
-          <div class="center">
-            <ion-button class="addToCart" (click)="addToCart()">in meinen Kühlschrank</ion-button>
+          <!--<p class="sum" *ngIf="price == undefined; else elseBlock" >{{item.price}} €</p><ng-template  #elseBlock><p class="sum">{{price}} €</p></ng-template>
+          <p class="sum">{{price}}€</p>-->
+        </div>
+        <ng-template #meatProduct>
+          <p>Verwendung: {{item.usage_recommendations}}</p>
+          <ion-card-content class="ion-no-padding">
+            <ion-select class="ion-no-margin" (ionChange)="resetSubPartitionType()" interface="popover" placeholder="Aufteilung wählen" [(ngModel)]="selectedPartition">
+              <ion-select-option *ngFor="let part of item.partitions" [value]="part">{{part.name}}</ion-select-option>
+            </ion-select>
+          </ion-card-content>
+
+          <!-- Fleischaufteilungs-Inputs je nach Typ -->
+          <div *ngIf="selectedPartition">
+              <!-- Gewichtangabe -->
+            <ion-card-content *ngIf="selectedPartition.type === 0" class="partitionInput ion-no-padding">
+              <app-quantity-input [(ngModel)]="amount" [item]="item" unitLabel="kg" pin="false" snaps="true" min="0.1" max="10" steps="0.1"></app-quantity-input>
+            </ion-card-content>
+            <!-- Stückangabe -->
+            <ion-card-content *ngIf="selectedPartition.type === 1" class="partitionInput ion-no-padding">
+              <app-quantity-input [(ngModel)]="amount" [item]="item" unitLabel="Stück" pin="true" snaps="true" min="1" max="10" steps="1"></app-quantity-input>
+            </ion-card-content>
+            <!-- Gewichts- oder Stückangabe -->
+            <ion-card-content *ngIf="selectedPartition.type === 2" class="partitionInput ion-no-padding">
+              <ion-select class="ion-no-margin" interface="popover" placeholder="Einheit wählen" [(ngModel)]="selectedSubPartitionType">
+                <ion-select-option value="0">Gewichtangabe</ion-select-option>
+                <ion-select-option value="1">Stückangabe</ion-select-option>
+              </ion-select>
+            </ion-card-content>
+
+            <!-- TODO: Entweder Stückartikel (normal mit Stückangabe) oder Gewichtartikel als a. im Ganzen (normal Gewichtangabe) oder b. geschnitten - ebenfalls Gewichtangabe mit zusätzlichem Eingabefeld zur Erklärung, wie das Fleisch geschnitten werden soll -->
+
+            <!-- Gewicht-Teil -->
+            <ion-card-content *ngIf="selectedSubPartitionType == 0" class="partitionInput ion-no-padding">
+              <app-quantity-input [(ngModel)]="amount" [item]="item" unitLabel="kg" pin="false" snaps="true" [min]="selectedPartition.partition_weight/1000" max="10" [steps]="selectedPartition.partition_weight/1000"></app-quantity-input>
+            </ion-card-content>
+
+            <!-- Stück-Teil -->
+            <ion-card-content *ngIf="selectedSubPartitionType == 1" class="partitionInput ion-no-padding">
+              <app-quantity-input [(ngModel)]="amount" [item]="item" unitLabel="Stück" pin="true" snaps="true" min="1" max="10" steps="1"></app-quantity-input>
+            </ion-card-content>
+
+            <!-- Ja/Nein-Teil -->
+            <ion-card-content *ngIf="selectedPartition.type === 3" class="partitionInput ion-no-padding">
+              <ion-checkbox [(ngModel)]="partitionValue"></ion-checkbox>
+              <ion-label>{{selectedPartition.name}}</ion-label>
+            </ion-card-content>
           </div>
-        </ion-item>
+        </ng-template>
+
+        <ion-button class="addToCart" [disabled]="item.type === 1 && (!selectedPartition || (selectedPartition.type === 3 && !partitionValue))" (click)="addToCart()">In meinen Kühlschrank</ion-button>
 
       </ion-card-content>
     </ion-card>

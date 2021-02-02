@@ -3,7 +3,6 @@ import {AlertController, NavController} from '@ionic/angular';
 import {  MenuController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../global.service';
-import {isNumber} from 'util';
 import {StorageService} from '../storage.service';
 
 @Component({
@@ -33,7 +32,7 @@ export class LoginPage implements OnInit {
   private async silentLogin() {
     const t = this.global.getToken();
     const i = this.global.getId();
-    if (t != null && i != null && isNumber(i)) {
+    if (t != null && i != null) {
       const postData = new FormData();
       postData.append('token', t);
       postData.append('id', i.toString());
