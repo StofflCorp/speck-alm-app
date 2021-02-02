@@ -1,0 +1,26 @@
+.name{
+  width: 100%;
+  display: block;
+  text-align: left;
+  color: white;
+  font-size: 32px;
+  background:  var(--ion-color-sa-dark);
+  padding: 2% 2% 2% 2%;
+}
+.toolbar{
+  --background:  var(--ion-color-sa-dark);
+}
+.orderButton {
+  position: fixed;
+  left: 0;
+  bottom: 10px;
+  right: 0;
+  --background: var(--ion-color-sa-pink);
+}
+.image{
+   width: 20%;
+   border-radius: 100% !important;
+   overflow: hidden;
+   padding: 10px;
+ }
+
