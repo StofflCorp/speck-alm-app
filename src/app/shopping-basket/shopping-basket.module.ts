@@ -7,9 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { ShoppingBasketPageRoutingModule } from './shopping-basket-routing.module';
 
 import { ShoppingBasketPage } from './shopping-basket.page';
-import {ArticlesPage} from '../online-store/product-view/articles/articles.page';
-import {DetailedArticlePage} from '../online-store/product-view/detailed-article/detailed-article.page';
-
 
 @NgModule({
   imports: [

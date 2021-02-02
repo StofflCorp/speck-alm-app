@@ -6,11 +6,11 @@
 
 <ion-content id="yardStoreContent">
 
-  <img src="../../../assets/img/Info/HofladenHeader.jpg" id="headerImg">
+  <img [src]="'../../../assets/img/Info/HofladenHeader.jpg'" id="headerImg">
   <div class="information">
     <h5 class="title">Hofladen "total regional"</h5>
     <ion-card>
-      <img src="../../../assets/img/Info/yard-store/TotalRegional.jpg">
+      <img [src]="'../../../assets/img/Info/yard-store/TotalRegional.jpg'">
       <ion-card-content>
         Unsere hofeigenen Bio-Produkte gibt es im Hofladen "total regional" zum Mitnehmen.
         Mehrmals im Jahr gibt es auf Vorbestellung Bio-Frischfleisch vom Weideschwein, Kalb und Jungrind.
@@ -34,7 +34,7 @@
       <ion-card-content>
         <ion-slides [options]="slideOptsOne">
           <ion-slide *ngFor="let img of sliderImages" class="diashow">
-            <ion-img src="{{img}}"></ion-img>
+            <ion-img [src]="img"></ion-img>
           </ion-slide>
         </ion-slides>
         Alle unsere Produkte stammen aus eigener biologischer Landwirtschaft und werden am Hof zu den leckeren Köstlichkeiten verarbeitet.

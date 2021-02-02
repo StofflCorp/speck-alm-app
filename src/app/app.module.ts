@@ -10,12 +10,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {HomePageModule} from './home/home.module';
 import {HttpClientModule} from '@angular/common/http';
+import {CommonModule} from '@angular/common';
 import {CalendarService} from 'ion2-calendar/dist/services/calendar.service';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, HomePageModule],
+  imports: [BrowserModule, CommonModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, HomePageModule],
   providers: [
     StatusBar,
     SplashScreen,

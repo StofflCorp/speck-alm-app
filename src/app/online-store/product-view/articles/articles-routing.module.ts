@@ -7,7 +7,13 @@ const routes: Routes = [
 
   {
     path: '',
-    component: ArticlesPage
+    component: ArticlesPage,
+    children: [
+      {
+        path: '/:id',
+        loadChildren: () => import('../detailed-article/detailed-article.module').then( m => m.DetailedArticlePageModule)
+      }
+    ]
   }
 
 ];

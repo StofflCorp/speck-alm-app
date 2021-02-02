@@ -1,0 +1,37 @@
+.amountBar{
+  padding: 15px 0 10px 0;
+  margin: 0;
+  --height: 10pt;
+  --bar-background: var(--ion-color-sa-dark);
+  --knob-background: var(--ion-color-sa-pink);
+  --bar-background-active: var(--ion-color-sa-pink);
+  --pin-background: var(--ion-color-sa-pink);
+}
+.price{
+  font-size: 16px;
+  //display:inline;
+  color: var(--ion-color-sa-pink);
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+.sum{
+  font-size: 16px;
+  //display:inline;
+  color: var(--ion-color-sa-pink);
+  font-weight: bold;
+  margin: 00px 0px 5px 0px;
+  text-align: right ;
+}
+.inputHeader {
+  margin: 20px 10px 10px 10px;
+}
+ion-input {
+  border-bottom: 1px solid lightgray;
+  text-align: right;
+  padding: 10px;
+}
+td.inline {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}

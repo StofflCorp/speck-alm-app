@@ -1,23 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="title">Produkte</ion-title>
+    <ion-title class="title">{{articleCategory}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="information">
-    <ion-list>
+  <div class="information ion-align-items-center">
+    <ion-list *ngIf="products | async; else loading">
       <ion-tab-button *ngFor="let prod of (products | async)">
         <ion-card (click)="openModal(prod)">
           <table class="table">
-            <tr >
-              <td class="pictCol">
-                <ion-img class="picture" *ngIf="prod.image" src="https://speckalm.htl-perg.ac.at/r/storage/images/{{prod.image.savedFileName}}"></ion-img>
-              </td>
+            <tr>
+              <td class="pictCol" [style]="prod.image ? 'background-image: url(https://speckalm.htl-perg.ac.at/r/storage/images/'+prod.image.savedFileName+');' :
+                                                        'background-image: url(../../../assets/img/online-store/defaultArticle.jpg);'"></td>
               <td class="column">
-                <p class="productName">
-                  {{prod.name}}
-                </p>
+                <p class="productName">{{prod.name}}</p>
                 <ion-item-divider >noch ca. {{prod.stock}} Stk. übrig </ion-item-divider>
                 <p class="text" >{{prod.description}}</p>
               </td>
@@ -26,5 +23,8 @@
         </ion-card>
       </ion-tab-button>
     </ion-list>
+    <ng-template #loading class="ion-align-items-center">
+      <ion-spinner class="ion-align-self-center"></ion-spinner>
+    </ng-template>
   </div>
 </ion-content>

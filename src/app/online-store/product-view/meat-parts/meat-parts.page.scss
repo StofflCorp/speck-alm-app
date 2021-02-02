@@ -1,0 +1,54 @@
+#svgObj {
+  max-height: 80vh;
+  max-width: 80vw;
+  padding: 10vh 10vw;
+}
+#backArrow {
+  position: fixed;
+  top: 55px;
+  left: 0;
+}
+svg {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  position: absolute;
+  transform: translateY(-50%) translateX(0);
+  top: 50%;
+  transition: height 0.2s ease-out, transform 0.2s ease-out;
+}
+#svgContent.with-labels > svg {
+  height: 65%;
+  transform: translateY(-50%) translateX(20%);
+}
+#svgContent {
+  z-index: 1;
+  position: relative;
+}
+#labelingMenu {
+  --width: 160px;
+}
+#labelingMenuToggle {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 30px;
+  border-radius: 50%;
+  box-shadow: grey 1px 1px 7px;
+  margin: 10px;
+  padding: 6px;
+  height: 42px;
+  width: 42px;
+}
+#meatPartLabelList {
+  list-style-type: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 18px;
+}
+.meatPartLabel {
+  margin: 10px 0;
+  font-weight: bold;
+}
