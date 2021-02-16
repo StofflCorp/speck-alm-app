@@ -36,6 +36,11 @@
     height: 100%;
   }
 }
-ion-radio {
-  width: 0;
+ion-title {
+  color: white;
+  text-align: center;
+}
+
+ion-toolbar {
+  --background: var(--ion-color-sa-dark);
 }

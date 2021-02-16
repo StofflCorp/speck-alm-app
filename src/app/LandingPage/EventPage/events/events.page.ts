@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {EventModalPage} from '../event-modal/event-modal.page';
-import { MenuController, ModalController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../../../global.service';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({
   selector: 'app-events',
@@ -16,7 +16,7 @@ export class EventsPage implements OnInit {
   favItems = [];
   stop: boolean;
 
-  constructor(private mod: ModalController, public http: HttpClient, private global: GlobalService) {
+  constructor(private mod: ModalController, public http: HttpClient, private global: GlobalService, private localNotifications: LocalNotifications) {
     this.bol = true;
     this.clickedModal = true;
     this.stop = false;
@@ -107,7 +107,13 @@ export class EventsPage implements OnInit {
         postData.append('token', this.global.getToken());
         postData.append('event', item.id);
         this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/` + this.global.getId() + '/events', postData).subscribe();
-
+        // Push Notification:
+        this.localNotifications.schedule({
+          text: 'Event (' + item.name + ') steht morgen an!',
+          trigger: {at: ( new Date(new Date(item.day).getTime() - 3600))},
+          led: 'FF0000',
+          sound: null
+        });
       } else {
         const index = 0;
         for (let i of this.favItems) {
@@ -115,7 +121,7 @@ export class EventsPage implements OnInit {
              break;
           }
           i++;
-        }
+         }
         // @ts-ignore
         if (index !== -1) {
           this.favItems.splice(index, 1);
