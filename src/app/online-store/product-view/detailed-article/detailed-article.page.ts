@@ -11,7 +11,7 @@ import {HttpClient} from '@angular/common/http';
 export class DetailedArticlePage implements OnInit {
   item;
   amount: number;
-  price: number;
+  isEditMode = false;
 
   selectedPartition;
   selectedSubPartitionType;
@@ -22,43 +22,64 @@ export class DetailedArticlePage implements OnInit {
   }
 
   ngOnInit() {
-    this.amount = 1;
+    if (this.item.pivot) {
+        this.isEditMode = true;
+        this.amount = this.item.pivot.quantity;
+        if (this.item.type === 1) {
+          this.selectedPartition = this.item.partitions.filter((elem) => elem.id === this.item.selectedPartition.id)[0];
+          if (this.item.selectedPartition.type === 2) {
+            this.selectedSubPartitionType = this.item.pivot.partition_value.toString();
+          } else {
+            this.partitionValue = this.item.pivot.partition_value;
+          }
+          this.includeBone = this.item.pivot.include_bone;
+        }
+      } else {
+          this.amount = 1;
+      }
   }
   async closeModal() {
     await this.modalController.dismiss();
   }
 
-  async addToCart() {
-    if (this.amount === undefined) {
-      this.createAlert('Menge darf nicht leer sein!');
+  async submit() {
+    if (!this.amount) {
+      this.createAlert('Fehlerhafte Eingaben', 'Menge darf nicht leer sein!');
       return;
     }
-    const postData = new FormData();
-    postData.append('product', this.item.id);
-    postData.append('quantity', this.amount.toString());
-
+    const requestBody: {[k: string]: any} = {
+      quantity: this.amount.toString()
+    };
     if (this.item.type === 1) {
-      postData.append('partition_id', this.selectedPartition.id);
-      postData.append('partition_value', this.partitionValue);
-      if (this.item.bone_weight > 0) {
-        postData.append('include_bone', this.includeBone);
+      requestBody.partition_id = this.selectedPartition.id;
+      // Ist Fleischaufteilung eine Checkbox? partitionValue einsetzen. Ist es ein Gewichts-/Stückartikel mit Auswahl? 0 für Gewichtsangabe, 1 für Stückangabe einsetzen
+      requestBody.partition_value = this.selectedPartition.type === 3 ? this.partitionValue : this.selectedPartition.type === 2 ? this.selectedSubPartitionType : 0;
+      requestBody.include_bone = this.item.bone_weight > 0 ? this.includeBone : 0;
+    } else {
+      requestBody.product = this.item.id;
+    }
+
+    let response;
+    if (this.isEditMode) {
+      response = await this.http.put(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/${this.item.id}?token=${this.globalService.getToken()}`, requestBody).toPromise();
+      if (response.error) {
+        this.createAlert('Speichern fehlgeschlagen', response.error);
+      } else {
+        this.modalController.dismiss();
+      }
+    } else {
+      response = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.getToken()}`, requestBody).toPromise();
+      if (!response.error) {
+        this.createAlert('Warenkorb ergänzt', 'Produkt erfolgreich hinzugefügt.');
+      } else {
+        this.createAlert('Hinzufügen fehlgeschlagen',  response.error);
       }
     }
-
-    const response: any = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart?token=${this.globalService.getToken()}`, postData).toPromise();
-    // const response = this.dataService.addToCart(3, this.item.id, this.amount);
-    if (response.error === undefined ) {
-      this.createAlert('Produkt erfolgreich hinzugefügt.');
-    } else {
-      this.createAlert('Produkt ist bereits im Warenkorb. ');
-    }
-
   }
-  async createAlert(m: string) {
+  async createAlert(header: string, message: string) {
     const alert = await this.alertController.create({
-      header: 'Produkt zum Warenkorb hinzufügen',
-      message: m,
-
+      header,
+      message,
       buttons: [
         {
           text: 'Weiter einkaufen',
@@ -80,6 +101,10 @@ export class DetailedArticlePage implements OnInit {
     });
     await alert.present();
     await alert.onDidDismiss();
+  }
+
+  resetAmount() {
+    this.amount = 1;
   }
 
   resetSubPartitionType() {

@@ -5,34 +5,41 @@
 </ion-header>
 
 <ion-content>
-  <div>
-    <ion-list>
-      <ion-tab-button *ngFor="let cat of (results)">
+  <div class="shoppingCartContainer">
+    <ion-list *ngIf="results && results.length > 0" class="shoppingCartList">
+      <ion-tab-button *ngFor="let product of (results)">
           <ion-item-sliding>
-            <ion-item (click)="openModal(cat)">
-                <ion-avatar slot="start" *ngIf="cat.image">
-                    <img [src]="'https://speckalm.htl-perg.ac.at/r/storage/images/'+cat.image.savedFileName" alt="Artikel">
+            <ion-item (click)="openModal(product)">
+                <ion-avatar slot="start" *ngIf="product.image">
+                    <img [src]="'https://speckalm.htl-perg.ac.at/r/storage/images/'+product.image.savedFileName" alt="Artikel">
                 </ion-avatar>
                 <div style="width: 100%">
-                    {{cat.name}}
+                    {{product.name}}
                     <br/>
+                    <div *ngIf="product.selectedPartition" style="font-size: smaller; color: gray">
+                        {{product.selectedPartition.name}}
+                    </div>
                     <div style ="font-size: small">
                     Menge:
-                    {{cat.pivot.quantity}}
+                    {{product.pivot.quantity}}
                     </div>
                 </div>
-                <span style="text-align: right;width: 80px">{{cat.price*cat.pivot.quantity | number:'1.2-2'}} €</span>
+                <span style="text-align: right;width: 80px">{{product.price*(product.selectedPartition && product.selectedPartition.type == 2 ? product.selectedPartition.partition_weight/1000*product.pivot.quantity : product.pivot.quantity) | number:'1.2-2'}} €</span>
             </ion-item>
-              <ion-item-options side ="end">
-                  <ion-button color ="danger" (click)="deleteArticle(cat.id)">
+              <ion-item-options side ="end" class="deleteSlidingOptions">
+                  <ion-button color ="danger" (click)="deleteArticle(product.id)">
                       <ion-icon name="trash"></ion-icon>
                   </ion-button>
               </ion-item-options>
           </ion-item-sliding>
       </ion-tab-button>
     </ion-list>
-      <div class="center">
-          <ion-button class="orderButton" (click)="openOrderModal()">Abholzeitraum wählen</ion-button>
-      </div>
+    <div class="center" *ngIf="results && results.length > 0">
+      <ion-button class="orderButton theme-bg" (click)="openOrderModal()">Abholzeitraum wählen</ion-button>
+    </div>
+    <div class="ion-text-center ion-padding-top ion-margin-top" *ngIf="!results || results.length == 0">
+        <p class="ion-text-center">Nichts hier!</p>
+        <ion-button class="theme-bg" (click)="toOnlineStore()">Bestelliste ansehen</ion-button>
+    </div>
   </div>
 </ion-content>

@@ -1,3 +1,14 @@
+.shoppingCartContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+    height: 100%;
+    justify-content: space-between;
+}
+.shoppingCartList {
+    display: flex;
+    flex-flow: column;
+}
 .image{
     width: 20%;
     border-radius: 100% !important;
@@ -13,9 +24,23 @@
     max-height: 0 !important;
 }
 .orderButton {
-    position: fixed;
-    left: 0;
-    bottom: 10px;
-    right: 0;
+    display: block;
+    margin: 4px;
+}
+.theme-bg {
     --background: var(--ion-color-sa-pink);
+}
+.deleteSlidingOptions {
+    width: 18% !important;
+    align-items: center;
+    justify-content: center;
+}
+ion-tab-button {
+    --padding-start: 0;
+    --padding-end: 0;
+    max-width: inherit;
+}
+ion-item {
+    --inner-padding-top: 5px;
+    --inner-padding-bottom: 5px;
 }
