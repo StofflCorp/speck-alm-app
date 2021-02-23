@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import { GlobalService } from '../global.service';
 import {StorageService} from '../storage.service';
 
+
 @Component({
   selector: 'app-sa-navigation',
   templateUrl: './sa-navigation.component.html',
@@ -18,9 +19,13 @@ export class SaNavigationComponent implements OnInit {
     srcClosed: '../../assets/img/ZuaIsBanner.jpg'
   };
 
-  constructor(public navCtrl: NavController, private menu: MenuController, private router: Router, private global: GlobalService, private storage: StorageService) {}
+  constructor(public navCtrl: NavController, private menu: MenuController, private router: Router, private global: GlobalService, private storage: StorageService) {
 
-  ngOnInit() {}
+  }
+
+  ngOnInit() {
+
+  }
 
   navigate(page: string) {
     if (page === 'login') {
