@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {GlobalService} from '../global.service';
 import {HttpClient} from '@angular/common/http';
-import {ModalController, NavController} from "@ionic/angular";
-import {DetailedArticlePage} from "../online-store/product-view/detailed-article/detailed-article.page";
-import {ShowOrderPage} from "./show-order/show-order.page";
-
+import {ModalController, NavController} from '@ionic/angular';
+import {ShowOrderPage} from './show-order/show-order.page';
 
 @Component({
   selector: 'app-statistics',
@@ -16,10 +14,14 @@ export class StatisticsPage implements OnInit {
   orders: any;
   currentOrders: any;
   statistics: any;
+
+  statisticColors: string[];
+
   url = 'https://speckalm.htl-perg.ac.at/r/api/users/';
   constructor(private modalController: ModalController, private service: GlobalService, private http: HttpClient, private navCtr: NavController) { }
 
   ngOnInit() {
+      this.statisticColors = ['#00acd4', '#E14575', '#6aba01'];
       this.http.get(this.url + this.service.getId() + '?token=' + this.service.getToken()).subscribe(
           u => this.user = u
       );
@@ -29,7 +31,7 @@ export class StatisticsPage implements OnInit {
       this.http.get(this.url + this.service.getId() + '/preparingOrders?token=' + this.service.getToken()).subscribe(
           o => this.currentOrders = o
       );
-      this.http.get(this.url +this.service.getId()+'/statistics?token=' + this.service.getToken()).subscribe(
+      this.http.get(this.url + this.service.getId() + '/statistics?token=' + this.service.getToken()).subscribe(
           o => this.statistics = o
       );
   }

@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar class="toolbar">
       <label class="name">Meine Statistiken</label>
 
@@ -24,10 +24,10 @@
 </ion-header>
 
 <ion-content>
-    <ion-slides pager="true">
+    <ion-slides pager="true" class="fullheight">
         <ion-slide>
-            <div class="width">
-                <p *ngIf="currentOrders != undefined" class="Orders">Aktuelle Bestellungen</p>
+            <div class="fullwidth">
+                <p *ngIf="currentOrders" class="orders">Aktuelle Bestellungen</p>
                 <ion-list class="list">
                     <ion-tab-button class="item" *ngFor="let order of currentOrders">
                         <ion-item-sliding >
@@ -46,7 +46,7 @@
                         </ion-item-sliding>
                     </ion-tab-button>
                 </ion-list>
-                <p *ngIf="orders != undefined" class="Orders">Frühere Bestellungen</p>
+                <p *ngIf="orders" class="orders">Frühere Bestellungen</p>
                 <ion-list class="list">
                     <ion-tab-button class="item" *ngFor="let order of orders">
                         <ion-item-sliding >
@@ -70,33 +70,12 @@
         </ion-slide>
 
         <ion-slide>
-            <ion-item class="width">
-                <table class="tableStats" *ngIf="statistics != undefined">
-                    <tr>
-                        <td class="tableColumn">
-                            <ion-item class="greenStat">
-                                {{statistics[0].name}}
-                                {{statistics[0].value}}
-                            </ion-item>
-
-                        </td>
-                        <td class="tableColumn">
-                            <ion-item class="redStat">
-                                {{statistics[1].name}}
-                                {{statistics[1].value}}
-                            </ion-item>
-                        </td>
-                    </tr>
-                    <tr style="text-align:center;">
-                        <td colspan="2" class="tableColumn" >
-                            <ion-item class="pinkStat">
-                                {{statistics[2].name}}
-                                {{statistics[1].value}}
-                            </ion-item>
-                        </td>
-                    </tr>
-                </table>
-            </ion-item>
+            <div class="tableStats">
+                <div *ngFor="let s of statistics; index as i" [style]="'background-color: ' + statisticColors[i]" class="statistic">
+                    <div class="statistic-name">{{s.name}}</div>
+                    <div class="statistic-value">{{s.value}}</div>
+                </div>
+            </div>
         </ion-slide>
 
     </ion-slides>
