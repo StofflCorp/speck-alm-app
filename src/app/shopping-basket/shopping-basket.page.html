@@ -37,7 +37,7 @@
     <div class="center" *ngIf="results && results.length > 0">
       <ion-button class="orderButton theme-bg" (click)="openOrderModal()">Abholzeitraum wählen</ion-button>
     </div>
-    <div class="ion-text-center ion-padding-top ion-margin-top" *ngIf="!results || results.length == 0">
+    <div class="ion-text-center ion-margin-bottom nothingHere" *ngIf="!results || results.length == 0">
         <p class="ion-text-center">Nichts hier!</p>
         <ion-button class="theme-bg" (click)="toOnlineStore()">Bestelliste ansehen</ion-button>
     </div>
