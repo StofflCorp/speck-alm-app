@@ -3,6 +3,7 @@ import {EventModalPage} from '../event-modal/event-modal.page';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../../../global.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import {ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-events',
