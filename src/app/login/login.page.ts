@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
   private async silentLogin() {
     const t = this.global.getToken();
     const i = this.global.getId();
-    if (t != null && i != null) {
+    if (t && i) {
       const postData = new FormData();
       postData.append('token', t);
       postData.append('id', i.toString());
