@@ -77,5 +77,45 @@
 }
 .item{
   padding: 0%;
-  margin: 0%;
+  margin: auto;
+}
+
+.greenStat{
+  --background: var(--ion-color-sa-green);
+  padding: 2%;
+  hight: 80%;
+  width: 80%;
+  border-radius: 30px;
+  margin: auto;
+}
+.redStat{
+  --background: var(--ion-color-danger);
+  padding: 2%;
+  hight: 80%;
+  width: 80%;
+  border-radius: 30px;
+  margin: auto;
+}
+.pinkStat{
+  --background:  var(--ion-color-sa-pink);
+  padding: 1%;
+  hight: 50%;
+  width: 50%;
+  border-radius: 30px;
+  margin: auto;
+}
+
+.tableColumn{
+  text-align: center;
+
+}
+.tableStats{
+  text-align: center;
+  display: table;
+  width: 100%;
+  height: 100%;
+  margin: 2% 2% 2% 2%;
+}
+.width{
+  width: 100%;
 }

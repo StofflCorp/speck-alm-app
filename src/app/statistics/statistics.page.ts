@@ -5,6 +5,7 @@ import {ModalController, NavController} from "@ionic/angular";
 import {DetailedArticlePage} from "../online-store/product-view/detailed-article/detailed-article.page";
 import {ShowOrderPage} from "./show-order/show-order.page";
 
+
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.page.html',
@@ -14,6 +15,7 @@ export class StatisticsPage implements OnInit {
   user: any;
   orders: any;
   currentOrders: any;
+  statistics: any;
   url = 'https://speckalm.htl-perg.ac.at/r/api/users/';
   constructor(private modalController: ModalController, private service: GlobalService, private http: HttpClient, private navCtr: NavController) { }
 
@@ -22,12 +24,13 @@ export class StatisticsPage implements OnInit {
           u => this.user = u
       );
       this.http.get(this.url + this.service.getId() + '/latestOrders?token=' + this.service.getToken()).subscribe(
-          o => (this.orders = o
-          )
+          o => this.orders = o
       );
       this.http.get(this.url + this.service.getId() + '/preparingOrders?token=' + this.service.getToken()).subscribe(
-          o => (this.currentOrders = o
-          )
+          o => this.currentOrders = o
+      );
+      this.http.get(this.url +this.service.getId()+'/statistics?token=' + this.service.getToken()).subscribe(
+          o => this.statistics = o
       );
   }
 
@@ -37,7 +40,6 @@ export class StatisticsPage implements OnInit {
 
 
   async openModal(i) {
-      console.log("Arrived")
       const modal = await this.modalController.create({
           component: ShowOrderPage,
           componentProps: {

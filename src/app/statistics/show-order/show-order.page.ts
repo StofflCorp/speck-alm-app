@@ -11,14 +11,13 @@ import {HttpClient} from "@angular/common/http";
 export class ShowOrderPage implements OnInit {
   order;
   products: any;
-  url = 'https://speckalm.htl-perg.ac.at/r/api/orders/';
+  statistics: any;
+  url = 'https://speckalm.htl-perg.ac.at/r/api/';
   constructor(private modalController: ModalController, private service: GlobalService, private http: HttpClient) { }
 
   ngOnInit() {
-
-    this.http.get(this.url + this.order.id + '/products?token=' + this.service.getToken()).subscribe(
-        o => (this.products = o
-        )
+    this.http.get(this.url+'orders/' + this.order.id + '/products?token=' + this.service.getToken()).subscribe(
+        o => (this.products = o )
     );
   }
   async closeModal() {

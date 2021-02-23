@@ -24,43 +24,80 @@
 </ion-header>
 
 <ion-content>
-    <p *ngIf="currentOrders != undefined" class="Orders">Aktuelle Bestellungen</p>
-    <ion-list class="list">
-        <ion-tab-button class="item" *ngFor="let order of currentOrders">
-            <ion-item-sliding >
-                <ion-item  (click)="openModal(order)">
-                    <div style="width: 100%">
-                        {{order.created_at| date: 'dd.MM.yyyy'}}
-                        <br/>
-                        <div style ="font-size: small">
-                            Produkte:
-                            {{order.products_count}}
-                        </div>
-                    </div>
+    <ion-slides pager="true">
+        <ion-slide>
+            <div class="width">
+                <p *ngIf="currentOrders != undefined" class="Orders">Aktuelle Bestellungen</p>
+                <ion-list class="list">
+                    <ion-tab-button class="item" *ngFor="let order of currentOrders">
+                        <ion-item-sliding >
+                            <ion-item  (click)="openModal(order)">
+                                <div style="width: 100%">
+                                    {{order.created_at| date: 'dd.MM.yyyy'}}
+                                    <br/>
+                                    <div style ="font-size: small">
+                                        Produkte:
+                                        {{order.products_count}}
+                                    </div>
+                                </div>
 
-                    <span style="text-align: right;width: 80px">{{order.price_sum | number:'1.2-2'}} €</span>
-                </ion-item>
-            </ion-item-sliding>
-        </ion-tab-button>
-    </ion-list>
-    <p *ngIf="orders != undefined" class="Orders">Frühere Bestellungen</p>
-    <ion-list class="list">
-        <ion-tab-button class="item" *ngFor="let order of orders">
-            <ion-item-sliding >
-                <ion-item  (click)="openModal(order)">
-                    <div style="width: 100%">
-                        {{order.created_at| date: 'dd.MM.yyyy'}}
-                        <br/>
-                        <div style ="font-size: small">
-                            Produkte:
-                            {{order.products_count}}
-                        </div>
-                    </div>
+                                <span style="text-align: right;width: 80px">{{order.price_sum | number:'1.2-2'}} €</span>
+                            </ion-item>
+                        </ion-item-sliding>
+                    </ion-tab-button>
+                </ion-list>
+                <p *ngIf="orders != undefined" class="Orders">Frühere Bestellungen</p>
+                <ion-list class="list">
+                    <ion-tab-button class="item" *ngFor="let order of orders">
+                        <ion-item-sliding >
+                            <ion-item  (click)="openModal(order)">
+                                <div style="width: 100%">
+                                    {{order.created_at| date: 'dd.MM.yyyy'}}
+                                    <br/>
+                                    <div style ="font-size: small">
+                                        Produkte:
+                                        {{order.products_count}}
+                                    </div>
+                                </div>
 
-                    <span style="text-align: right;width: 80px">{{order.price_sum | number:'1.2-2'}} €</span>
-                </ion-item>
-            </ion-item-sliding>
-        </ion-tab-button>
-    </ion-list>
+                                <span style="text-align: right;width: 80px">{{order.price_sum | number:'1.2-2'}} €</span>
+                            </ion-item>
+                        </ion-item-sliding>
+                    </ion-tab-button>
+                </ion-list>
+            </div>
 
+        </ion-slide>
+
+        <ion-slide>
+            <ion-item class="width">
+                <table class="tableStats" *ngIf="statistics != undefined">
+                    <tr>
+                        <td class="tableColumn">
+                            <ion-item class="greenStat">
+                                {{statistics[0].name}}
+                                {{statistics[0].value}}
+                            </ion-item>
+
+                        </td>
+                        <td class="tableColumn">
+                            <ion-item class="redStat">
+                                {{statistics[1].name}}
+                                {{statistics[1].value}}
+                            </ion-item>
+                        </td>
+                    </tr>
+                    <tr style="text-align:center;">
+                        <td colspan="2" class="tableColumn" >
+                            <ion-item class="pinkStat">
+                                {{statistics[2].name}}
+                                {{statistics[1].value}}
+                            </ion-item>
+                        </td>
+                    </tr>
+                </table>
+            </ion-item>
+        </ion-slide>
+
+    </ion-slides>
 </ion-content>
