@@ -20,13 +20,12 @@ export class QuantityInputComponent implements ControlValueAccessor {
   @Input() steps: number;
   @Input() pin: boolean;
   @Input() snaps: boolean;
+  @Input() pricePerUnit: number;
   amount: number;
 
   get value(): number { return this.amount; }
   set value(v: number) {
-    if (this.amount !== v) {
-      this.writeValue(+v.toFixed(2));
-    }
+    this.writeValue(+v.toFixed(2));
   }
 
   writeValue(obj: number): void {
@@ -41,6 +40,10 @@ export class QuantityInputComponent implements ControlValueAccessor {
 
   minOf(n1: number, n2: number) {
     return n1 < n2 ? n1 : n2;
+  }
+
+  amountChanged(val) {
+    this.value = val;
   }
 
   formatNumber(e: any) {
