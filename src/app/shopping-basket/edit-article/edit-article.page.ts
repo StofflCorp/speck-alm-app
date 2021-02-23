@@ -20,7 +20,7 @@ export class EditArticlePage implements OnInit {
   async closeModal() {
     await this.modalController.dismiss();
   }
-  async editAmount(){
+  async editAmount() {
     const putData = new FormData();
     putData.append('quantity', this.amount.toString());
     const response: any = await this.http.put(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/${this.item.id}?token=${this.globalService.getToken()}&quantity=${this.amount}`, putData).toPromise();

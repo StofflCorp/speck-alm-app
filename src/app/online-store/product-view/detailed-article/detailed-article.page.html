@@ -14,15 +14,14 @@
         <br/>
 
         <div *ngIf="item.type == 0; else meatProduct">
-          <!--<p class="status"*ngIf="item.status == 'in_stock'; else elseBlock" >Vorrätig</p><ng-template  #elseBlock><p class="status">Ausverkauft</p></ng-template>-->
           <app-quantity-input [(ngModel)]="amount" [item]="item" unitLabel="Stück" pin="true" snaps="true" min="1" max="10" steps="1"></app-quantity-input>
           <p class="status"  *ngIf="item.status == 'in_stock'; else elseBlockState" >Vorrätig</p><ng-template  #elseBlockState><p class="status">Ausverkauft</p></ng-template>
 
-          <!--<p class="sum" *ngIf="price == undefined; else elseBlock" >{{item.price}} €</p><ng-template  #elseBlock><p class="sum">{{price}} €</p></ng-template>
-          <p class="sum">{{price}}€</p>-->
         </div>
         <ng-template #meatProduct>
+          <br/>
           <p>Verwendung: {{item.usage_recommendations}}</p>
+          <br/>
           <ion-card-content class="ion-no-padding">
             <ion-select class="ion-no-margin" (ionChange)="resetSubPartitionType()" interface="popover" placeholder="Aufteilung wählen" [(ngModel)]="selectedPartition">
               <ion-select-option *ngFor="let part of item.partitions" [value]="part">{{part.name}}</ion-select-option>
@@ -41,7 +40,7 @@
             </ion-card-content>
             <!-- Gewichts- oder Stückangabe -->
             <ion-card-content *ngIf="selectedPartition.type === 2" class="partitionInput ion-no-padding">
-              <ion-select class="ion-no-margin" interface="popover" placeholder="Einheit wählen" [(ngModel)]="selectedSubPartitionType">
+              <ion-select class="ion-no-margin" (ionChange)="resetAmount()" interface="popover" placeholder="Einheit wählen" [(ngModel)]="selectedSubPartitionType">
                 <ion-select-option value="0">Gewichtangabe</ion-select-option>
                 <ion-select-option value="1">Stückangabe</ion-select-option>
               </ion-select>
@@ -56,7 +55,7 @@
 
             <!-- Stück-Teil -->
             <ion-card-content *ngIf="selectedSubPartitionType == 1" class="partitionInput ion-no-padding">
-              <app-quantity-input [(ngModel)]="amount" [item]="item" unitLabel="Stück" pin="true" snaps="true" min="1" max="10" steps="1"></app-quantity-input>
+              <app-quantity-input [(ngModel)]="amount" [item]="item" [pricePerUnit]="selectedPartition.partition_weight/1000*item.price" unitLabel="Stück" pin="true" snaps="true" min="1" max="10" steps="1"></app-quantity-input>
             </ion-card-content>
 
             <!-- Ja/Nein-Teil -->
@@ -64,10 +63,15 @@
               <ion-checkbox [(ngModel)]="partitionValue"></ion-checkbox>
               <ion-label>{{selectedPartition.name}}</ion-label>
             </ion-card-content>
+
+            <ion-card-content *ngIf="item.bone_weight > 0">
+              <ion-checkbox [(ngModel)]="includeBone"></ion-checkbox>
+              <ion-label>Gewicht inklusive Knochen</ion-label>
+            </ion-card-content>
           </div>
         </ng-template>
 
-        <ion-button class="addToCart" [disabled]="item.type === 1 && (!selectedPartition || (selectedPartition.type === 3 && !partitionValue))" (click)="addToCart()">In meinen Kühlschrank</ion-button>
+        <ion-button class="addToCart" [disabled]="item.type === 1 && (!selectedPartition || (selectedPartition.type === 3 && !partitionValue))" (click)="submit()">{{isEditMode ? 'Speichern' : 'In meinen Kühlschrank'}}</ion-button>
 
       </ion-card-content>
     </ion-card>
