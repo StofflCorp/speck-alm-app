@@ -33,7 +33,6 @@ export class LoginPage implements OnInit {
     const t = this.global.getToken();
     const i = this.global.getId();
     if (t && i) {
-      console.log('Sending request');
       const postData = new FormData();
       postData.append('token', t);
       postData.append('id', i.toString());
