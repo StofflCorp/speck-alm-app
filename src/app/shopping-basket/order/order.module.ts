@@ -9,7 +9,6 @@ import { OrderPageRoutingModule } from './order-routing.module';
 import { OrderPage } from './order.page';
 
 import {NgCalendarModule} from 'ionic2-calendar';
-import {CalendarModule} from 'ion2-calendar';
 
 @NgModule({
   imports: [
@@ -17,8 +16,7 @@ import {CalendarModule} from 'ion2-calendar';
     FormsModule,
     IonicModule,
     OrderPageRoutingModule,
-    NgCalendarModule,
-    CalendarModule
+    NgCalendarModule
   ],
   declarations: [OrderPage],
 })

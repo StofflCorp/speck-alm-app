@@ -40,6 +40,7 @@ ion-card{
   width: 100%;
   border-radius: 20px;
 }
+
 ion-item-divider{
   margin: 00px 00px 00px 00px;
   padding: 00px 00px 00px 00px;
@@ -48,4 +49,22 @@ ion-item-divider{
 ion-spinner {
   margin: 20px auto;
   display: block;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+
+  ion-tab-button{
+    width: 400px;
+    max-width: 400px;
+  }
+
+  ion-card{
+    width: 100%;
+  }
+
+  .pictCol{
+    height: 180px;
+    width: 150px;
+  }
 }

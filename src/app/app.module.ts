@@ -11,9 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import {HomePageModule} from './home/home.module';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
-import {CalendarService} from 'ion2-calendar/dist/services/calendar.service';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
-
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,9 +19,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
   providers: [
     StatusBar,
     SplashScreen,
-    CalendarService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    LocalNotifications
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
