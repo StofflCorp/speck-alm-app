@@ -55,9 +55,8 @@ export class DetailedArticlePage implements OnInit {
       // Ist Fleischaufteilung eine Checkbox? partitionValue einsetzen. Ist es ein Gewichts-/Stückartikel mit Auswahl? 0 für Gewichtsangabe, 1 für Stückangabe einsetzen
       requestBody.partition_value = this.selectedPartition.type === 3 ? this.partitionValue : this.selectedPartition.type === 2 ? this.selectedSubPartitionType : 0;
       requestBody.include_bone = this.item.bone_weight > 0 ? this.includeBone : 0;
-    } else {
-      requestBody.product = this.item.id;
     }
+    requestBody.product = this.item.id;
 
     let response;
     if (this.isEditMode) {
