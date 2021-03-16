@@ -12,6 +12,7 @@ export class WeatherPage implements OnInit {
   constructor(private http: HttpClient) {
     this.getWeather().then(data => {
       this.weather = data;
+      console.log(data);
     });
   }
 
@@ -24,6 +25,10 @@ export class WeatherPage implements OnInit {
         console.log(err);
       });
     });
+  }
+  getString(weatherName: string){
+    //console.log(weatherName.substring(0,weatherName.length-1))
+    return "../../../assets/img/weather/"+weatherName.substring(0,weatherName.length-1)+".png"
   }
 
   toDate(weather: any) {

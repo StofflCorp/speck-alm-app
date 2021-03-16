@@ -14,24 +14,26 @@
             <p class="description">{{weather.current.weather[0].description}}</p>
             <table class="table">
               <tr>
-                <td><img src="https://img.icons8.com/ios/32/000000/windsock.png"/> </td>
+                <td><img  src="https://img.icons8.com/ios/32/000000/windsock.png"/> </td>
                 <td> {{weather.current.wind_speed|number:'1.2-2'}} km/h</td>
               </tr>
             </table>
           </td>
           <td class="pictureTD">
-
-            <ion-img class="picture"  id="currentPicture" src="http://openweathermap.org/img/wn/{{weather.current.weather[0].icon}}.png"></ion-img>
+            <ion-img class="picture"  id="currentPicture" src="{{getString(weather.current.weather[0].icon)}}"></ion-img>
           </td>
         </table>
       </td>
     </tr>
     <tr class="forecastTr">
       <td class="forecast"  *ngFor="let day of (weather.daily) | slice:1:4">
-        <p class="day">{{ toDate(day)}}<br></p>
-        {{day.temp.min|number : '1.0-0'}}° / {{day.temp.max|number : '1.0-0'}}°<br>
-        <ion-img id="forcastPicture" src="http://openweathermap.org/img/wn/{{day.weather[0].icon}}.png"></ion-img>
-        {{day.weather[0].description}}
+        <div><p class="day">{{ toDate(day)}}<br></p>
+          <p>{{day.temp.min|number : '1.0-0'}}° / {{day.temp.max|number : '1.0-0'}}°</p>
+        </div>
+
+        <ion-img class="forecastPicture" src="{{getString(day.weather[0].icon)}}"></ion-img>
+
+        <p>{{day.weather[0].description}}</p>
       </td>
     </tr>
   </table>
