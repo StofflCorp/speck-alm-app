@@ -137,7 +137,12 @@
   padding: 2% 3% 5% 3%;
 }
 .fullwidth{ width: 100% }
-.fullheight { height: 100% }
+.fullheight { //height: 100%
+   }
 ion-slide {
   align-items: baseline;
+}
+.productDiv{
+  font-size: small;
+  color: grey;
 }

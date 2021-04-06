@@ -19,7 +19,7 @@ export class WeatherPage implements OnInit {
 
   getWeather() {
     return new Promise(resolve => {
-      this.http.get('http://api.openweathermap.org/data/2.5/onecall?appid=6fa85161c8e45f86ad7115fe57191026&lat=48.253109&lon=14.831470&units=Metric&exclude=minutely,hourly&lang=DE').subscribe(data => {
+      this.http.get('https://api.openweathermap.org/data/2.5/onecall?appid=6fa85161c8e45f86ad7115fe57191026&lat=48.253109&lon=14.831470&units=Metric&exclude=minutely,hourly&lang=DE').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
