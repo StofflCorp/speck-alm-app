@@ -23,4 +23,21 @@
    overflow: hidden;
    padding: 10px;
  }
-
+.divPickup{
+  overflow: hidden;
+}
+.PickupTag{
+  float: left;
+  margin: 5% 2% 2% 2%;
+}
+.Pickup{
+  float: right;
+  margin: 5% 2% 2% 2%;
+}
+.products{
+  font-size: large;
+  color: var(--ion-color-sa-pink);
+  font-weight: bold;
+  margin: 2% 2% 2% 2%;
+  padding: 0% 0% 0%0%;
+}

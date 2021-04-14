@@ -5,7 +5,7 @@
         Bestellung
         <br/>
         <div style ="font-size: small">
-          vom: {{order.created_at| date: 'dd.MM.yyyy'}}
+          vom: {{order.created_at| date: 'dd.MM.yyyyTHH:mm'}}
         </div>
       </div>
     </ion-title>
@@ -16,10 +16,15 @@
   <ion-button slot="end" (click) = "closeModal()">
     <ion-icon slot = "icon-only" name="close"></ion-icon>
   </ion-button>
+  <div style="overflow: hidden" *ngIf="order.status != 'finished'">
+      <p class="PickupTag">Abholzeitpukt:</p>
+      <p class="Pickup">{{order.pickup_date}}</p>
+  </div>
+  <p class="products">Produkte</p>
   <ion-list>
     <ion-item *ngFor="let product of (products)">
       <ion-item-sliding>
-        <ion-item >
+        <ion-item>
           <ion-avatar slot="start" *ngIf="product.image">
             <img src="https://speckalm.htl-perg.ac.at/r/storage/images/{{product.image.savedFileName}}" alt="Artikel">
           </ion-avatar>
@@ -41,7 +46,7 @@
       </ion-item-sliding>
     </ion-item>
   </ion-list>
-  <div class="center">
-    <ion-button class="orderButton" >Zum Warenkorb hinzufügen</ion-button>
+  <div class="center" *ngIf="order.status == 'finished'">
+    <ion-button class="orderButton" (click)="addToBasket()" >Zum Warenkorb hinzufügen</ion-button>
   </div>
 </ion-content>
