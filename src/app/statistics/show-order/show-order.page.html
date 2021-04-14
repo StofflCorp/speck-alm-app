@@ -5,7 +5,7 @@
         Bestellung
         <br/>
         <div style ="font-size: small">
-          vom: {{order.created_at| date: 'dd.MM.yyyyTHH:mm'}}
+          Erstellt am: {{order.created_at| date: 'dd.MM.yyyy HH:mm'}}
         </div>
       </div>
     </ion-title>
@@ -18,7 +18,7 @@
   </ion-button>
   <div style="overflow: hidden" *ngIf="order.status != 'finished'">
       <p class="PickupTag">Abholzeitpukt:</p>
-      <p class="Pickup">{{order.pickup_date}}</p>
+      <p class="Pickup">{{order.pickup_date | date: 'dd.MM.yy, HH:mm'}}</p>
   </div>
   <p class="products">Produkte</p>
   <ion-list>
