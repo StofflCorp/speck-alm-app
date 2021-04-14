@@ -125,6 +125,14 @@
   text-align: right;
   z-index: 1;
 }
+.statistic-value.long {
+  font-size: xx-large;
+  margin-bottom: 10px;
+}
+.statistic-value.x-long {
+  font-size: x-large;
+  margin-bottom: 20px;
+}
 .tableStats{
   text-align: center;
   color: white;
@@ -140,4 +148,5 @@
 .fullheight { height: 100% }
 ion-slide {
   align-items: baseline;
+  height: auto;
 }

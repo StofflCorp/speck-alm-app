@@ -24,7 +24,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-slides pager="true" class="fullheight">
+    <ion-slides pager="true" class="ion-padding-bottom">
         <ion-slide>
             <div class="fullwidth">
                 <p *ngIf="currentOrders" class="orders">Aktuelle Bestellungen</p>
@@ -73,7 +73,7 @@
             <div class="tableStats">
                 <div *ngFor="let s of statistics; index as i" [style]="'background-color: ' + statisticColors[i]" class="statistic">
                     <div class="statistic-name">{{s.name}}</div>
-                    <div class="statistic-value">{{s.value}}</div>
+                    <div class="statistic-value" [ngClass]="s.value.length > 8 ? 'x-long' : s.value.length > 5 ? 'long' : ''">{{s.value}}</div>
                 </div>
             </div>
         </ion-slide>
