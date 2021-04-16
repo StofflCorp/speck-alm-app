@@ -40,7 +40,6 @@ export class StatisticsPage implements OnInit {
     this.navCtr.navigateRoot('shopping-basket');
   }
 
-
   async openModal(i) {
       const modal = await this.modalController.create({
           component: ShowOrderPage,

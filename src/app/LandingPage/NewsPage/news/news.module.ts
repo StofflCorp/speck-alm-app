@@ -16,7 +16,7 @@ import { ModalPage } from '../modal/modal.page';
     IonicModule,
     NewsPageRoutingModule
   ],
-  declarations: [NewsPage],
+  declarations: [NewsPage, ModalPage],
   entryComponents: [ModalPage]
 })
 export class NewsPageModule {}

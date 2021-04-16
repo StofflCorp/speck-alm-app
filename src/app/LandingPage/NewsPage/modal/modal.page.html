@@ -1,6 +1,6 @@
 <ion-content>
 
-  <ion-img [src]="'../../../assets/img/News/logoo.jpg'"></ion-img>
+  <ion-img [src]="'https://speckalm.htl-perg.ac.at/r/storage/images/'+item.image.savedFileName"></ion-img>
 
   <ion-header>
     <ion-toolbar>
@@ -9,7 +9,7 @@
   </ion-header>
 
   <ion-card-content>
-    <ion-label>{{item.description}}</ion-label>
+    <ion-label [innerHTML]="item.description"></ion-label>
   </ion-card-content>
 
   <ion-toolbar class="bottomClass">
