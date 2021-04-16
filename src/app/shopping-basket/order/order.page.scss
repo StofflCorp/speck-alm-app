@@ -19,3 +19,14 @@
   right: 0;
   --background: var(--ion-color-sa-pink);
 }
+.month {
+  color: var(--ion-color-sa-green);
+  padding: 5px 20px;
+  font-weight: bold;
+}
+
+.div{
+  display: flex;
+  align-items: center;
+  overflow: hidden
+}
