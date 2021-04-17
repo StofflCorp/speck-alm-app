@@ -16,11 +16,7 @@
   border: 2px var(--ion-color-sa-pink);
 }
 .current{
-  position: relative;
-  margin: 0;
-  top: 50%;
-
-  transform: translateY(-70%);
+  vertical-align: middle;
 }
 
 .row{

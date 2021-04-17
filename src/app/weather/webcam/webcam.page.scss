@@ -1,8 +1,12 @@
 @import "../weather.page";
 #iframe{
-  margin: 0 auto;
+  margin: auto;
   display: block;
-  width: 95% ;
-  height: 100%;
+  width: 95%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border: none;
 }
