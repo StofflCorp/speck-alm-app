@@ -49,7 +49,7 @@
                 <p *ngIf="orders" class="orders">Frühere Bestellungen</p>
                 <ion-list class="list">
                     <ion-tab-button class="item" *ngFor="let order of orders">
-                        <ion-item-sliding >
+                        <ion-item-sliding>
                             <ion-item  (click)="openModal(order)">
                                 <div style="width: 100%">
                                     {{order.pickup_date| date: 'dd.MM.yyyy'}}

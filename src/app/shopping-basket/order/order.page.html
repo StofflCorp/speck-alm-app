@@ -6,6 +6,7 @@
 
 <ion-content>
   <div class="ion-padding">
+    <ion-input class="month" [readonly]="true" [(ngModel)]="dateString"></ion-input>
       <calendar
               [calendarMode]="calendar.mode"
               [currentDate]="calendar.currentDate"
@@ -17,6 +18,11 @@
               startingDayWeek="1"
               >
     </calendar>
+    <div class="div">
+      <p >Abholzeitpukt:</p>
+      <ion-datetime  value="{{time}}" display-format="HH:mm" min="08:00" max="17:00" (ionChange)="setSelectedDate($event)"></ion-datetime>
+    </div>
+
     <div class="center" style="width:100%">
       <ion-button class="orderButton" (click)="order()">Bestellen</ion-button>
     </div>

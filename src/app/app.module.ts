@@ -12,11 +12,12 @@ import {HomePageModule} from './home/home.module';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {LocalNotifications} from '@ionic-native/local-notifications/ngx';
+import { NgCalendarModule  } from 'ionic2-calendar';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, CommonModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, HomePageModule],
+  imports: [BrowserModule, CommonModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, HomePageModule, NgCalendarModule],
   providers: [
     StatusBar,
     SplashScreen,

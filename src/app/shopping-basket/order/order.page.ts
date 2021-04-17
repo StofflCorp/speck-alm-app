@@ -15,7 +15,10 @@ export class OrderPage implements OnInit {
   date: Date;
   type: 'string';
   curDate: Date;
+  time : Date;
   datestr: string;
+  dateString : string;
+  weekdays = ["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "September", "Oktober","November", "Dezember"];
   calendar = {
     mode: 'month',
     currentDate: new Date(),
@@ -31,6 +34,11 @@ export class OrderPage implements OnInit {
   }
 
   ngOnInit(): void {
+    this.curDate = this.calendar.currentDate
+    this.dateString = this.weekdays[this.curDate.getMonth()] + " "+ this.curDate.getFullYear()
+    this.time = new Date()
+    this.time.setMinutes(0)
+    this.time.setHours(12)
   }
 
   onEventSelected() {
@@ -41,6 +49,7 @@ export class OrderPage implements OnInit {
   }
   onTimeSelected($event) {
     this.curDate = $event.selectedTime;
+    this.dateString = this.weekdays[this.curDate.getMonth()] + " "+ this.curDate.getFullYear()
   }
   async order() {
     this.presentConfirm();
@@ -73,9 +82,15 @@ export class OrderPage implements OnInit {
 
   async placeOrder() {
     const postData = new FormData();
+    this.curDate.setHours(this.time.getHours())
+    this.curDate.setMinutes(this.time.getMinutes())
     const formattedDate = moment(this.curDate).format('YYYY-MM-DD HH:mm:ss');
     this.datestr = formattedDate.toString();
     postData.append('pickup_date', this.datestr);
     const response: any = await this.http.post(`https://speckalm.htl-perg.ac.at/r/api/users/${this.globalService.getId()}/shoppingCart/order?token=${this.globalService.getToken()}&pickup_date=${this.datestr}`, postData).toPromise();
+  }
+
+  setSelectedDate($event: CustomEvent) {
+    this.time= new Date($event.detail.value)
   }
 }
