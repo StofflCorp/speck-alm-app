@@ -1,16 +1,15 @@
-<ion-img [src]="'../../../assets/img/Events/eventdefault.jpg'"></ion-img>
+
+
+
 
 <ion-content>
+  <ion-img *ngIf="item.image != null" [src]="'https://speckalm.htl-perg.ac.at/r/storage/images/'+item.image.savedFileName"></ion-img>
   <ion-header>
 
     <ion-toolbar>
 
       <ion-title>{{item.name}}</ion-title>
-      <ion-buttons slot="end">
-        <ion-button color="white" (click)="favBtnClicked()">
-          <ion-icon slot="icon-only" [name]="getIcon()" color="dark" ></ion-icon>
-        </ion-button>
-      </ion-buttons>
+
 
     </ion-toolbar>
   </ion-header>

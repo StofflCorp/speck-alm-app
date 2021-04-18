@@ -18,6 +18,7 @@ export class OrderPage implements OnInit {
   time : Date;
   datestr: string;
   dateString : string;
+
   weekdays = ["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "September", "Oktober","November", "Dezember"];
   calendar = {
     mode: 'month',
@@ -26,7 +27,7 @@ export class OrderPage implements OnInit {
 
   markDisabled = (date: Date) => {
     const current = new Date();
-    return date < current;
+    return date < current ||  date.getDay()==0;
   }
 
   onChange($event) {

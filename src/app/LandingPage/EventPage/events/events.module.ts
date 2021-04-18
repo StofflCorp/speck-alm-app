@@ -16,7 +16,7 @@ import { EventModalPage } from '../event-modal/event-modal.page';
     IonicModule,
     EventsPageRoutingModule
   ],
-  declarations: [EventsPage],
+  declarations: [EventsPage, EventModalPage],
   entryComponents: [EventModalPage]
 })
 export class EventsPageModule {}

@@ -98,7 +98,7 @@ export class EventsPage implements OnInit {
   favBtnClicked(item) {
     if (this.global.getId() != null) {
       this.clickedModal = false;
-      console.log(item);
+
       const elem = document.getElementById('icon' + item.id);
 
       if (elem.getAttribute('ng-reflect-name') === 'star-outline') {

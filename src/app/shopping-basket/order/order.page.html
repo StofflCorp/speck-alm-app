@@ -15,8 +15,8 @@
               (onTitleChanged)="onViewTitleChanged()"
               (onTimeSelected)="onTimeSelected($event)"
               step="30"
-              startingDayWeek="1"
-              >
+              [startingDayMonth]="1">
+
     </calendar>
     <div class="div">
       <p >Abholzeitpukt:</p>
