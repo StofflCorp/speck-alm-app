@@ -40,7 +40,6 @@ export class NewsPage implements OnInit {
           this.items = this.items.concat(res);
           for (const i of this.items) {
             i.description = i.description.replace(/\r/g, '<br>');
-            console.log(i.description);
           }
           if (Object.keys(res).length < 10) {
             this.stop = true;

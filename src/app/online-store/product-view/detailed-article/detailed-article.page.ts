@@ -90,7 +90,7 @@ export class DetailedArticlePage implements OnInit {
         }
         ,
         {
-          text: 'Zum Warenkorb',
+          text: 'Zum Kühlschrank',
           handler: back => {
             this.modalController.dismiss();
             this.navCtr.navigateRoot('shopping-basket');

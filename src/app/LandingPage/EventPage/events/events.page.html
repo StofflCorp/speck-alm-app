@@ -6,20 +6,11 @@
 
 <ion-content>
   <ion-card (click)="clicked(item)" *ngFor="let item of items">
-    <ion-img></ion-img>
-
+    <ion-img *ngIf="item.image != null" [src]="'https://speckalm.htl-perg.ac.at/r/storage/images/'+item.image.savedFileName"></ion-img>
     <ion-card-header>
-      <ion-toolbar>
-
-        <ion-card-title class="cardTitle">{{item.name}}</ion-card-title>
-
-        <ion-buttons slot="end">
-          <ion-button color="white" (click)="favBtnClicked(item)">
-            <ion-icon id="icon{{item.id}}" [name]="getIcon(item)" color="dark"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
+      <ion-card-title>{{item.name}}</ion-card-title>
     </ion-card-header>
+    
 
     <ion-card-content>
       <ion-label>{{item.description}}</ion-label>

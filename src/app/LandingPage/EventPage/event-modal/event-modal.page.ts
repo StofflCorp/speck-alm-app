@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {GlobalService} from '../../../global.service';
 import {HttpClient} from '@angular/common/http';
 import {ModalController} from '@ionic/angular';
+import {applySourceSpanToExpressionIfNeeded} from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: 'app-event-modal',
@@ -15,6 +16,7 @@ export class EventModalPage implements OnInit {
   constructor(private global: GlobalService, public http: HttpClient, private modalController: ModalController) {}
 
   ngOnInit() {
+
   }
 
   getIcon() {

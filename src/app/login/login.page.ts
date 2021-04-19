@@ -54,6 +54,8 @@ export class LoginPage implements OnInit {
 
     // überprüfen ob account schon vorhanden
     const postData = new FormData();
+    this.email = this.email.trim();
+    this.password = this.password.trim();
     postData.append('email', this.email);
     postData.append('password', this.password);
     try {
